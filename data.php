@@ -32,6 +32,10 @@ $regressions_stub =
 	. '&keywords_type=allwords'
 	. '&v1=affected'
 	. '&o1=equals'
+	. '&bug_status=UNCONFIRMED'
+	. '&bug_status=NEW'
+	. '&bug_status=ASSIGNED'
+	. '&bug_status=REOPENED'
 	. '&f1=cf_status_firefox';
 
 $regressions_nightly = $regressions_stub . $main_nightly;

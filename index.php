@@ -34,7 +34,7 @@
         <div class="col">
             <h3 class="text-center">NIGHTLY</h3>
             <ul>
-                <li><a href="<?=$regressions_nightly?>">Regressions</a></li>
+                <li><a href="<?=$regressions_nightly?>">Open regressions</a></li>
                 <li><a href="<?=$relnotes_nightly?>">Release Note Requests</a></li>
                 <li>--</li>
                 <li><a href="<?=$malfunction_nightly?>">Software defect (crash, leak, assertion…)</a></li>
@@ -49,7 +49,7 @@
         <div class="col">
             <h3 class="text-center">BETA</h3>
             <ul>
-                <li><a href="<?=$regressions_beta?>">Regressions</a></li>
+                <li><a href="<?=$regressions_beta?>">Open regressions</a></li>
                 <li><a href="<?=$relnotes_beta?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_beta?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_beta?>">Software defect (crash, leak, assertion…)</a></li>
@@ -63,7 +63,7 @@
         <div class="col">
             <h3 class="text-center">RELEASE</h3>
             <ul>
-                <li><a href="<?=$regressions_release?>">Regressions</a></li>
+                <li><a href="<?=$regressions_release?>">Open regressions</a></li>
                 <li><a href="<?=$relnotes_release?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_release?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_release?>">Software defect (crash, leak, assertion…)</a></li>
