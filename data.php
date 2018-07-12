@@ -98,6 +98,34 @@ $tracking_plus_open_nightly = $tracking_plus_nightly. $open;
 $tracking_plus_open_beta    = $tracking_plus_beta . $open;
 $tracking_plus_open_release = $tracking_plus_release . $open;
 
+// Tracking +, unassigned
+$tracking_plus_unassigned_stub =
+	$stub_search_bz
+	. '&o1=anywordssubstr'
+	. '&o2=substring'
+	. '&v1=%2B%20blocking'
+	. '&v2=nobody%40mozilla.org'
+	. '&o3=nowordssubstr'
+	. '&v3=fixed%20verified'
+	. '&resolution=---'
+	. '&resolution=FIXED'
+	. '&f2=assigned_to';
+
+$tracking_plus_unassigned_nightly =
+	$tracking_plus_unassigned_stub
+	. '&f3=cf_status_firefox' . $main_nightly
+	. '&f1=cf_tracking_firefox' . $main_nightly;
+
+$tracking_plus_unassigned_beta =
+	$tracking_plus_unassigned_stub
+	. '&f3=cf_status_firefox' . $main_beta
+	. '&f1=cf_tracking_firefox' . $main_beta;
+
+$tracking_plus_unassigned_release =
+	$tracking_plus_unassigned_stub
+	. '&f3=cf_status_firefox' . $main_release
+	. '&f1=cf_tracking_firefox' . $main_release;
+
 // Pending needinfo > 3 days
 $ni_days = 3;
 $pending_needinfo_stub =
