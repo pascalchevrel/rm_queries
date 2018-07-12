@@ -10,33 +10,21 @@
     </style>
 </head>
 <body>
-    <a href="https://bugzilla.mozilla.org/page.cgi?id=release_tracking_report.html">Release Tracking Report</a>
-
-    <table id="version_numbers" class="table table-striped table-bordered table-sm w-auto" style="margin-left: 1em">
+    <table id="version_numbers" class="table table-bordered tabe-sm w-auto mx-auto" style="margin-left: 1em">
         <tbody>
             <tr>
-                <th>Nightly</th>
-                <td><?=NIGHTLY?></td>
-            </tr>
-            <tr>
-                <th>Dev Edition</th>
-                <td><?=DEV_EDITION?></td>
-            </tr>
-            <tr>
-                <th>Beta</th>
-                <td><?=BETA?></td>
-            </tr>
-            <tr>
-                <th>Release</th>
-                <td><?=RELEASE?></td>
-            </tr>
-            <tr>
-                <th>Old ESR</th>
-                <td><?=ESR?></td>
-            </tr>
-            <tr>
-                <th>ESR</th>
-                <td><?=ESR_NEXT?></td>
+                <th class="table-dark">Nightly</th>
+                <td class="table-primary"><?=NIGHTLY?></td>
+                <th class="table-dark">Dev Edition</th>
+                <td class="table-primary"><?=DEV_EDITION?></td>
+                <th class="table-dark">Beta</th>
+                <td class="table-primary"><?=BETA?></td>
+                <th class="table-dark">Release</th>
+                <td class="table-primary"><?=RELEASE?></td>
+                <th class="table-dark">Old ESR</th>
+                <td class="table-primary"><?=ESR?></td>
+                <th class="table-dark">ESR</th>
+                <td class="table-primary"><?=ESR_NEXT?></td>
             </tr>
         </tbody>
     </table>
