@@ -32,35 +32,46 @@
     <div class="container">
         <div class="row">
         <div class="col">
-            <h3>NIGHTLY</h3>
+            <h3 class="text-center">NIGHTLY</h3>
             <ul>
                 <li><a href="">Regressions</a></li>
                 <li><a href="<?=$relnotes_nightly?>">Release Note Requests</a></li>
                 <li>--</li>
                 <li><a href="<?=$malfunction_nightly?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_plus_nightly?>">tracking+</a></li>
+                <li><a href="<?=$tracking_plus_open_nightly?>">tracking+ not fixed</a></li>
+                <li><a href="<?=$pending_needinfo_nightly?>">needinfo? > <?=$ni_days?> days</a></li>
+
             </ul>
         </div>
 
         <div class="col">
-            <h3>BETA</h3>
+            <h3 class="text-center">BETA</h3>
             <ul>
                 <li><a href="">Regressions</a></li>
                 <li><a href="<?=$relnotes_beta?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_beta?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_beta?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_plus_beta?>">tracking+</a></li>
+                <li><a href="<?=$tracking_plus_open_beta?>">tracking+ not fixed</a></li>
+                <li><a href="<?=$pending_needinfo_beta?>">needinfo? > <?=$ni_days?> days</a></li>
             </ul>
         </div>
 
         <div class="col">
-            <h3>RELEASE</h3>
+            <h3 class="text-center">RELEASE</h3>
             <ul>
                 <li><a href="">Regressions</a></li>
                 <li><a href="<?=$relnotes_release?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_release?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_release?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_plus_release?>">tracking+</a></li>
+                <li><a href="<?=$tracking_plus_open_release?>">tracking+ not fixed</a></li>
+                <li><a href="<?=$pending_needinfo_release?>">needinfo? > <?=$ni_days?> days</a></li>
             </ul>
         </div>
         </div>
     </div>
 </body>
 </html>
+

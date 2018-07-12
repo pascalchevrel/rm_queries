@@ -81,3 +81,42 @@ $malfunction_release =
 	. '&f6=cf_tracking_firefox' . $main_release
 	. '&f1=cf_status_firefox' . $main_release;
 
+// Tracking +
+$tracking_plus_stub =
+	$stub_search_bz
+	. '&o1=equals'
+	. '&v1=%2B'
+	. '&f1=cf_tracking_firefox';
+
+$tracking_plus_nightly = $tracking_plus_stub . $main_nightly;
+$tracking_plus_beta    = $tracking_plus_stub . $main_beta;
+$tracking_plus_release = $tracking_plus_stub . $main_release;
+
+// Tracking +, still open
+$open = '&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED';
+$tracking_plus_open_nightly = $tracking_plus_nightly. $open;
+$tracking_plus_open_beta    = $tracking_plus_beta . $open;
+$tracking_plus_open_release = $tracking_plus_release . $open;
+
+// Pending needinfo > 3 days
+$ni_days = 3;
+$pending_needinfo_stub =
+	$stub_search_bz
+	. '&f1=flagtypes.name'
+	. '&o3=equals'
+	. '&v3=affected'
+	. '&o1=substring'
+	. '&resolution=---'
+	. '&o2=greaterthan'
+	. '&f2=days_elapsed'
+	. '&bug_status=UNCONFIRMED'
+	. '&bug_status=NEW'
+	. '&bug_status=ASSIGNED'
+	. '&bug_status=REOPENED'
+	. '&v1=needinfo%3F'
+	. '&v2=' . $ni_days
+	. '&f3=cf_status_firefox';
+
+$pending_needinfo_nightly = $pending_needinfo_stub . $main_nightly;
+$pending_needinfo_beta 	  = $pending_needinfo_stub . $main_beta;
+$pending_needinfo_release = $pending_needinfo_stub . $main_release;
