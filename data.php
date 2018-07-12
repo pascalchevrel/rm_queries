@@ -25,6 +25,19 @@ $main_release = (int) RELEASE;
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
+// Regressions
+$regressions_stub =
+	$stub_search_bz
+	. '&keywords=regression'
+	. '&keywords_type=allwords'
+	. '&v1=affected'
+	. '&o1=equals'
+	. '&f1=cf_status_firefox';
+
+$regressions_nightly = $regressions_stub . $main_nightly;
+$regressions_beta    = $regressions_stub . $main_beta;
+$regressions_release = $regressions_stub . $main_release;
+
 // Release notes
 $relnotes_stub =
 	$stub_search_bz
