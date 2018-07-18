@@ -98,6 +98,17 @@ $malfunction_release =
 	. '&f6=cf_tracking_firefox' . $main_release
 	. '&f1=cf_status_firefox' . $main_release;
 
+// Tracking ?
+$tracking_question_stub =
+	$stub_search_bz
+	. '&o1=equals'
+	. '&v1=%3F'
+	. '&f1=cf_tracking_firefox';
+
+$tracking_question_nightly = $tracking_question_stub . $main_nightly;
+$tracking_question_beta    = $tracking_question_stub . $main_beta;
+$tracking_question_release = $tracking_question_stub . $main_release;
+
 // Tracking +
 $tracking_plus_stub =
 	$stub_search_bz

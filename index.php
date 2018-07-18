@@ -39,6 +39,7 @@
                 <li><a href="<?=$relnotes_nightly?>">Release Note Requests</a></li>
                 <li>--</li>
                 <li><a href="<?=$malfunction_nightly?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_question_nightly?>">tracking?</a></li>
                 <li><a href="<?=$tracking_plus_nightly?>">tracking+</a></li>
                 <li><a href="<?=$tracking_plus_open_nightly?>">tracking+ not fixed</a></li>
                 <li><a href="<?=$tracking_plus_unassigned_nightly?>">tracking+ unassigned</a></li>
@@ -54,6 +55,7 @@
                 <li><a href="<?=$relnotes_beta?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_beta?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_beta?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_question_beta?>">tracking?</a></li>
                 <li><a href="<?=$tracking_plus_beta?>">tracking+</a></li>
                 <li><a href="<?=$tracking_plus_open_beta?>">tracking+ not fixed</a></li>
                 <li><a href="<?=$tracking_plus_unassigned_beta?>">tracking+ unassigned</a></li>
@@ -68,6 +70,7 @@
                 <li><a href="<?=$relnotes_release?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_release?>">Uplift requests</a></li>
                 <li><a href="<?=$malfunction_release?>">Software defect (crash, leak, assertion…)</a></li>
+                <li><a href="<?=$tracking_question_release?>">tracking?</a></li>
                 <li><a href="<?=$tracking_plus_release?>">tracking+</a></li>
                 <li><a href="<?=$tracking_plus_open_release?>">tracking+ not fixed</a></li>
                 <li><a href="<?=$tracking_plus_unassigned_release?>">tracking+ unassigned</a></li>
