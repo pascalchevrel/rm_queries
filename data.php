@@ -43,18 +43,22 @@ $regressions_beta    = $regressions_stub . $main_beta;
 $regressions_release = $regressions_stub . $main_release;
 
 // Release notes
-$relnotes_stub =
-	$stub_search_bz
+$relnotes_stub = function($version) use($stub_search_bz) {
+	return $stub_search_bz
+	. '&f1=cf_tracking_firefox_relnote'
 	. '&o1=equals'
 	. '&v1=%3F'
+	. '&f2=cf_status_firefox' . $version
 	. '&o2=anywords'
 	. '&v2=affected%2Cfixed%2Cverified%2Cfix-optional'
-	. '&f1=cf_tracking_firefox_relnote'
-	. '&f2=cf_status_firefox';
+	. '&f3=cf_status_firefox' . $version
+	. '&o3=notsubstring'
+	. '&v3=disabled';
+};
 
-$relnotes_nightly = $relnotes_stub . $main_nightly;
-$relnotes_beta    = $relnotes_stub . $main_beta;
-$relnotes_release = $relnotes_stub . $main_release;
+$relnotes_nightly = $relnotes_stub($main_nightly);
+$relnotes_beta    = $relnotes_stub($main_beta);
+$relnotes_release = $relnotes_stub($main_release);
 
 // Uplifts requests
 $uplift_stub 	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
