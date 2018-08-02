@@ -61,8 +61,8 @@ $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 
 // Uplifts requests
-$uplift_stub 	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
-$uplift_beta 	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
+$uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
+$uplift_beta	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
 $uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
 
 // Ryan query: crash, leak, security, dataloss, assertion
