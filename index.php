@@ -44,6 +44,7 @@
                 <li><a href="<?=$tracking_plus_open_nightly?>">tracking+ not fixed</a></li>
                 <li><a href="<?=$tracking_plus_unassigned_nightly?>">tracking+ unassigned</a></li>
                 <li><a href="<?=$pending_needinfo_nightly?>">needinfo? > <?=$ni_days?> days</a></li>
+                <li><a href="<?=$recently_fixed_crashes?>">Crashes in the last <?=$last_days?> days</a></li>
 
             </ul>
         </div>

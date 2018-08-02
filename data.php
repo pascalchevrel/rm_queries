@@ -180,3 +180,14 @@ $pending_needinfo_stub =
 $pending_needinfo_nightly = $pending_needinfo_stub . $main_nightly;
 $pending_needinfo_beta 	  = $pending_needinfo_stub . $main_beta;
 $pending_needinfo_release = $pending_needinfo_stub . $main_release;
+
+//Recently fixed crashes
+$last_days = 7;
+$recently_fixed_crashes =
+	$stub_search_bz
+	. '&keywords=crash'
+	. '&chfield=resolution'
+	. '&chfieldvalue=FIXED'
+	. '&chfieldfrom=' . $last_days . 'd'
+	. '&chfieldto=Now';
+	
