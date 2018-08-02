@@ -3,7 +3,7 @@ $cache_time   = 18000; // 5 hours
 $cache_source = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
 $cache_file   = 'firefox_versions_local.json';
 
-// Serve from the cache if it is younger than $cache_time
+// Serve from cache if it is younger than $cache_time
 $cache_ok = file_exists($cache_file) && time() - $cache_time < filemtime($cache_file);
 
 if (! $cache_ok) {
@@ -101,7 +101,7 @@ $malfunction_release =
 	. '&f6=cf_tracking_firefox' . $main_release
 	. '&f1=cf_status_firefox' . $main_release;
 
-// Tracking ?
+// Tracking?
 $tracking_question_stub =
 	$stub_search_bz
 	. '&o1=equals'
@@ -112,7 +112,7 @@ $tracking_question_nightly = $tracking_question_stub . $main_nightly;
 $tracking_question_beta    = $tracking_question_stub . $main_beta;
 $tracking_question_release = $tracking_question_stub . $main_release;
 
-// Tracking +
+// Tracking+
 $tracking_plus_stub =
 	$stub_search_bz
 	. '&o1=equals'
@@ -123,7 +123,7 @@ $tracking_plus_nightly = $tracking_plus_stub . $main_nightly;
 $tracking_plus_beta    = $tracking_plus_stub . $main_beta;
 $tracking_plus_release = $tracking_plus_stub . $main_release;
 
-// Tracking +, still open
+// Tracking+, still open
 $open = '&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED';
 $tracking_plus_open_nightly = $tracking_plus_nightly. $open;
 $tracking_plus_open_beta    = $tracking_plus_beta . $open;
@@ -177,10 +177,10 @@ $pending_needinfo_stub =
 	. '&f3=cf_status_firefox';
 
 $pending_needinfo_nightly = $pending_needinfo_stub . $main_nightly;
-$pending_needinfo_beta	  = $pending_needinfo_stub . $main_beta;
+$pending_needinfo_beta    = $pending_needinfo_stub . $main_beta;
 $pending_needinfo_release = $pending_needinfo_stub . $main_release;
 
-//Recently fixed crashes
+// Recently fixed crashes
 $last_days = 7;
 $recently_fixed_crashes =
 	$stub_search_bz
