@@ -20,7 +20,7 @@ define('BETA', $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
 define('RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
 
 $main_nightly = (int) NIGHTLY;
-$main_beta 	  = (int) BETA;
+$main_beta    = (int) BETA;
 $main_release = (int) RELEASE;
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
@@ -63,8 +63,7 @@ $relnotes_release = $relnotes_stub($main_release);
 // Uplifts requests
 $uplift_stub 	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta 	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
-$uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';;
-
+$uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
 
 // Ryan query: crash, leak, security, dataloss, assertion
 $malfunction_stub =
@@ -178,7 +177,7 @@ $pending_needinfo_stub =
 	. '&f3=cf_status_firefox';
 
 $pending_needinfo_nightly = $pending_needinfo_stub . $main_nightly;
-$pending_needinfo_beta 	  = $pending_needinfo_stub . $main_beta;
+$pending_needinfo_beta	  = $pending_needinfo_stub . $main_beta;
 $pending_needinfo_release = $pending_needinfo_stub . $main_release;
 
 //Recently fixed crashes
