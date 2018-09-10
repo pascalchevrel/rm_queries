@@ -65,6 +65,27 @@ $uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
 $uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
 
+// Uplifts requests accepted, not landed last week,
+$uplift_stub_pending = $uplift_stub
+	. '&v2=affected%2Cfix-optional'
+	. '&o2=anyexact'
+	. '&chfieldfrom=-1w'
+	. '&chfieldto=Now';
+
+// Beta uplifts accepted, not landed
+$uplift_beta_pending =
+	$uplift_stub_pending
+	. '&f2=cf_status_firefox' . $main_beta
+	. '&v1=approval-mozilla-beta%2B';
+
+// Release uplifts accepted, not landed
+$uplift_release_pending =
+	$uplift_stub_pending
+	. '&f2=cf_status_firefox' . $main_release
+	. '&v1=approval-mozilla-release%2B';
+
+
+
 // Ryan query: crash, leak, security, dataloss, assertion
 $malfunction_stub =
 	$stub_search_bz
@@ -189,4 +210,4 @@ $recently_fixed_crashes =
 	. '&chfieldvalue=FIXED'
 	. '&chfieldfrom=' . $last_days . 'd'
 	. '&chfieldto=Now';
-	
+

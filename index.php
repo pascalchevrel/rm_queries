@@ -55,6 +55,7 @@
                 <li><a href="<?=$regressions_beta?>">Open regressions</a></li>
                 <li><a href="<?=$relnotes_beta?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_beta?>">Uplift requests</a></li>
+                <li><a href="<?=$uplift_beta_pending?>">Uplifts not landed, bug active</a></li>
                 <li><a href="<?=$malfunction_beta?>">Software defect (crash, leak, assertion…)</a></li>
                 <li><a href="<?=$tracking_question_beta?>">tracking?</a></li>
                 <li><a href="<?=$tracking_plus_beta?>">tracking+</a></li>
@@ -70,6 +71,7 @@
                 <li><a href="<?=$regressions_release?>">Open regressions</a></li>
                 <li><a href="<?=$relnotes_release?>">Release Note Requests</a></li>
                 <li><a href="<?=$uplift_release?>">Uplift requests</a></li>
+                <li><a href="<?=$uplift_release_pending?>">Uplifts not landed, bug active</a></li>
                 <li><a href="<?=$malfunction_release?>">Software defect (crash, leak, assertion…)</a></li>
                 <li><a href="<?=$tracking_question_release?>">tracking?</a></li>
                 <li><a href="<?=$tracking_plus_release?>">tracking+</a></li>
