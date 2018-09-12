@@ -35,16 +35,16 @@
         <div class="col">
             <h3 class="text-center">NIGHTLY</h3>
             <ul>
-                <li><a href="<?=$regressions_nightly?>">Open regressions</a></li>
-                <li><a href="<?=$relnotes_nightly?>">Release Note Requests</a></li>
+                <li><?=$link($regressions_nightly,'Open regressions')?></li>
+                <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
                 <li>--</li>
-                <li><a href="<?=$malfunction_nightly?>">Software defect (crash, leak, assertion…)</a></li>
-                <li><a href="<?=$tracking_question_nightly?>">tracking?</a></li>
-                <li><a href="<?=$tracking_plus_nightly?>">tracking+</a></li>
-                <li><a href="<?=$tracking_plus_open_nightly?>">tracking+ not fixed</a></li>
-                <li><a href="<?=$tracking_plus_unassigned_nightly?>">tracking+ unassigned</a></li>
-                <li><a href="<?=$pending_needinfo_nightly?>">needinfo? > <?=$ni_days?> days</a></li>
-                <li><a href="<?=$recently_fixed_crashes?>">Crashes fixed in the last <?=$last_days?> days</a></li>
+                <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
+                <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
+                <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
+                <li><?=$link($tracking_plus_open_nightly, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
+                <li><?=$link($pending_needinfo_nightly, 'needinfo? > <?=$ni_days?> days')?></li>
+                <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last <?=$last_days?> days')?></li>
 
             </ul>
         </div>
@@ -52,32 +52,32 @@
         <div class="col">
             <h3 class="text-center">BETA</h3>
             <ul>
-                <li><a href="<?=$regressions_beta?>">Open regressions</a></li>
-                <li><a href="<?=$relnotes_beta?>">Release Note Requests</a></li>
-                <li><a href="<?=$uplift_beta?>">Uplift requests</a></li>
-                <li><a href="<?=$uplift_beta_pending?>">Uplifts not landed, bug active</a></li>
-                <li><a href="<?=$malfunction_beta?>">Software defect (crash, leak, assertion…)</a></li>
-                <li><a href="<?=$tracking_question_beta?>">tracking?</a></li>
-                <li><a href="<?=$tracking_plus_beta?>">tracking+</a></li>
-                <li><a href="<?=$tracking_plus_open_beta?>">tracking+ not fixed</a></li>
-                <li><a href="<?=$tracking_plus_unassigned_beta?>">tracking+ unassigned</a></li>
-                <li><a href="<?=$pending_needinfo_beta?>">needinfo? > <?=$ni_days?> days</a></li>
+                <li><?=$link($regressions_beta, 'Open regressions')?></li>
+                <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
+                <li><?=$link($uplift_beta, 'Uplift requests')?></li>
+                <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
+                <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
+                <li><?=$link($tracking_question_beta, 'tracking?')?></li>
+                <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
+                <li><?=$link($tracking_plus_open_beta, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
+                <li><?=$link($pending_needinfo_beta, 'needinfo? > <?=$ni_days?> days')?></li>
             </ul>
         </div>
 
         <div class="col">
             <h3 class="text-center">RELEASE</h3>
             <ul>
-                <li><a href="<?=$regressions_release?>">Open regressions</a></li>
-                <li><a href="<?=$relnotes_release?>">Release Note Requests</a></li>
-                <li><a href="<?=$uplift_release?>">Uplift requests</a></li>
-                <li><a href="<?=$uplift_release_pending?>">Uplifts not landed, bug active</a></li>
-                <li><a href="<?=$malfunction_release?>">Software defect (crash, leak, assertion…)</a></li>
-                <li><a href="<?=$tracking_question_release?>">tracking?</a></li>
-                <li><a href="<?=$tracking_plus_release?>">tracking+</a></li>
-                <li><a href="<?=$tracking_plus_open_release?>">tracking+ not fixed</a></li>
-                <li><a href="<?=$tracking_plus_unassigned_release?>">tracking+ unassigned</a></li>
-                <li><a href="<?=$pending_needinfo_release?>">needinfo? > <?=$ni_days?> days</a></li>
+                <li><?=$link($regressions_release, 'Open regressions')?></li>
+                <li><?=$link($relnotes_release, 'Release Note Requests')?></li>
+                <li><?=$link($uplift_release, 'Uplift requests')?></li>
+                <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
+                <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
+                <li><?=$link($tracking_question_release, 'tracking?')?></li>
+                <li><?=$link($tracking_plus_release, 'tracking+')?></li>
+                <li><?=$link($tracking_plus_open_release, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
+                <li><?=$link($pending_needinfo_release, 'needinfo? > <?=$ni_days?> days')?></li>
             </ul>
         </div>
         </div>

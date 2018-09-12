@@ -211,3 +211,6 @@ $recently_fixed_crashes =
 	. '&chfieldfrom=' . $last_days . 'd'
 	. '&chfieldto=Now';
 
+$link = function($url, $text) {
+	return '<a href="' . $url . '" target=”_blank”>' . $text . '</a>';
+};
