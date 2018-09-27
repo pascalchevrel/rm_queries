@@ -5,8 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Release Links and Queries</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script>
+    function show(id) {
+        elt = document.getElementById(id);
+        display = getComputedStyle(elt, null).display;
+        elt.style.display = (display == "none") ? "block" : "none";
+    }
+    </script>
     <style>
+    #betas {
+        display: none;
+        width: 50%;
+        margin: 1em auto;
+        text-align: center;
 
+    }
+
+    #betas ul {
+        list-style: none;
+        display: flex;
+    }
+
+    #betas ul li {
+        flex:content;
+
+    }
     </style>
 </head>
 <body>
@@ -18,7 +41,7 @@
                 <td class="table-primary"><?=NIGHTLY?></td>
                 <th class="table-dark">Dev Edition</th>
                 <td class="table-primary"><?=DEV_EDITION?></td>
-                <th class="table-dark">Beta</th>
+                <th class="table-dark" onclick="show('betas');">Beta</th>
                 <td class="table-primary"><?=BETA?></td>
                 <th class="table-dark">Release</th>
                 <td class="table-primary"><?=RELEASE?></td>
@@ -34,6 +57,14 @@
             </tr>
         </tbody>
     </table>
+    <div id="betas" class="border bg-light">
+        <h5>Patches uplifted for each beta</h3>
+        <ul>
+            <?php for ($i = 1; $i <= $last_beta; $i++): ?>
+            <li><a href="https://hg.mozilla.org/releases/mozilla-beta/pushloghtml?fromchange=FIREFOX_63_0b<?=$i?>_RELEASE&tochangeFIREFOX_63_0b<?=$i+1?>_RELEASE">Beta <?=$i?></a></li>
+            <?php endfor; ?>
+        </ul>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -89,4 +120,3 @@
     </div>
 </body>
 </html>
-

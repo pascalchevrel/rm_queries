@@ -22,8 +22,13 @@ define('RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
 $main_nightly = (int) NIGHTLY;
 $main_beta    = (int) BETA;
 $main_release = (int) RELEASE;
+$last_beta 	  = (int) str_replace('63.0b', '', BETA);
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
+
+$bug_list_title = function($string) {
+	return '&title=' . rawurlencode($string);
+};
 
 // Regressions
 $regressions_stub =
@@ -56,7 +61,7 @@ $relnotes_stub = function($version) use($stub_search_bz) {
 	. '&v3=disabled';
 };
 
-$relnotes_nightly = $relnotes_stub($main_nightly);
+$relnotes_nightly = $relnotes_stub($main_nightly) . $bug_list_title('Nightly relnote requests');
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 
