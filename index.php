@@ -44,7 +44,7 @@
                 <li><?=$link($tracking_plus_open_nightly, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                 <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days . ' days')?></li>
-                <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last <?=$last_days?> days')?></li>
+                <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
 
             </ul>
         </div>
@@ -77,7 +77,7 @@
                 <li><?=$link($tracking_plus_release, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_open_release, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
-                <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?></li>
+                <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
             </ul>
         </div>
         </div>
