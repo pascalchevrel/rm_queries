@@ -22,10 +22,15 @@
                 <td class="table-primary"><?=BETA?></td>
                 <th class="table-dark">Release</th>
                 <td class="table-primary"><?=RELEASE?></td>
+                <?php if (ESR_NEXT): ?>
                 <th class="table-dark">Old ESR</th>
                 <td class="table-primary"><?=ESR?></td>
                 <th class="table-dark">ESR</th>
                 <td class="table-primary"><?=ESR_NEXT?></td>
+                <?php else: ?>
+                <th class="table-dark">ESR</th>
+                <td class="table-primary"><?=ESR?></td>
+                <?php endif; ?>
             </tr>
         </tbody>
     </table>
