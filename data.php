@@ -202,7 +202,7 @@ $pending_needinfo_beta    = $pending_needinfo_stub . $main_beta;
 $pending_needinfo_release = $pending_needinfo_stub . $main_release;
 
 // Recently fixed crashes
-$last_days = 7;
+$last_days = 21;
 $recently_fixed_crashes =
 	$stub_search_bz
 	. '&keywords=crash'
@@ -210,7 +210,7 @@ $recently_fixed_crashes =
 	. '&chfieldvalue=FIXED'
 	. '&f1=cf_status_firefox' . $main_beta
 	. '&o1=nowordssubstr'
-	. '&v1=fixed%2Cunaffected%2Cwontfix%2Cverified'
+	. '&v1=fixed%2Cunaffected%2Cwontfix%2Cverified%2Cdisabled'
 	. '&chfieldfrom=' . $last_days . 'd'
 	. '&classification=Client%20Software'
 	. '&classification=Components'
