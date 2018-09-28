@@ -18,17 +18,16 @@
         width: 50%;
         margin: 1em auto;
         text-align: center;
-
     }
 
     #betas ul {
-        list-style: none;
         display: flex;
+        padding: 0;
+        list-style: none;
     }
 
     #betas ul li {
         flex:content;
-
     }
     </style>
 </head>
@@ -60,9 +59,9 @@
     <div id="betas" class="border bg-light">
         <h5>Patches uplifted for each beta</h3>
         <ul>
-            <?php for ($i = 2; $i <= $last_beta+1; $i++): ?>
+<?php for ($i = 2; $i <= $last_beta+1; $i++): ?>
             <li><a href="https://hg.mozilla.org/releases/mozilla-beta/pushloghtml?fromchange=FIREFOX_63_0b<?=$i-1?>_RELEASE&tochangeFIREFOX_63_0b<?=$i?>_RELEASE">Beta <?=$i?></a></li>
-            <?php endfor; ?>
+<?php endfor; ?>
         </ul>
     </div>
 
