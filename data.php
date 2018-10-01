@@ -183,6 +183,14 @@ $tracking_plus_unassigned_release =
 	. '&f3=cf_status_firefox' . $main_release
 	. '&f1=cf_tracking_firefox' . $main_release;
 
+
+$resolved_fix_optional =
+	$stub_search_bz
+	. '&o1=equals'
+	. '&v1=fix-optional'
+	. '&f1=cf_status_firefox' .$main_beta
+	. '&resolution=FIXED';
+
 // Pending needinfo > 3 days
 $ni_days = 3;
 $pending_needinfo_stub =

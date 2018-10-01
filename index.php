@@ -96,6 +96,7 @@
                 <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_open_beta, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
+                <li><?=$link($resolved_fix_optional, 'fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
             </ul>
         </div>
