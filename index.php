@@ -60,7 +60,7 @@
         <h5>Patches uplifted for each beta</h3>
         <ul>
 <?php for ($i = 2; $i <= $last_beta+1; $i++): ?>
-            <li><a href="https://hg.mozilla.org/releases/mozilla-beta/pushloghtml?fromchange=FIREFOX_63_0b<?=$i-1?>_RELEASE&tochangeFIREFOX_63_0b<?=$i?>_RELEASE">Beta <?=$i?></a></li>
+            <li><a href="https://hg.mozilla.org/releases/mozilla-beta/pushloghtml?fromchange=FIREFOX_63_0b<?=$i-1?>_RELEASE&tochange=FIREFOX_63_0b<?=$i?>_RELEASE">Beta <?=$i?></a></li>
 <?php endfor; ?>
         </ul>
     </div>
