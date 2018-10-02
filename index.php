@@ -108,7 +108,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
                 <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
-                <li><?=$link($fixed_regressions_candidates_beta, "Uplift Fixed bugs affecting ${main_beta}?")?></li>
+                <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
             </ul>
         </div>
 
@@ -126,7 +126,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
                 <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
-                <li><?=$link($fixed_regressions_candidates_release, "Uplift Fixed bugs affecting ${main_release}?")?></li>
+                <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
             </ul>
         </div>
         </div>
