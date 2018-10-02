@@ -89,8 +89,6 @@ $uplift_release_pending =
 	. '&f2=cf_status_firefox' . $main_release
 	. '&v1=approval-mozilla-release%2B';
 
-
-
 // Ryan query: crash, leak, security, dataloss, assertion
 $malfunction_stub =
 	$stub_search_bz
@@ -184,12 +182,16 @@ $tracking_plus_unassigned_release =
 	. '&f1=cf_tracking_firefox' . $main_release;
 
 
-$resolved_fix_optional =
+$resolved_fix_optional_stub =
 	$stub_search_bz
 	. '&o1=equals'
 	. '&v1=fix-optional'
-	. '&f1=cf_status_firefox' .$main_beta
-	. '&resolution=FIXED';
+	. '&resolution=FIXED'
+	. '&f1=cf_status_firefox';
+
+$resolved_fix_optional_beta = $resolved_fix_optional_stub . $main_beta;
+$resolved_fix_optional_release = $resolved_fix_optional_stub . $main_release;
+
 
 // Pending needinfo > 3 days
 $ni_days = 3;
@@ -237,6 +239,20 @@ $recently_fixed_crashes =
 	. '&product=Toolkit'
 	. '&product=WebExtensions'
 	. '&chfieldto=Now';
+
+
+// Bugs fixed but not uplifted =potential uplifts
+$fixed_regressions_candidates_stub =
+	$stub_search_bz
+	. '&keywords=regression'
+	. '&keywords_type=allwords'
+	. '&o1=equals'
+	. '&v1=affected'
+	. '&resolution=FIXED'
+	. '&f1=cf_status_firefox';
+
+$fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
+$fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
 $link = function($url, $text) {
 	return '<a href="' . $url . '" target=”_blank”>' . $text . '</a>';

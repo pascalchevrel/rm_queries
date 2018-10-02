@@ -81,12 +81,14 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($regressions_nightly,'Open regressions')?></li>
                 <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
                 <li>--</li>
+                <li>--</li>
                 <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
                 <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
                 <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_open_nightly, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                 <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days . ' days')?></li>
+                <li>--</li>
                 <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
 
             </ul>
@@ -104,8 +106,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_open_beta, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
-                <li><?=$link($resolved_fix_optional, 'fixed fix-optionals')?></li>
+                <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
+                <li><?=$link($fixed_regressions_candidates_beta, "Uplift Fixed bugs affecting ${main_beta}?")?></li>
             </ul>
         </div>
 
@@ -121,7 +124,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_release, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_open_release, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
+                <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
+                <li><?=$link($fixed_regressions_candidates_release, "Uplift Fixed bugs affecting ${main_release}?")?></li>
             </ul>
         </div>
         </div>
