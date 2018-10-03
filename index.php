@@ -67,7 +67,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
         . '_RELEASE&amp;tochange='
         . ($i-1 == $last_beta ? 'tip': 'FIREFOX_63_0b'. $i . '_RELEASE');
 
-    print '            <li>' . $link($hg_link,'Beta' . $i) . "</li>\n";
+    print '            <li>' . $link($hg_link,'Beta' . $i, $title = false ) . "</li>\n";
 }
 ?>
         </ul>

@@ -250,6 +250,7 @@ $fixed_regressions_candidates_stub =
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
-$link = function($url, $text) {
-	return '<a href="' . $url . '&title=' . rawurlencode($text) .'" target=”_blank”>' . $text . '</a>';
+$link = function($url, $text, $title = true) {
+	$title = $title ? '&title=' . rawurlencode($text) : '';
+	return '<a href="' . $url . $title . '" target=”_blank”>' . $text . '</a>';
 };
