@@ -26,10 +26,6 @@ $last_beta 	  = (int) str_replace('63.0b', '', BETA);
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
-$bug_list_title = function($string) {
-	return '&title=' . rawurlencode($string);
-};
-
 // Regressions
 $regressions_stub =
 	$stub_search_bz
@@ -61,7 +57,7 @@ $relnotes_stub = function($version) use($stub_search_bz) {
 	. '&v3=disabled';
 };
 
-$relnotes_nightly = $relnotes_stub($main_nightly) . $bug_list_title('Nightly relnote requests');
+$relnotes_nightly = $relnotes_stub($main_nightly);
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 
@@ -255,5 +251,5 @@ $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
 $link = function($url, $text) {
-	return '<a href="' . $url . '" target=”_blank”>' . $text . '</a>';
+	return '<a href="' . $url . '&title=' . rawurlencode($text) .'" target=”_blank”>' . $text . '</a>';
 };
