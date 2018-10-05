@@ -96,7 +96,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
                 <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
                 <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_open_nightly, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                 <li>--</li>
                 <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days . ' days')?></li>
@@ -115,7 +115,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
                 <li><?=$link($tracking_question_beta, 'tracking?')?></li>
                 <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_open_beta, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
                 <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
@@ -133,7 +133,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
                 <li><?=$link($tracking_question_release, 'tracking?')?></li>
                 <li><?=$link($tracking_plus_release, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_open_release, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
                 <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>

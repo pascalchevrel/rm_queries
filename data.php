@@ -144,10 +144,30 @@ $tracking_plus_beta    = $tracking_plus_stub . $main_beta;
 $tracking_plus_release = $tracking_plus_stub . $main_release;
 
 // Tracking+, still open
-$open = '&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED';
-$tracking_plus_open_nightly = $tracking_plus_nightly. $open;
-$tracking_plus_open_beta    = $tracking_plus_beta . $open;
-$tracking_plus_open_release = $tracking_plus_release . $open;
+$tracking_plus_stub =
+	$stub_search_bz
+	. '&f3=resolution'
+	. '&o3=nowordssubstr'
+	. '&v3=INVALID%2CWORKSFORME%2CDUPLICATE'
+	. '&o1=equals'
+	. '&v1=%2B'
+	. '&o2=nowordssubstr'
+	. '&v2=fixed%2Cwontfix%2Cdisabled%2Cverified';
+
+$tracking_plus_unfixed_nightly =
+	$tracking_plus_stub
+	. '&f1=cf_tracking_firefox' . $main_nightly
+	. '&f2=cf_status_firefox' . $main_nightly;
+
+$tracking_plus_unfixed_beta =
+	$tracking_plus_stub
+	. '&f1=cf_tracking_firefox' . $main_beta
+	. '&f2=cf_status_firefox' . $main_beta;
+
+$tracking_plus_unfixed_release =
+	$tracking_plus_stub
+	. '&f1=cf_tracking_firefox' . $main_release
+	. '&f2=cf_status_firefox' . $main_release;
 
 // Tracking +, unassigned
 $tracking_plus_unassigned_stub =
