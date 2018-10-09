@@ -57,7 +57,7 @@
         </tbody>
     </table>
     <div id="betas" class="border bg-light">
-        <h5>Patches uplifted for each beta</h3>
+        <h5>Patches uplifted for each beta</h5>
         <ul>
 <?php
 for ($i = 2; $i <= $last_beta + 1; $i++) {
