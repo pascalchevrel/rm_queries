@@ -1,5 +1,5 @@
 <?php
-$cache_time   = 18000; // 5 hours
+$cache_time   = 10800; // 3 hours
 $cache_source = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
 $cache_file   = 'firefox_versions_local.json';
 
