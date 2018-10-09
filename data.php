@@ -135,51 +135,49 @@ $tracking_question_release = $tracking_question_stub . $main_release;
 // Tracking+
 $tracking_plus_stub =
 	$stub_search_bz
-	. '&o1=equals'
-	. '&v1=%2B'
+	. '&o1=anywordssubstr'
+	. '&v1=%2B%2Cblocking'
 	. '&f1=cf_tracking_firefox';
 
 $tracking_plus_nightly = $tracking_plus_stub . $main_nightly;
 $tracking_plus_beta    = $tracking_plus_stub . $main_beta;
 $tracking_plus_release = $tracking_plus_stub . $main_release;
 
-// Tracking+, still open
-$tracking_plus_stub =
+// Tracking+, blocking, still open
+$tracking_plus_unfixed_stub =
 	$stub_search_bz
+	. '&o1=anywordssubstr'
+	. '&v1=%2B%2Cblocking'
 	. '&f3=resolution'
 	. '&o3=nowordssubstr'
 	. '&v3=INVALID%2CWORKSFORME%2CDUPLICATE'
-	. '&o1=equals'
-	. '&v1=%2B'
 	. '&o2=nowordssubstr'
 	. '&v2=fixed%2Cwontfix%2Cdisabled%2Cverified';
 
 $tracking_plus_unfixed_nightly =
-	$tracking_plus_stub
+	$tracking_plus_unfixed_stub
 	. '&f1=cf_tracking_firefox' . $main_nightly
 	. '&f2=cf_status_firefox' . $main_nightly;
 
 $tracking_plus_unfixed_beta =
-	$tracking_plus_stub
+	$tracking_plus_unfixed_stub
 	. '&f1=cf_tracking_firefox' . $main_beta
 	. '&f2=cf_status_firefox' . $main_beta;
 
 $tracking_plus_unfixed_release =
-	$tracking_plus_stub
+	$tracking_plus_unfixed_stub
 	. '&f1=cf_tracking_firefox' . $main_release
 	. '&f2=cf_status_firefox' . $main_release;
 
-// Tracking +, unassigned
+// Tracking +, blocking, unassigned
 $tracking_plus_unassigned_stub =
 	$stub_search_bz
 	. '&o1=anywordssubstr'
 	. '&o2=substring'
-	. '&v1=%2B%20blocking'
+	. '&v1=%2B%2Cblocking'
 	. '&v2=nobody%40mozilla.org'
 	. '&o3=nowordssubstr'
 	. '&v3=fixed%20verified'
-	. '&resolution=---'
-	. '&resolution=FIXED'
 	. '&f2=assigned_to';
 
 $tracking_plus_unassigned_nightly =
