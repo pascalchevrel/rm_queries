@@ -22,7 +22,7 @@ define('RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
 $main_nightly = (int) NIGHTLY;
 $main_beta    = (int) BETA;
 $main_release = (int) RELEASE;
-$last_beta 	  = (int) str_replace('63.0b', '', BETA);
+$last_beta 	  = (int) str_replace($main_beta .'.0b', '', BETA);
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
