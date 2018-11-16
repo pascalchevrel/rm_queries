@@ -265,6 +265,29 @@ $fixed_regressions_candidates_stub =
 	. '&resolution=FIXED'
 	. '&f1=cf_status_firefox';
 
+// Security bugs
+
+$security_stub =
+	$stub_search_bz
+	. '&o3=anywords'
+	. '&v3=sec-critical%20sec-high%20sec-moderate%20sec-low'
+	. '&f3=keywords'
+	. '&v1=affected'
+	. '&o1=equals'
+	. '&bug_status=UNCONFIRMED'
+	. '&bug_status=NEW'
+	. '&bug_status=ASSIGNED'
+	. '&bug_status=REOPENED'
+	. '&f1=cf_status_firefox';
+
+
+
+$security_nightly = $security_stub . $main_nightly;
+$security_beta    = $security_stub . $main_beta;
+$security_release = $security_stub . $main_release;
+
+
+
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 

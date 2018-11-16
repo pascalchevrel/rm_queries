@@ -101,7 +101,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li>--</li>
                 <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days . ' days')?></li>
                 <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
-
+                <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
             </ul>
         </div>
 
@@ -120,6 +120,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
                 <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
+                <li><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
             </ul>
         </div>
 
@@ -138,6 +139,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
                 <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
+                <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
             </ul>
         </div>
         </div>
