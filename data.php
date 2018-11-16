@@ -177,7 +177,7 @@ $tracking_plus_unassigned_stub =
 	. '&v1=%2B%2Cblocking'
 	. '&v2=nobody%40mozilla.org'
 	. '&o3=nowordssubstr'
-	. '&v3=fixed%20verified'
+	. '&v3=fixed%20verified%20wontfix%20disabled'
 	. '&f2=assigned_to';
 
 $tracking_plus_unassigned_nightly =
