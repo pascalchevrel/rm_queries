@@ -209,6 +209,7 @@ $resolved_fix_optional_release = $resolved_fix_optional_stub . $main_release;
 
 // Pending needinfo > 3 days
 $ni_days = 3;
+$ni_days_nightly = 6;
 $pending_needinfo_stub =
 	$stub_search_bz
 	. '&f1=flagtypes.name'
@@ -226,9 +227,9 @@ $pending_needinfo_stub =
 	. '&v2=' . $ni_days
 	. '&f3=cf_status_firefox';
 
-$pending_needinfo_nightly = $pending_needinfo_stub . $main_nightly;
-$pending_needinfo_beta    = $pending_needinfo_stub . $main_beta;
-$pending_needinfo_release = $pending_needinfo_stub . $main_release;
+$pending_needinfo_nightly = $pending_needinfo_stub . '&v2=' . $ni_days_nightly . $main_nightly;
+$pending_needinfo_beta    = $pending_needinfo_stub . '&v2=' . $ni_days . $main_beta;
+$pending_needinfo_release = $pending_needinfo_stub . '&v2=' . $ni_days . $main_release;
 
 // Recently fixed crashes
 $last_days_crashes = 21;

@@ -99,7 +99,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                 <li>--</li>
-                <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days . ' days')?></li>
+                <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
                 <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
                 <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
             </ul>
