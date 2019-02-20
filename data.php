@@ -223,13 +223,11 @@ $pending_needinfo_stub =
 	. '&bug_status=NEW'
 	. '&bug_status=ASSIGNED'
 	. '&bug_status=REOPENED'
-	. '&v1=needinfo%3F'
-	. '&v2=' . $ni_days
-	. '&f3=cf_status_firefox';
+	. '&v1=needinfo%3F';
 
-$pending_needinfo_nightly = $pending_needinfo_stub . '&v2=' . $ni_days_nightly . $main_nightly;
-$pending_needinfo_beta    = $pending_needinfo_stub . '&v2=' . $ni_days . $main_beta;
-$pending_needinfo_release = $pending_needinfo_stub . '&v2=' . $ni_days . $main_release;
+$pending_needinfo_nightly = $pending_needinfo_stub . '&v2=' . $ni_days_nightly . '&f3=cf_status_firefox' . $main_nightly;
+$pending_needinfo_beta    = $pending_needinfo_stub . '&v2=' . $ni_days . '&f3=cf_status_firefox' . $main_beta;
+$pending_needinfo_release = $pending_needinfo_stub . '&v2=' . $ni_days . '&f3=cf_status_firefox' . $main_release;
 
 // Recently fixed crashes
 $last_days_crashes = 21;
@@ -267,7 +265,6 @@ $fixed_regressions_candidates_stub =
 	. '&f1=cf_status_firefox';
 
 // Security bugs
-
 $security_stub =
 	$stub_search_bz
 	. '&o3=anywords'
@@ -281,13 +278,9 @@ $security_stub =
 	. '&bug_status=REOPENED'
 	. '&f1=cf_status_firefox';
 
-
-
 $security_nightly = $security_stub . $main_nightly;
 $security_beta    = $security_stub . $main_beta;
 $security_release = $security_stub . $main_release;
-
-
 
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
