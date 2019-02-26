@@ -289,3 +289,14 @@ $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
 	return '<a href="' . $url . $title . '" target=”_blank” rel="noopener">' . $text . '</a>';
 };
+
+
+$top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?&process_type=any';
+
+$nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . NIGHTLY;
+$beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7&version=' . BETA;
+$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=21&version=' . RELEASE;
+
+$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=3&version=' . NIGHTLY;
+$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=7&version=' . BETA;
+$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=21&version=' . RELEASE;
