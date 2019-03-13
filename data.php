@@ -291,7 +291,7 @@ $link = function($url, $text, $title = true) {
 };
 
 
-$top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?&process_type=any';
+$top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
 
 $nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . NIGHTLY;
 $beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7&version=' . BETA;
