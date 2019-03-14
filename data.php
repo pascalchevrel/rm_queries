@@ -300,3 +300,8 @@ $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&day
 $nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=3&version=' . NIGHTLY;
 $beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=7&version=' . BETA;
 $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=21&version=' . RELEASE;
+
+$nightly_top_crashes_deved = $top_crashes_firefox_stub . '&product=Firefox&days=3&version='
+							. $main_nightly . '.0b1'
+							. '&version='
+							. $main_nightly . '.0b2' ;
