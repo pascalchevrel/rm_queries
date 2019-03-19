@@ -13,6 +13,10 @@
     }
     </script>
     <style>
+    .message {
+        text-align: center;
+    }
+
     #betas {
         display: none;
         width: 50%;
@@ -83,7 +87,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 ?>
         </ul>
     </div>
-
+<div class="message"><?=$global_message?></div>
     <div class="container">
         <div class="row">
         <div class="col">

@@ -12,6 +12,8 @@ if (! $cache_ok) {
 
 $firefox_versions = json_decode(file_get_contents($cache_file), true);
 
+$global_message = '';
+
 define('ESR', $firefox_versions["FIREFOX_ESR"]);
 define('ESR_NEXT', $firefox_versions["FIREFOX_ESR_NEXT"]);
 define('NIGHTLY', $firefox_versions["FIREFOX_NIGHTLY"]);
@@ -23,6 +25,16 @@ $main_nightly = (int) NIGHTLY;
 $main_beta    = (int) BETA;
 $main_release = (int) RELEASE;
 $last_beta 	  = (int) str_replace($main_beta .'.0b', '', BETA);
+
+if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
+	// We are past merge day
+	if ((int) $firefox_versions["FIREFOX_DEVEDITION"] > (int) $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]) {
+		// But beta 3 has not been released yet
+		$global_message = '<b>Nightly merged recently, beta 3 not released yet!</b>';
+		$main_beta = (int) DEV_EDITION;
+	}
+}
+
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
