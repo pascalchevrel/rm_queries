@@ -102,8 +102,12 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
+                <?php
+                 if ($nightly_top_crashes_deved !== false) {
+                    echo '<li>' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
+                }
+                ?>
                 <li><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
-                <li><?=$link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false)?></li>
                 <li><?=$link($nightly_top_crashes_fennec, 'Fennec recent crashes (3 days)', false)?></li>
                 <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
                 <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>

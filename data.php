@@ -306,14 +306,24 @@ $link = function($url, $text, $title = true) {
 $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
 
 $nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . NIGHTLY;
-$beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7&version=' . BETA;
+$beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7';
+
+for ($i = 1; $i <= $last_beta; $i++) {
+	$beta_top_crashes_firefox .=  '&version=' . $main_beta. '.0b' . $i;
+}
+
+$nightly_top_crashes_deved = false;
+if ($main_beta == $main_nightly) {
+	$nightly_top_crashes_deved =
+		$top_crashes_firefox_stub
+		. '&product=Firefox&days=3&version='
+		. $main_nightly . '.0b1'
+		. '&version='
+		. $main_nightly . '.0b2';
+}
+
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=21&version=' . RELEASE;
 
 $nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=3&version=' . NIGHTLY;
 $beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=7&version=' . BETA;
 $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=21&version=' . RELEASE;
-
-$nightly_top_crashes_deved = $top_crashes_firefox_stub . '&product=Firefox&days=3&version='
-							. $main_nightly . '.0b1'
-							. '&version='
-							. $main_nightly . '.0b2' ;
