@@ -307,6 +307,7 @@ $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?proces
 
 $nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . NIGHTLY;
 $beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7';
+$beta_top_crashes_firefox_last_beta = $beta_top_crashes_firefox . '&version=' . $main_beta. '.0b' . $last_beta;
 
 for ($i = 1; $i <= $last_beta; $i++) {
 	$beta_top_crashes_firefox .=  '&version=' . $main_beta. '.0b' . $i;

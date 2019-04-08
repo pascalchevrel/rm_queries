@@ -127,8 +127,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
-                <li><?=$link($beta_top_crashes_firefox , 'Firefox recent crashes (7 days)', false)?></li>
-                <li><?=$link($beta_top_crashes_fennec , 'Fennec recent crashes (7 days)', false)?></li>
+                <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
+                <li><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
+                <li><?=$link($beta_top_crashes_fennec, 'Fennec recent crashes (7 days)', false)?></li>
                 <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
                 <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
@@ -148,8 +149,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($tracking_plus_release, 'tracking+')?></li>
                 <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
                 <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
-                <li><?=$link($release_top_crashes_firefox , 'Firefox recent crashes (21 days)', false)?></li>
-                <li><?=$link($release_top_crashes_fennec , 'Fennec recent crashes (21 days)', false)?></li>
+                <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (21 days)', false)?></li>
+                <li><?=$link($release_top_crashes_fennec, 'Fennec recent crashes (21 days)', false)?></li>
                 <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
                 <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
