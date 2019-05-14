@@ -328,3 +328,8 @@ $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&day
 $nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=3&version=' . NIGHTLY;
 $beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=7&version=' . BETA;
 $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=21&version=' . RELEASE;
+
+// Trailhead 67.0.5
+$trailhead = '67_0_5';
+$tracking_question_trailhead = $tracking_question_stub . $trailhead;
+$tracking_plus_trailhead =  $tracking_plus_stub . $trailhead;

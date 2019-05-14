@@ -88,7 +88,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 ?>
         </ul>
     </div>
-<div class="message"><?=$global_message?></div>
+    <div class="message"><?=$global_message?></div>
     <div class="container">
         <div class="row">
         <div class="col">
@@ -159,6 +159,16 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </ul>
         </div>
         </div>
+        <div class="row">
+        <div class="col" style="max-width: 33%;">
+            <h3 class="text-center">67.0.5</h3>
+            <ul>
+                <li><?=$link($tracking_question_trailhead, 'Trailhead: tracking?')?></li>
+                <li><?=$link($tracking_plus_trailhead, 'Trailhead: tracking+')?></li>
+            </ul>
+        </div>
+        </div>
+
     </div>
 </body>
 </html>
