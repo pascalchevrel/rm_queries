@@ -323,11 +323,10 @@ if ($main_beta == $main_nightly) {
 		. $main_nightly . '.0b2';
 }
 
-$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=21&version=' . RELEASE;
-
-$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=3&version=' . NIGHTLY;
-$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=7&version=' . BETA;
-$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&&days=21&version=' . RELEASE;
+$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=3&version=' . NIGHTLY;
+$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=7&version=' . BETA;
+$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . RELEASE;
+$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . RELEASE;
 
 // Trailhead 67.0.5
 $trailhead = '67_0_5';
