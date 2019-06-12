@@ -44,13 +44,13 @@
         <tbody>
             <tr>
                 <th class="table-dark">Nightly</th>
-                <td class="table-primary"><?=NIGHTLY?></td>
+                <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
                 <th class="table-dark">Dev Edition</th>
                 <td class="table-primary"><?=DEV_EDITION?></td>
                 <th class="table-dark" onclick="show('betas');">Beta</th>
-                <td class="table-primary"><?=BETA?></td>
+                <td class="table-primary"><?=FIREFOX_BETA?></td>
                 <th class="table-dark">Release</th>
-                <td class="table-primary"><?=RELEASE?></td>
+                <td class="table-primary"><?=FIREFOX_RELEASE?></td>
                 <?php if (ESR_NEXT): ?>
                 <th class="table-dark">Old ESR</th>
                 <td class="table-primary"><?=ESR?></td>

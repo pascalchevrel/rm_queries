@@ -1,30 +1,34 @@
 <?php
-$cache_time   = 10800; // 3 hours
-$cache_source = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
-$cache_file   = __DIR__ .'/../cache/firefox_versions_local.json';
 
-// Serve from cache if it is younger than $cache_time
-$cache_ok = file_exists($cache_file) && time() - $cache_time < filemtime($cache_file);
+require_once "utils.php";
 
-if (! $cache_ok) {
-	file_put_contents($cache_file, file_get_contents($cache_source, true));
-}
+$firefox_versions = getRemoteFile(
+	'https://product-details.mozilla.org/1.0/firefox_versions.json',
+	'firefox_versions_local.json'
+);
 
-$firefox_versions = json_decode(file_get_contents($cache_file), true);
+$fennec_versions = getRemoteFile(
+	'https://product-details.mozilla.org/1.0/mobile_versions.json',
+	'fennec_versions_local.json'
+);
 
 $global_message = '';
 
 define('ESR', $firefox_versions["FIREFOX_ESR"]);
 define('ESR_NEXT', $firefox_versions["FIREFOX_ESR_NEXT"]);
-define('NIGHTLY', $firefox_versions["FIREFOX_NIGHTLY"]);
+define('FIREFOX_NIGHTLY', $firefox_versions["FIREFOX_NIGHTLY"]);
 define('DEV_EDITION', $firefox_versions["FIREFOX_DEVEDITION"]);
-define('BETA', $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
-define('RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
+define('FIREFOX_BETA', $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
+define('FIREFOX_RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
 
-$main_nightly = (int) NIGHTLY;
-$main_beta    = (int) BETA;
-$main_release = (int) RELEASE;
-$last_beta 	  = (int) str_replace($main_beta .'.0b', '', BETA);
+define('FENNEC_NIGHTLY', $fennec_versions["nightly_version"]);
+define('FENNEC_BETA', 	 $fennec_versions["beta_version"]);
+define('FENNEC_RELEASE', $fennec_versions["version"]);
+
+$main_nightly = (int) FIREFOX_NIGHTLY;
+$main_beta    = (int) FIREFOX_BETA;
+$main_release = (int) FIREFOX_RELEASE;
+$last_beta 	  = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
 	// We are past merge day
@@ -305,7 +309,7 @@ $link = function($url, $text, $title = true) {
 
 $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
 
-$nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . NIGHTLY;
+$nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . FIREFOX_NIGHTLY;
 $beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7';
 $beta_top_crashes_firefox_last_beta = $beta_top_crashes_firefox . '&version=' . $main_beta. '.0b' . $last_beta;
 
@@ -323,10 +327,10 @@ if ($main_beta == $main_nightly) {
 		. $main_nightly . '.0b2';
 }
 
-$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=3&version=' . NIGHTLY;
-$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=7&version=' . BETA;
-$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . RELEASE;
-$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . RELEASE;
+$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=3&version=' . FENNEC_NIGHTLY;
+$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=7&version=' . FENNEC_BETA;
+$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
+$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . FENNEC_RELEASE;
 
 // Trailhead 67.0.5
 $trailhead = '67_0_5';
