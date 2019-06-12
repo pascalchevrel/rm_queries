@@ -1,7 +1,7 @@
 <?php
 $cache_time   = 10800; // 3 hours
 $cache_source = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
-$cache_file   = '../cache/firefox_versions_local.json';
+$cache_file   = __DIR__ .'/../cache/firefox_versions_local.json';
 
 // Serve from cache if it is younger than $cache_time
 $cache_ok = file_exists($cache_file) && time() - $cache_time < filemtime($cache_file);

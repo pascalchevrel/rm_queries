@@ -1,4 +1,6 @@
-<?php include '../app/data.php'?>
+<?php
+    require_once __DIR__ . '/../app/data.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
