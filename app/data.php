@@ -1,5 +1,4 @@
 <?php
-
 require_once "utils.php";
 
 $firefox_versions = getRemoteFile(
@@ -28,6 +27,7 @@ define('FENNEC_RELEASE', $fennec_versions["version"]);
 $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
 $main_release = (int) FIREFOX_RELEASE;
+$main_esr 	  =	(int) ESR;
 $last_beta 	  = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
@@ -58,6 +58,7 @@ $regressions_stub =
 $regressions_nightly = $regressions_stub . $main_nightly;
 $regressions_beta    = $regressions_stub . $main_beta;
 $regressions_release = $regressions_stub . $main_release;
+$regressions_esr     = $regressions_stub . '_esr' . $main_esr;
 
 // Release notes
 $relnotes_stub = function($version) use($stub_search_bz) {
@@ -76,6 +77,7 @@ $relnotes_stub = function($version) use($stub_search_bz) {
 $relnotes_nightly = $relnotes_stub($main_nightly);
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
+$relnotes_esr = $relnotes_stub('_esr' . $main_esr);
 
 // Uplifts requests
 $uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
@@ -336,3 +338,19 @@ $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroi
 $trailhead = '67_0_5';
 $tracking_question_trailhead = $tracking_question_stub . $trailhead;
 $tracking_plus_trailhead =  $tracking_plus_stub . $trailhead;
+
+
+// relnotes_esr
+// uplift_esr
+// uplift_esr_pending
+// malfunction_esr
+// tracking_question_esr
+// tracking_plus_esr
+// tracking_plus_unfixed_esr
+// tracking_plus_unassigned_esr
+// esr_top_crashes_firefox
+// esr_top_crashes_fennec
+// resolved_fix_optional_esr
+// pending_needinfo_esr
+// fixed_regressions_candidates_esr
+// security_esr

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Release Links and Queries</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
-    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <script>
     function show(id) {
         elt = document.getElementById(id);
@@ -16,6 +16,14 @@
     }
     </script>
     <style>
+    .container, table#version_numbers {
+        min-width: 1340px;
+    }
+
+    #version_numbers {
+    text-align: center;
+    }
+
     .message {
         text-align: center;
     }
@@ -158,6 +166,27 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
                 <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
                 <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <h3 class="text-center">ESR</h3>
+            <ul>
+                <li><?=$link($regressions_esr, 'Open regressions')?></li>
+                <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
+                <!-- <li><?=$link($uplift_esr, 'Uplift requests')?></li>
+                <li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
+                <li><?=$link($malfunction_esr, 'Software defect (crash, leak, assertion…)')?></li>
+                <li><?=$link($tracking_question_esr, 'tracking?')?></li>
+                <li><?=$link($tracking_plus_esr, 'tracking+')?></li>
+                <li><?=$link($tracking_plus_unfixed_esr, 'tracking+ not fixed')?></li>
+                <li><?=$link($tracking_plus_unassigned_esr, 'tracking+ unassigned')?></li>
+                <li><?=$link($esr_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
+                <li><?=$link($esr_top_crashes_fennec, 'Fennec recent crashes (14 days)', false)?></li>
+                <li><?=$link($resolved_fix_optional_esr, 'Fixed fix-optionals')?></li>
+                <li><?=$link($pending_needinfo_esr, 'needinfo? > ' . $ni_days . ' days')?>  </li>
+                <li><?=$link($fixed_regressions_candidates_esr, "Uplift fixed regressions affecting ${main_release}?")?></li>
+                <li><?=$link($security_esr, "Security bugs for ${main_release}?")?></li> -->
             </ul>
         </div>
         </div>
