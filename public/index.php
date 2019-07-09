@@ -1,5 +1,10 @@
 <?php
     require_once __DIR__ . '/../app/data.php';
+    ob_start();
+    require_once __DIR__ . '/../app/daily.php';
+    $nightly_days = ob_get_contents();
+    ob_end_clean();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +15,9 @@
     <link rel="stylesheet" href="./styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <script>
     function show(id) {
+        document.querySelectorAll('.toggle').forEach(function(item) {
+            item.style.display = "none";
+        });
         elt = document.getElementById(id);
         display = getComputedStyle(elt, null).display;
         elt.style.display = (display == "none") ? "block" : "none";
@@ -28,20 +36,20 @@
         text-align: center;
     }
 
-    #betas {
+    #betas, #nightlies {
         display: none;
         width: 50%;
         margin: 1em auto;
         text-align: center;
     }
 
-    #betas ul {
+    #betas ul, #nightlies ul {
         display: flex;
         padding: 0;
         list-style: none;
     }
 
-    #betas ul li {
+    #betas ul li, #nightlies ul li{
         flex:content;
     }
     </style>
@@ -51,7 +59,7 @@
     <table id="version_numbers" class="table table-bordered tabe-sm w-auto mx-auto" style="margin-left: 1em">
         <tbody>
             <tr>
-                <th class="table-dark">Nightly</th>
+                <th class="table-dark" onclick="show('nightlies');">Nightly</th>
                 <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
                 <th class="table-dark">Dev Edition</th>
                 <td class="table-primary"><?=DEV_EDITION?></td>
@@ -71,7 +79,11 @@
             </tr>
         </tbody>
     </table>
-    <div id="betas" class="border bg-light">
+    <div id="nightlies" class="border bg-light toggle">
+        <h5>Patches landed for each nightly</h5>
+        <?=$nightly_days?>
+    </div>
+    <div id="betas" class="border bg-light toggle">
         <h5>Patches uplifted for each beta</h5>
         <ul>
 <?php

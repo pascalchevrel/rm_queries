@@ -83,6 +83,7 @@ $relnotes_esr = $relnotes_stub('_esr' . $main_esr);
 $uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
 $uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
+$uplift_esr     = $uplift_stub . '&v1=approval-mozilla-esr60%3F';
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
@@ -333,12 +334,6 @@ $nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroi
 $beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=7&version=' . FENNEC_BETA;
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
 $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . FENNEC_RELEASE;
-
-// Trailhead 67.0.5
-$trailhead = '67_0_5';
-$tracking_question_trailhead = $tracking_question_stub . $trailhead;
-$tracking_plus_trailhead =  $tracking_plus_stub . $trailhead;
-
 
 // relnotes_esr
 // uplift_esr
