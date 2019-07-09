@@ -174,8 +174,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             <ul>
                 <li><?=$link($regressions_esr, 'Open regressions')?></li>
                 <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
-                <!-- <li><?=$link($uplift_esr, 'Uplift requests')?></li>
-                <li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
+                <li><?=$link($uplift_esr, 'Uplift requests')?></li>
+                <!--<li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
                 <li><?=$link($malfunction_esr, 'Software defect (crash, leak, assertion…)')?></li>
                 <li><?=$link($tracking_question_esr, 'tracking?')?></li>
                 <li><?=$link($tracking_plus_esr, 'tracking+')?></li>
@@ -190,16 +190,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </ul>
         </div>
         </div>
-        <div class="row">
-        <div class="col" style="max-width: 33%;">
-            <h3 class="text-center">67.0.5</h3>
-            <ul>
-                <li><?=$link($tracking_question_trailhead, 'Trailhead: tracking?')?></li>
-                <li><?=$link($tracking_plus_trailhead, 'Trailhead: tracking+')?></li>
-            </ul>
-        </div>
-        </div>
-
     </div>
 </body>
 </html>
