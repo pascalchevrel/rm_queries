@@ -15,12 +15,16 @@
     <link rel="stylesheet" href="./styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <script>
     function show(id) {
-        document.querySelectorAll('.toggle').forEach(function(item) {
-            item.style.display = "none";
-        });
         elt = document.getElementById(id);
-        display = getComputedStyle(elt, null).display;
-        elt.style.display = (display == "none") ? "block" : "none";
+        eltdisplay = getComputedStyle(elt, null).display;
+
+        elts = document.querySelectorAll('.toggle');
+        for (i = 0; i < elts .length; ++i) {
+            elts[i].style.display = "none";
+        }
+
+        elt.style.display = (eltdisplay == "none") ? "block" : "none";
+
     }
     </script>
     <style>
