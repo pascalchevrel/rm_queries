@@ -56,6 +56,9 @@
     #betas ul li, #nightlies ul li{
         flex:content;
     }
+    .col {
+        max-width: 25%;
+    }
     </style>
 </head>
 <body>
@@ -117,92 +120,92 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
     <div class="message"><?=$global_message?></div>
     <div class="container">
         <div class="row">
-        <div class="col">
-            <h3 class="text-center">NIGHTLY</h3>
-            <ul>
-                <li><?=$link($regressions_nightly,'Open regressions')?></li>
-                <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
-                <li><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
-                <li>--</li>
-                <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
-                <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
-                <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
-                <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
-                <?php
-                 if ($nightly_top_crashes_deved !== false) {
-                    echo '<li>' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
-                }
-                ?>
-                <li><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
-                <li><?=$link($nightly_top_crashes_fennec, 'Fennec recent crashes (3 days)', false)?></li>
-                <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
-                <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
-                <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
-            </ul>
+            <div class="col">
+                <h3 class="text-center">NIGHTLY</h3>
+                <ul>
+                    <li><?=$link($regressions_nightly,'Open regressions')?></li>
+                    <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
+                    <li><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
+                    <li>--</li>
+                    <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
+                    <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
+                    <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
+                    <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
+                    <?php
+                     if ($nightly_top_crashes_deved !== false) {
+                        echo '<li>' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
+                    }
+                    ?>
+                    <li><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
+                    <li><?=$link($nightly_top_crashes_fennec, 'Fennec recent crashes (3 days)', false)?></li>
+                    <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
+                    <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
+                    <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h3 class="text-center">BETA</h3>
+                <ul>
+                    <li><?=$link($regressions_beta, 'Open regressions')?></li>
+                    <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
+                    <li><?=$link($uplift_beta, 'Uplift requests')?></li>
+                    <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
+                    <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li><?=$link($tracking_question_beta, 'tracking?')?></li>
+                    <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
+                    <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
+                    <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
+                    <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
+                    <li><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
+                    <li><?=$link($beta_top_crashes_fennec, 'Fennec recent crashes (7 days)', false)?></li>
+                    <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
+                    <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
+                    <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
+                    <li><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h3 class="text-center">RELEASE</h3>
+                <ul>
+                    <li><?=$link($regressions_release, 'Open regressions')?></li>
+                    <li><?=$link($relnotes_release, 'Release Note Requests')?></li>
+                    <li><?=$link($uplift_release, 'Uplift requests')?></li>
+                    <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
+                    <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li><?=$link($tracking_question_release, 'tracking?')?></li>
+                    <li><?=$link($tracking_plus_release, 'tracking+')?></li>
+                    <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
+                    <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
+                    <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
+                    <li><?=$link($release_top_crashes_fennec, 'Fennec recent crashes (14 days)', false)?></li>
+                    <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
+                    <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
+                    <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
+                    <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h3 class="text-center">ESR</h3>
+                <ul>
+                    <li><?=$link($regressions_esr, 'Open regressions')?></li>
+                    <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
+                    <li><?=$link($uplift_esr, 'Uplift requests')?></li>
+                </ul>
+            </div>
         </div>
 
+        <div class="row">
         <div class="col">
-            <h3 class="text-center">BETA</h3>
+            <h3 class="text-center">Skyline</h3>
             <ul>
-                <li><?=$link($regressions_beta, 'Open regressions')?></li>
-                <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
-                <li><?=$link($uplift_beta, 'Uplift requests')?></li>
-                <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
-                <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
-                <li><?=$link($tracking_question_beta, 'tracking?')?></li>
-                <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
-                <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
-                <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
-                <li><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
-                <li><?=$link($beta_top_crashes_fennec, 'Fennec recent crashes (7 days)', false)?></li>
-                <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
-                <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
-                <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
-                <li><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
-            </ul>
-        </div>
-
-        <div class="col">
-            <h3 class="text-center">RELEASE</h3>
-            <ul>
-                <li><?=$link($regressions_release, 'Open regressions')?></li>
-                <li><?=$link($relnotes_release, 'Release Note Requests')?></li>
-                <li><?=$link($uplift_release, 'Uplift requests')?></li>
-                <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
-                <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
-                <li><?=$link($tracking_question_release, 'tracking?')?></li>
-                <li><?=$link($tracking_plus_release, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
-                <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
-                <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
-                <li><?=$link($release_top_crashes_fennec, 'Fennec recent crashes (14 days)', false)?></li>
-                <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
-                <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
-                <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
-                <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
-            </ul>
-        </div>
-
-        <div class="col">
-            <h3 class="text-center">ESR</h3>
-            <ul>
-                <li><?=$link($regressions_esr, 'Open regressions')?></li>
-                <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
-                <li><?=$link($uplift_esr, 'Uplift requests')?></li>
-                <!--<li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
-                <li><?=$link($malfunction_esr, 'Software defect (crash, leak, assertion…)')?></li>
-                <li><?=$link($tracking_question_esr, 'tracking?')?></li>
-                <li><?=$link($tracking_plus_esr, 'tracking+')?></li>
-                <li><?=$link($tracking_plus_unfixed_esr, 'tracking+ not fixed')?></li>
-                <li><?=$link($tracking_plus_unassigned_esr, 'tracking+ unassigned')?></li>
-                <li><?=$link($esr_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
-                <li><?=$link($esr_top_crashes_fennec, 'Fennec recent crashes (14 days)', false)?></li>
-                <li><?=$link($resolved_fix_optional_esr, 'Fixed fix-optionals')?></li>
-                <li><?=$link($pending_needinfo_esr, 'needinfo? > ' . $ni_days . ' days')?>  </li>
-                <li><?=$link($fixed_regressions_candidates_esr, "Uplift fixed regressions affecting ${main_release}?")?></li>
-                <li><?=$link($security_esr, "Security bugs for ${main_release}?")?></li> -->
+                <li><?=$link($skyline_whiteboard, 'All bugs')?></li>
+                <li><?=$link($skyline_not_fixed, 'Bugs not fixed')?></li>
+                <li><?=$link($skyline_untriaged, 'Untriaged (no priority set)')?></li>
+                <li><?=$link($skyline_open_p1, 'P1 open bugs')?></li>
             </ul>
         </div>
         </div>
