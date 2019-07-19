@@ -51,11 +51,17 @@
         display: flex;
         padding: 0;
         list-style: none;
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 
     #betas ul li, #nightlies ul li{
-        flex:content;
+        background-color: white;
+        padding: 0 4px;
+        margin: 4px;
+        border: 1px solid darkgray;
     }
+
     .col {
         max-width: 25%;
     }
