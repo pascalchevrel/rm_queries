@@ -306,7 +306,7 @@ $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $ma
 
 $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
-	return '<a href="' . $url . $title . '" target=”_blank” rel="noopener">' . $text . '</a>';
+	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
 };
 
 
