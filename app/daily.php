@@ -11,7 +11,8 @@ $bz_link = 'https://bugzilla.mozilla.org/buglist.cgi? '
 . '&classification=Components'
 . '&classification=Server%20Software'
 . '&classification=Other'
-. '&resolution=FIXED';
+. '&resolution=FIXED'
+. '&order=component';
 
 echo "<ul>";
 while ( $day->format('Y-m-d') !=  $tomorrow->format('Y-m-d')) {
