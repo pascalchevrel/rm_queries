@@ -1,10 +1,5 @@
 <?php
     require_once __DIR__ . '/../app/data.php';
-    ob_start();
-    require_once __DIR__ . '/../app/daily.php';
-    $nightly_days = ob_get_contents();
-    ob_end_clean();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,7 +89,7 @@
     </table>
     <div id="nightlies" class="border bg-light toggle">
         <h5>Patches landed for each nightly</h5>
-        <?=$nightly_days?>
+        <?=getBugsPerNightly($firefox_versions)?>
     </div>
     <div id="betas" class="border bg-light toggle">
         <h5>Patches uplifted for each beta</h5>
