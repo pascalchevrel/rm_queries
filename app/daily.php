@@ -7,12 +7,12 @@ $bz_link = 'https://bugzilla.mozilla.org/buglist.cgi? '
 . '&chfield=cf_status_firefox' . $main_nightly
 . '&chfieldvalue=fixed'
 . '&classification=Client%20Software'
-. '&classification=Developer%20Infrastructure'
 . '&classification=Components'
-. '&classification=Server%20Software'
-. '&classification=Other'
 . '&resolution=FIXED'
-. '&order=component';
+. '&order=component'
+. '&f1=product'
+. '&o1=notequals'
+. '&v1=Testing';
 
 echo "<ul>";
 while ( $day->format('Y-m-d') !=  $tomorrow->format('Y-m-d')) {
