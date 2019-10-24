@@ -64,7 +64,7 @@
 </head>
 <body>
 	<a href="https://github.com/pascalchevrel/rm_queries"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./img/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-    <table id="version_numbers" class="table table-bordered tabe-sm w-auto mx-auto" style="margin-left: 1em">
+    <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto" style="margin-left: 1em">
         <tbody>
             <tr>
                 <th class="table-dark" onclick="show('nightlies');">Nightly</th>
