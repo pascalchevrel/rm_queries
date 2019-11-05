@@ -259,6 +259,7 @@ $recently_fixed_crashes =
 	. '&o1=nowordssubstr'
 	. '&v1=fixed%2Cunaffected%2Cwontfix%2Cverified%2Cdisabled'
 	. '&chfieldfrom=' . $last_days_crashes . 'd'
+	. '&chfieldto=Now'
 	. '&classification=Client%20Software'
 	. '&classification=Components'
 	. '&product=Core'
@@ -269,8 +270,7 @@ $recently_fixed_crashes =
 	. '&product=NSPR'
 	. '&product=NSS'
 	. '&product=Toolkit'
-	. '&product=WebExtensions'
-	. '&chfieldto=Now';
+	. '&product=WebExtensions';
 
 
 // Bugs fixed but not uplifted =potential uplifts
@@ -355,3 +355,31 @@ $skyline_untriaged =
 $skyline_open_p1 =
 	$skyline_not_fixed
 	. '&priority=P1';
+
+
+// Accessibility queries
+$a11y_stub =
+	$stub_search_bz
+	. '&resolution=---'
+	. '&resolution=FIXED'
+	. '&status_whiteboard_type=anywords'
+	. '&query_format=advanced'
+	. '&status_whiteboard=access-p1%2Caccess-p2'
+	. '&v1=affected%20fix-optional'
+	. '&o1=anywords'
+	. '&f1=cf_status_firefox';
+
+$a11y_nightly = $a11y_stub . $main_nightly;
+$a11y_beta    = $a11y_stub . $main_beta;
+$a11y_release = $a11y_stub . $main_release;
+
+// For Beta tracking only
+$a11y_carryover_nightly =
+	$stub_search_bz
+	. '&o1=anywords'
+	. '&v1=affected%20fix-optional%20wontfix%20disabled'
+	. '&f1=cf_status_firefox' . $main_release
+	. '&resolution=---'
+	. '&status_whiteboard_type=anywordssubstr'
+	. '&query_format=advanced'
+	. '&status_whiteboard=access-p1%2C%20access-p2';
