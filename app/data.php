@@ -27,7 +27,7 @@ define('FENNEC_RELEASE', $fennec_versions["version"]);
 $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
 $main_release = (int) FIREFOX_RELEASE;
-$main_esr 	  =	(int) ESR;
+$main_esr 	  =	(int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
 $last_beta 	  = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
@@ -83,7 +83,7 @@ $relnotes_esr = $relnotes_stub('_esr' . $main_esr);
 $uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta	= $uplift_stub . '&v1=approval-mozilla-beta%3F';
 $uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
-$uplift_esr     = $uplift_stub . '&v1=approval-mozilla-esr60%3F';
+$uplift_esr     = $uplift_stub . '&v1=approval-mozilla-esr' . $main_esr . '%3F';
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
