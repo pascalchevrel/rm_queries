@@ -203,17 +203,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </div>
         </div>
 
-        <div class="row">
-        <div class="col">
-            <h3 class="text-center">Skyline</h3>
-            <ul>
-                <li><?=$link($skyline_whiteboard, 'All bugs')?></li>
-                <li><?=$link($skyline_not_fixed, 'Bugs not fixed')?></li>
-                <li><?=$link($skyline_untriaged, 'Untriaged (no priority set)')?></li>
-                <li><?=$link($skyline_open_p1, 'P1 open bugs')?></li>
-            </ul>
-        </div>
-        </div>
     </div>
 </body>
 </html>

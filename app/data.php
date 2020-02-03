@@ -335,28 +335,6 @@ $beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&d
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
 $release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . FENNEC_RELEASE;
 
-// skyline
-$skyline_whiteboard =
-	$stub_search_bz
-	. '&status_whiteboard_type=allwordssubstr'
-	. '&status_whiteboard=%5Bskyline%5D';
-
-$skyline_not_fixed =
-	$skyline_whiteboard
-	. '&bug_status=UNCONFIRMED'
-	. '&bug_status=NEW'
-	. '&bug_status=ASSIGNED'
-	. '&bug_status=REOPENED';
-
-$skyline_untriaged =
-	$skyline_not_fixed
-	. '&priority=--';
-
-$skyline_open_p1 =
-	$skyline_not_fixed
-	. '&priority=P1';
-
-
 // Accessibility queries
 $a11y_stub =
 	$stub_search_bz
