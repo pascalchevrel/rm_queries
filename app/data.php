@@ -60,6 +60,24 @@ $regressions_beta    = $regressions_stub . $main_beta;
 $regressions_release = $regressions_stub . $main_release;
 $regressions_esr     = $regressions_stub . '_esr' . $main_esr;
 
+// WFH bugs
+$wfh_stub =
+	$stub_search_bz
+	. '&status_whiteboard=%5Bwfh%5D'
+	. '&status_whiteboard_type=allwordssubstr'
+	. '&v1=affected'
+	. '&o1=equals'
+	. '&bug_status=UNCONFIRMED'
+	. '&bug_status=NEW'
+	. '&bug_status=ASSIGNED'
+	. '&bug_status=REOPENED'
+	. '&f1=cf_status_firefox';
+
+$wfh_nightly = $wfh_stub . $main_nightly;
+$wfh_beta    = $wfh_stub . $main_beta;
+$wfh_release = $wfh_stub . $main_release;
+$wfh_esr     = $wfh_stub . '_esr' . $main_esr;
+
 // Release notes
 $relnotes_stub = function($version) use($stub_search_bz) {
 	return $stub_search_bz
