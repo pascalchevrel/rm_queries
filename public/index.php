@@ -131,7 +131,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li>--</li>
                     <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
                     <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
-                    <li><?=$link($tracking_plus_nightly, 'tracking+')?></li>
                     <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                     <?php
@@ -158,7 +157,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
                     <li><?=$link($tracking_question_beta, 'tracking?')?></li>
-                    <li><?=$link($tracking_plus_beta, 'tracking+')?></li>
                     <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
                     <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
@@ -184,7 +182,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
                     <li><?=$link($tracking_question_release, 'tracking?')?></li>
-                    <li><?=$link($tracking_plus_release, 'tracking+')?></li>
                     <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
                     <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>

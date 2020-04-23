@@ -169,17 +169,6 @@ $tracking_question_nightly = $tracking_question_stub . $main_nightly;
 $tracking_question_beta    = $tracking_question_stub . $main_beta;
 $tracking_question_release = $tracking_question_stub . $main_release;
 
-// Tracking+
-$tracking_plus_stub =
-	$stub_search_bz
-	. '&o1=anywordssubstr'
-	. '&v1=%2B%2Cblocking'
-	. '&f1=cf_tracking_firefox';
-
-$tracking_plus_nightly = $tracking_plus_stub . $main_nightly;
-$tracking_plus_beta    = $tracking_plus_stub . $main_beta;
-$tracking_plus_release = $tracking_plus_stub . $main_release;
-
 // Tracking+, blocking, still open
 $tracking_plus_unfixed_stub =
 	$stub_search_bz
