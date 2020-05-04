@@ -130,7 +130,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
                     <li>--</li>
                     <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_nightly, 'tracking?')?></li>
+                    <li><?=$link($tracking_question_nightly, 'tracking? for Nightly')?></li>
                     <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                     <?php
@@ -156,7 +156,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($uplift_beta, 'Uplift requests')?></li>
                     <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_beta, 'tracking?')?></li>
+                    <li><?=$link($tracking_question_beta, "tracking? for ${main_beta}")?></li>
                     <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
                     <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
@@ -181,7 +181,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($uplift_release, 'Uplift requests')?></li>
                     <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_release, 'tracking?')?></li>
+                    <li><?=$link($tracking_question_release, "tracking? for release (${main_release})")?></li>
                     <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
                     <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
                     <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
