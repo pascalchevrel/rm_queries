@@ -67,11 +67,11 @@
     <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto" style="margin-left: 1em">
         <tbody>
             <tr>
-                <th class="table-dark" onclick="show('nightlies');">Nightly</th>
+                <th class="table-dark" onclick="show('nightlies');">Nightly <small>&#x2B07;</small></th>
                 <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
                 <th class="table-dark">Dev Edition</th>
                 <td class="table-primary"><?=DEV_EDITION?></td>
-                <th class="table-dark" onclick="show('betas');">Beta</th>
+                <th class="table-dark" onclick="show('betas');">Beta <small>&#x2B07;</small></th>
                 <td class="table-primary"><?=FIREFOX_BETA?></td>
                 <th class="table-dark">Release</th>
                 <td class="table-primary"><?=FIREFOX_RELEASE?></td>
