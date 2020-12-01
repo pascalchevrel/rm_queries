@@ -6,11 +6,6 @@ $firefox_versions = getRemoteFile(
 	'firefox_versions_local.json'
 );
 
-$fennec_versions = getRemoteFile(
-	'https://product-details.mozilla.org/1.0/mobile_versions.json',
-	'fennec_versions_local.json'
-);
-
 $global_message = '';
 
 define('ESR', $firefox_versions["FIREFOX_ESR"]);
@@ -19,10 +14,6 @@ define('FIREFOX_NIGHTLY', $firefox_versions["FIREFOX_NIGHTLY"]);
 define('DEV_EDITION', $firefox_versions["FIREFOX_DEVEDITION"]);
 define('FIREFOX_BETA', $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
 define('FIREFOX_RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
-
-define('FENNEC_NIGHTLY', $fennec_versions["nightly_version"]);
-define('FENNEC_BETA', 	 $fennec_versions["beta_version"]);
-define('FENNEC_RELEASE', $fennec_versions["version"]);
 
 $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
@@ -59,24 +50,6 @@ $regressions_nightly = $regressions_stub . $main_nightly;
 $regressions_beta    = $regressions_stub . $main_beta;
 $regressions_release = $regressions_stub . $main_release;
 $regressions_esr     = $regressions_stub . '_esr' . $main_esr;
-
-// WFH bugs
-$wfh_stub =
-	$stub_search_bz
-	. '&status_whiteboard=%5Bwfh%5D'
-	. '&status_whiteboard_type=allwordssubstr'
-	. '&v1=affected'
-	. '&o1=equals'
-	. '&bug_status=UNCONFIRMED'
-	. '&bug_status=NEW'
-	. '&bug_status=ASSIGNED'
-	. '&bug_status=REOPENED'
-	. '&f1=cf_status_firefox';
-
-$wfh_nightly = $wfh_stub . $main_nightly;
-$wfh_beta    = $wfh_stub . $main_beta;
-$wfh_release = $wfh_stub . $main_release;
-$wfh_esr     = $wfh_stub . '_esr' . $main_esr;
 
 // Release notes
 $relnotes_stub = function($version) use($stub_search_bz) {
@@ -128,7 +101,6 @@ $malfunction_stub =
 	. '&o5=anywordssubstr'
 	. '&j2=OR'
 	. '&o1=anywords'
-	. '&v5=%2B%20%3F'
 	. '&o4=substring'
 	. '&v1=affected%20optional'
 	. '&v4=sec'
@@ -140,7 +112,6 @@ $malfunction_stub =
 	. '&f4=bug_group'
 	. '&f3=keywords'
 	. '&f2=OP'
-	. '&f5=cf_blocking_fennec'
 	. '&f7=CP';
 
 $malfunction_nightly =
@@ -337,10 +308,7 @@ if ($main_beta == $main_nightly) {
 		. $main_nightly . '.0b2';
 }
 
-$nightly_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=3&version=' . FENNEC_NIGHTLY;
-$beta_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=7&version=' . FENNEC_BETA;
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
-$release_top_crashes_fennec = $top_crashes_firefox_stub . '&product=FennecAndroid&days=14&version=' . FENNEC_RELEASE;
 
 // Accessibility queries
 $a11y_stub =
