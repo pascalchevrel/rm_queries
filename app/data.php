@@ -139,6 +139,7 @@ $tracking_question_stub =
 $tracking_question_nightly = $tracking_question_stub . $main_nightly;
 $tracking_question_beta    = $tracking_question_stub . $main_beta;
 $tracking_question_release = $tracking_question_stub . $main_release;
+$tracking_question_esr     = $tracking_question_stub . '_esr' . $main_esr;
 
 // Tracking+, blocking, still open
 $tracking_plus_unfixed_stub =
@@ -165,6 +166,22 @@ $tracking_plus_unfixed_release =
 	$tracking_plus_unfixed_stub
 	. '&f1=cf_tracking_firefox' . $main_release
 	. '&f2=cf_status_firefox' . $main_release;
+
+$tracking_plus_esr =
+	$stub_search_bz
+	. '&f1=cf_tracking_firefox_esr' . $main_esr
+	. '&o1=substring'
+	. '&v1=' . $main_beta . '%2B';
+
+$tracking_plus_unfixed_esr =
+	$stub_search_bz
+	. '&f1=cf_tracking_firefox_esr' . $main_esr
+	. '&o1=substring'
+	. '&v1=' . $main_beta . '%2B'
+	. '&f2=cf_status_firefox_esr' . $main_esr
+	. '&o2=nowordssubstr'
+	. '&v2=fixed%2Cwontfix%2Cdisabled%2Cverified';
+
 
 // Tracking +, blocking, unassigned
 $tracking_plus_unassigned_stub =
