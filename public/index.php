@@ -24,7 +24,7 @@
     </script>
     <style>
     .container, table#version_numbers {
-        min-width: 1340px;
+        min-width: 100%;
     }
 
     #version_numbers {
