@@ -299,6 +299,18 @@ $security_release = $security_stub . $main_release;
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
+// Enhancements
+$enhancement_stub =
+	$stub_search_bz
+	. '&bug_type=enhancement'
+	. '&o1=anywordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f1=cf_status_firefox';
+
+$enhancement_nightly = $enhancement_stub . $main_nightly;
+$enhancement_beta    = $enhancement_stub . $main_beta;
+$enhancement_release = $enhancement_stub . $main_release;
+
 $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
 	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
