@@ -185,7 +185,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
                 </ul>
             </div>
+        </div>
 
+        <div class="row">
             <div class="col">
                 <h3 class="text-center">ESR</h3>
                 <ul>
@@ -197,9 +199,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
                 </ul>
             </div>
-
-          <div class="col">
-                <h3 class="text-center">Proton</h3>
+            <div class="col">
+                <h3 class="text-center">PROTON</h3>
                 <ul>
                     <li><?=$link($proton_uplifts, 'All uplift requests')?></li>
                     <li><?=$link($proton_uplifts_landed, 'Uplift requests landed')?></li>
@@ -207,7 +208,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 </ul>
             </div>
         </div>
-
     </div>
 </body>
 </html>
