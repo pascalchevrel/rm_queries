@@ -331,6 +331,15 @@ $proton_uplifts_landed =
 	. '&v1=verified%2C%20fixed'
 	. '&f1=cf_status_firefox89';
 
+$proton_uplifts_pending =
+	$stub_proton_uplifts
+	. '&o1=nowordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f1=cf_status_firefox89'
+	. '&o2=substring'
+	. '&f2=flagtypes.name'
+	. '&v2=approval-mozilla-beta%3F';;
+
 $proton_potential_uplifts =
 	$stub_proton_uplifts
 	. '&f1=cf_status_firefox90'
