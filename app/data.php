@@ -317,6 +317,34 @@ $link = function($url, $text, $title = true) {
 };
 
 
+// Proton
+$stub_proton_uplifts =
+	$stub_search_bz
+	. '&status_whiteboard_type=anywordssubstr'
+	. '&status_whiteboard=%5Bproton-uplift%5D';
+
+$proton_uplifts = $stub_proton_uplifts;
+
+$proton_uplifts_landed =
+	$stub_proton_uplifts
+	. '&o1=anywordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f1=cf_status_firefox89';
+
+$proton_potential_uplifts =
+	$stub_proton_uplifts
+	. '&f1=cf_status_firefox90'
+	. '&o1=anywordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f2=cf_status_firefox89'
+	. '&o2=nowordssubstr'
+	. '&v2=verified%2C%20fixed'
+	. '&status_whiteboard=proton-'
+	. '&o3=notsubstring'
+	. '&f3=flagtypes.name'
+	. '&v3=approval-mozilla-beta%3F';
+// END of Proton
+
 $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
 
 $nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . FIREFOX_NIGHTLY . '&_range_type=build';
