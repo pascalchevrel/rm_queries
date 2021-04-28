@@ -202,9 +202,10 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             <div class="col">
                 <h3 class="text-center">PROTON</h3>
                 <ul>
-                    <li><?=$link($proton_uplifts, 'All uplift requests')?></li>
-                    <li><?=$link($proton_uplifts_landed, 'Uplift requests landed')?></li>
-                    <li><?=$link($proton_uplifts_pending, 'Uplift requests for review')?></li>
+                    <li><?=$link($proton_uplifts, 'All Proton uplift requests')?></li>
+                    <li><?=$link($proton_uplifts_landed, 'Proton uplifts landed')?></li>
+                    <li><?=$link($proton_uplifts_pending, 'Proton uplifts for review')?></li>
+                    <li><?=$link($proton_uplifts_pending_notag, 'Non-Proton uplift requests')?></li>
                     <li><?=$link($proton_potential_uplifts, 'Fixed, no uplift request')?></li>
                 </ul>
             </div>

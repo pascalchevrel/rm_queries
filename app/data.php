@@ -352,6 +352,19 @@ $proton_potential_uplifts =
 	. '&o3=notsubstring'
 	. '&f3=flagtypes.name'
 	. '&v3=approval-mozilla-beta%3F';
+
+$proton_uplifts_pending_notag =
+	$stub_search_bz
+	. '&f3=status_whiteboard'
+	. '&o3=notsubstring'
+	. '&v3=%5Bproton-uplift%5D'
+	. '&f1=cf_status_firefox89'
+	. '&o1=nowordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f2=flagtypes.name'
+	. '&o2=substring'
+	. '&v2=approval-mozilla-beta%3F';
+
 // END of Proton
 
 $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
