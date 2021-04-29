@@ -328,13 +328,13 @@ $proton_uplifts = $stub_proton_uplifts;
 $proton_uplifts_landed =
 	$stub_proton_uplifts
 	. '&o1=anywordssubstr'
-	. '&v1=verified%2C%20fixed'
+	. '&v1=verified%2Cfixed'
 	. '&f1=cf_status_firefox89';
 
 $proton_uplifts_pending =
 	$stub_proton_uplifts
 	. '&o1=nowordssubstr'
-	. '&v1=verified%2C%20fixed'
+	. '&v1=verified%2Cfixed%2Cwontfix'
 	. '&f1=cf_status_firefox89'
 	. '&o2=substring'
 	. '&f2=flagtypes.name'
@@ -347,7 +347,7 @@ $proton_uplifts_pending_notag =
 	. '&v3=%5Bproton-uplift%5D'
 	. '&f1=cf_status_firefox89'
 	. '&o1=nowordssubstr'
-	. '&v1=verified%2C%20fixed'
+	. '&v1=verified%2Cfixed'
 	. '&f2=flagtypes.name'
 	. '&o2=substring'
 	. '&v2=approval-mozilla-beta%3F';
@@ -359,7 +359,7 @@ $proton_potential_uplifts =
 	. '&v1=verified%2C%20fixed'
 	. '&f2=cf_status_firefox89'
 	. '&o2=nowordssubstr'
-	. '&v2=verified%2C%20fixed%2C%20wontfix'
+	. '&v2=verified%2Cfixed%2Cwontfix'
 	. '&status_whiteboard=proton-'
 	. '&o3=notsubstring'
 	. '&f3=flagtypes.name'
