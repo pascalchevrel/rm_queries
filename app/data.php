@@ -340,19 +340,6 @@ $proton_uplifts_pending =
 	. '&f2=flagtypes.name'
 	. '&v2=approval-mozilla-beta%3F';;
 
-$proton_potential_uplifts =
-	$stub_proton_uplifts
-	. '&f1=cf_status_firefox90'
-	. '&o1=anywordssubstr'
-	. '&v1=verified%2C%20fixed'
-	. '&f2=cf_status_firefox89'
-	. '&o2=nowordssubstr'
-	. '&v2=verified%2C%20fixed'
-	. '&status_whiteboard=proton-'
-	. '&o3=notsubstring'
-	. '&f3=flagtypes.name'
-	. '&v3=approval-mozilla-beta%3F';
-
 $proton_uplifts_pending_notag =
 	$stub_search_bz
 	. '&f3=status_whiteboard'
@@ -364,6 +351,19 @@ $proton_uplifts_pending_notag =
 	. '&f2=flagtypes.name'
 	. '&o2=substring'
 	. '&v2=approval-mozilla-beta%3F';
+
+$proton_potential_uplifts =
+	$stub_proton_uplifts
+	. '&f1=cf_status_firefox90'
+	. '&o1=anywordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f2=cf_status_firefox89'
+	. '&o2=nowordssubstr'
+	. '&v2=verified%2C%20fixed%2C%20wontfix'
+	. '&status_whiteboard=proton-'
+	. '&o3=notsubstring'
+	. '&f3=flagtypes.name'
+	. '&v3=approval-mozilla-beta%3F';
 
 // END of Proton
 
