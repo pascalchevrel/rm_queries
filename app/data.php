@@ -353,17 +353,33 @@ $proton_uplifts_pending_notag =
 	. '&v2=approval-mozilla-beta%3F';
 
 $proton_potential_uplifts =
-	$stub_proton_uplifts
+	$stub_search_bz
 	. '&f1=cf_status_firefox90'
 	. '&o1=anywordssubstr'
 	. '&v1=verified%2C%20fixed'
 	. '&f2=cf_status_firefox89'
 	. '&o2=nowordssubstr'
 	. '&v2=verified%2Cfixed%2Cwontfix'
+	. '&status_whiteboard_type=anywordssubstr'
 	. '&status_whiteboard=proton-'
 	. '&o3=notsubstring'
 	. '&f3=flagtypes.name'
 	. '&v3=approval-mozilla-beta%3F';
+
+// We exclude regressions marked as wontfix/disabled/unaffected for 89
+$proton_regressions =
+	$stub_search_bz
+	. '&f1=cf_status_firefox89'
+	. '&v1=wontfix%2Cdisabled%2Cunaffected'
+	. '&o1=nowordssubstr'
+	. '&keywords=regression'
+	. '&keywords_type=allwords'
+	. '&bug_status=UNCONFIRMED'
+	. '&bug_status=NEW'
+	. '&bug_status=ASSIGNED'
+	. '&bug_status=REOPENED'
+	. '&status_whiteboard_type=anywordssubstr'
+	. '&status_whiteboard=proton-';
 
 // END of Proton
 
@@ -388,3 +404,4 @@ if ($main_beta == $main_nightly) {
 }
 
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
+

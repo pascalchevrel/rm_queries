@@ -207,6 +207,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($proton_uplifts_pending, 'Proton uplifts for review')?></li>
                     <li><?=$link($proton_uplifts_pending_notag, 'Non-Proton uplift requests')?></li>
                     <li><?=$link($proton_potential_uplifts, 'Fixed, no uplift request')?></li>
+                    <li><?=$link($proton_regressions, 'Proton regressions, 89 affected')?></li>
                 </ul>
             </div>
         </div>
