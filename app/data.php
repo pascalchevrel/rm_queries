@@ -78,7 +78,7 @@ $uplift_esr     = $uplift_stub . '&v1=approval-mozilla-esr' . $main_esr . '%3F';
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
-	. '&v2=affected%2Cfix-optional'
+	. '&v2=affected%2Cfix-optional%2C%3F'
 	. '&o2=anyexact'
 	. '&chfieldfrom=-1w'
 	. '&chfieldto=Now';
