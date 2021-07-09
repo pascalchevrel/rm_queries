@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Release Links and Queries</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
-    <link rel="stylesheet" href="./styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <script>
+
     function show(id) {
         elt = document.getElementById(id);
         eltdisplay = getComputedStyle(elt, null).display;
@@ -21,10 +22,21 @@
         elt.style.display = (eltdisplay == "none") ? "block" : "none";
 
     }
+
     </script>
+
     <style>
+
     .container, table#version_numbers {
         min-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
     }
 
     #version_numbers {
@@ -60,6 +72,7 @@
     .col {
         max-width: 25%;
     }
+
     </style>
 </head>
 <body>
