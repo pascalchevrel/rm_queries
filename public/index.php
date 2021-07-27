@@ -212,17 +212,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
                 </ul>
             </div>
-            <div class="col">
-                <h3 class="text-center">PROTON</h3>
-                <ul>
-                    <li><?=$link($proton_uplifts, 'All Proton uplift requests')?></li>
-                    <li><?=$link($proton_uplifts_landed, 'Proton uplifts landed')?></li>
-                    <li><?=$link($proton_uplifts_pending, 'Proton uplifts for review')?></li>
-                    <li><?=$link($proton_uplifts_pending_notag, 'Non-Proton uplift requests')?></li>
-                    <li><?=$link($proton_potential_uplifts, 'Fixed, no uplift request')?></li>
-                    <li><?=$link($proton_regressions, 'Proton regressions, 89 affected')?></li>
-                </ul>
-            </div>
         </div>
     </div>
 </body>
