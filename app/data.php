@@ -95,6 +95,12 @@ $uplift_release_pending =
 	. '&f2=cf_status_firefox' . $main_release
 	. '&v1=approval-mozilla-release%2B';
 
+// ESR uplifts accepted, not landed
+$uplift_esr_pending =
+	$uplift_stub_pending
+	. '&f2=cf_status_firefox_esr' . $main_esr
+	. '&v1=approval-mozilla-esr' . $main_esr . '%2B';
+
 // Ryan query: crash, leak, security, dataloss, assertion
 $malfunction_stub =
 	$stub_search_bz
