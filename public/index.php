@@ -88,9 +88,9 @@
                 <th class="table-dark">Release</th>
                 <td class="table-primary"><?=FIREFOX_RELEASE?></td>
                 <?php if (ESR_NEXT): ?>
-                <th class="table-dark">Old ESR</th>
-                <td class="table-primary"><?=ESR?></td>
                 <th class="table-dark">ESR</th>
+                <td class="table-primary"><?=ESR?></td>
+                <th class="table-dark">ESR Next</th>
                 <td class="table-primary"><?=ESR_NEXT?></td>
                 <?php else: ?>
                 <th class="table-dark">ESR</th>
@@ -204,7 +204,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
             <?php if (ESR_NEXT): ?>
             <div class="col">
-                <h3 class="text-center">OLD ESR <?=$old_esr?></h3>
+                <h3 class="text-center">ESR <?=$old_esr?></h3>
                 <ul>
                     <li><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
                     <li><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
