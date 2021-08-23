@@ -201,8 +201,24 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
         </div>
 
         <div class="row">
+
+            <?php if (ESR_NEXT): ?>
             <div class="col">
-                <h3 class="text-center">ESR</h3>
+                <h3 class="text-center">OLD ESR <?=$old_esr?></h3>
+                <ul>
+                    <li><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
+                    <li><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
+                    <li><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
+                    <li><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
+                    <li><?=$old_esr_link($link($tracking_question_esr, "tracking? for ESR ${old_esr}"))?></li>
+                    <li><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR ${old_esr}"))?></li>
+                    <li><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${old_esr}"))?></li>
+                </ul>
+            </div>
+            <?php endif; ?>
+
+            <div class="col">
+                <h3 class="text-center">ESR <?=ESR_NEXT? $main_esr : ""?></h3>
                 <ul>
                     <li><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>

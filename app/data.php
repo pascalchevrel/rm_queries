@@ -19,6 +19,7 @@ $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
 $main_release = (int) FIREFOX_RELEASE;
 $main_esr 	  =	(int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
+$old_esr 	  =	(int) (ESR_NEXT != "" ? ESR : ESR_NEXT);
 $last_beta 	  = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
@@ -320,6 +321,11 @@ $enhancement_release = $enhancement_stub . $main_release;
 $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
 	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
+};
+
+
+$old_esr_link = function($url) use ($old_esr, $main_esr) {
+	 return str_replace($main_esr,  $old_esr, $url);
 };
 
 $top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
