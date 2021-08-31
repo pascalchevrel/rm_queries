@@ -69,33 +69,35 @@
         border: 1px solid darkgray;
     }
 
-    .col {
-        max-width: 25%;
-    }
-
     </style>
 </head>
 <body>
-    <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto" style="margin-left: 1em">
+    <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto">
         <tbody>
             <tr>
                 <th class="table-dark" onclick="show('nightlies');">Nightly <small>&#x2B07;</small></th>
-                <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
                 <th class="table-dark">Dev Edition</th>
-                <td class="table-primary"><?=DEV_EDITION?></td>
                 <th class="table-dark" onclick="show('betas');">Beta <small>&#x2B07;</small></th>
-                <td class="table-primary"><?=FIREFOX_BETA?></td>
                 <th class="table-dark">Release</th>
-                <td class="table-primary"><?=FIREFOX_RELEASE?></td>
                 <?php if (ESR_NEXT): ?>
                 <th class="table-dark">ESR</th>
-                <td class="table-primary"><?=ESR?></td>
                 <th class="table-dark">ESR Next</th>
-                <td class="table-primary"><?=ESR_NEXT?></td>
                 <?php else: ?>
                 <th class="table-dark">ESR</th>
+                <?php endif; ?>
+            </tr>
+                <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
+                <td class="table-primary"><?=DEV_EDITION?></td>
+                <td class="table-primary"><?=FIREFOX_BETA?></td>
+                <td class="table-primary"><?=FIREFOX_RELEASE?></td>
+                <?php if (ESR_NEXT): ?>
+                <td class="table-primary"><?=ESR?></td>
+                <td class="table-primary"><?=ESR_NEXT?></td>
+                <?php else: ?>
                 <td class="table-primary"><?=ESR?></td>
                 <?php endif; ?>
+            <tr>
+
             </tr>
         </tbody>
     </table>
@@ -131,10 +133,10 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
         </ul>
     </div>
     <div class="message"><?=$global_message?></div>
-    <div class="container">
+    <div class="container mx-auto">
         <div class="row">
             <div class="col">
-                <h3 class="text-center">NIGHTLY</h3>
+                <h3 class="px-5">NIGHTLY</h3>
                 <ul>
                     <li><?=$link($regressions_nightly,'Open regressions')?></li>
                     <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
@@ -158,7 +160,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </div>
 
             <div class="col">
-                <h3 class="text-center">BETA</h3>
+                <h3 class="px-5">BETA</h3>
                 <ul>
                     <li><?=$link($regressions_beta, 'Open regressions')?></li>
                     <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
@@ -179,7 +181,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </div>
 
             <div class="col">
-                <h3 class="text-center">RELEASE</h3>
+                <h3 class="px-5">RELEASE</h3>
 
                 <ul>
                     <li><?=$link($regressions_release, 'Open regressions')?></li>
@@ -204,7 +206,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
             <?php if (ESR_NEXT): ?>
             <div class="col">
-                <h3 class="text-center">ESR <?=$old_esr?></h3>
+                <h3 class="px-5">ESR <?=$old_esr?></h3>
                 <ul>
                     <li><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
                     <li><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
@@ -218,7 +220,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             <?php endif; ?>
 
             <div class="col">
-                <h3 class="text-center">ESR <?=ESR_NEXT? $main_esr : ""?></h3>
+                <h3 class="px-5">ESR <?=ESR_NEXT? $main_esr : ""?></h3>
                 <ul>
                     <li><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
