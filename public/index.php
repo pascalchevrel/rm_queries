@@ -72,6 +72,7 @@
     </style>
 </head>
 <body>
+    <div class="table-responsive">
     <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto">
         <tbody>
             <tr>
@@ -101,6 +102,8 @@
             </tr>
         </tbody>
     </table>
+    </div>
+
     <div id="nightlies" class="border bg-light toggle">
         <h5>Patches landed for each nightly</h5>
         <?=getBugsPerNightly($firefox_versions)?>
