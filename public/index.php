@@ -24,6 +24,7 @@
     }
 
     </script>
+    <script src="js/releasehealth.js"></script>
 
     <style>
 
@@ -73,6 +74,7 @@
 </head>
 <body>
     <div class="table-responsive">
+
     <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto">
         <tbody>
             <tr>
@@ -168,7 +170,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul>
                     <li><?=$link($regressions_beta, 'Open regressions')?></li>
                     <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_beta, 'Uplift requests')?></li>
+                    <li><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
                     <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
                     <li><?=$link($tracking_question_beta, "tracking? for ${main_beta}")?></li>
@@ -191,7 +193,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul>
                     <li><?=$link($regressions_release, 'Open regressions')?></li>
                     <li><?=$link($relnotes_release, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_release, 'Uplift requests')?></li>
+                    <li><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
                     <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
                     <li><?=$link($tracking_question_release, "tracking? for release (${main_release})")?></li>

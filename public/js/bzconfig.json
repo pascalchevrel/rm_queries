@@ -1,0 +1,42 @@
+{
+  "BUGZILLA_URL": "https://bugzilla.mozilla.org/buglist.cgi",
+  "BUGZILLA_REST_URL": "https://bugzilla.mozilla.org/rest/bug",
+  "VERSIONS_URL": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+  "channels": {
+    "release": {
+      "pd_key": "LATEST_FIREFOX_VERSION",
+      "title": "Firefox",
+      "short_label": "Release"
+    },
+    "beta": {
+      "pd_key": "LATEST_FIREFOX_DEVEL_VERSION",
+      "title": "Firefox Beta",
+      "short_label": "Beta"
+    },
+    "nightly": {
+      "pd_key": "FIREFOX_NIGHTLY",
+      "title": "Firefox Nightly",
+      "short_label": "Nightly"
+    }
+  },
+  "projects": {
+    "exampleProject": {
+      "title": "My project Title",
+      "short_label": "ShortTitle",
+      "version": 70
+    }
+  },
+  "bugQueries": [
+    {
+      "id": "UpliftsBeta",
+      "title": "Uplift requests in Beta",
+      "url": "?o1=substring&f1=flagtypes.name&v1=approval-mozilla-beta%3F"
+    },
+    {
+      "id": "UpliftsRelease",
+      "title": "Uplift requests in release",
+      "url": "?o1=substring&f1=flagtypes.name&v1=approval-mozilla-release%3F"
+    }
+  ],
+  "refreshMinutes": 30
+}
