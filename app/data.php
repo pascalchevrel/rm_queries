@@ -318,6 +318,20 @@ $enhancement_nightly = $enhancement_stub . $main_nightly;
 $enhancement_beta    = $enhancement_stub . $main_beta;
 $enhancement_release = $enhancement_stub . $main_release;
 
+// Fixed bugs with a lot of people CCed, potential for a release note
+$many_people_CCed_stub =
+	$stub_search_bz
+	. '&f2=cc_count'
+	. '&o2=greaterthaneq'
+	. '&v2=20'
+	. '&o1=anywordssubstr'
+	. '&v1=verified%2C%20fixed'
+	. '&f1=cf_status_firefox';
+
+$many_people_CCed_nightly = $many_people_CCed_stub . $main_nightly;
+$many_people_CCed_beta    = $many_people_CCed_stub . $main_beta;
+$many_people_CCed_release = $many_people_CCed_stub . $main_release;
+
 $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
 	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
