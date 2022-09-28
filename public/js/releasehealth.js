@@ -34,7 +34,7 @@ class ReleaseHealth {
   getChannel() {
     const channel = this.params.get('channel');
 
-    return channel && ['release', 'beta', 'nightly'].includes(channel) ? channel : 'beta';
+    return channel && ['release', 'beta', 'nightly', 'esr'].includes(channel) ? channel : 'beta';
   }
 
   /**
@@ -142,7 +142,7 @@ class ReleaseHealth {
     $placeholder.classList.add('text-bg-primary');
 
     if (count === 0) {
-      $placeholder.classList.add('good');
+      $placeholder.classList.add('d-none');
     }
 
     if (count >= 100) {

@@ -17,6 +17,11 @@
       "pd_key": "FIREFOX_NIGHTLY",
       "title": "Firefox Nightly",
       "short_label": "Nightly"
+    },
+    "esr": {
+      "pd_key": "FIREFOX_ESR",
+      "title": "Firefox ESR",
+      "short_label": "ESR"
     }
   },
   "projects": {
@@ -36,6 +41,11 @@
       "id": "UpliftsRelease",
       "title": "Uplift requests in release",
       "url": "?o1=substring&f1=flagtypes.name&v1=approval-mozilla-release%3F"
+    },
+    {
+      "id": "UpliftsESR",
+      "title": "Uplift requests in ESR",
+      "url": "?o1=substring&f1=flagtypes.name&v1=approval-mozilla-esr102%3F"
     }
   ],
   "refreshMinutes": 30

@@ -232,7 +232,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul>
                     <li><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_esr, 'Uplift requests')?></li>
+                    <li><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
                     <li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
                     <li><?=$link($tracking_question_esr, "tracking? for ESR ${main_esr}")?></li>
                     <li><?=$link($tracking_plus_esr, "tracking+ for ESR ${main_esr}")?></li>
