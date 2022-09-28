@@ -159,6 +159,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
                     <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
                     <li><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
+                    <li><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
                 </ul>
             </div>
 
@@ -180,6 +181,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
                     <li><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
                     <li><?=$link($enhancement_beta, "Enhancements for ${main_beta}")?></li>
+                    <li><?=$link($many_people_CCed_beta, "Fixed and many people CCed on ${main_beta}")?></li>
                 </ul>
             </div>
 
@@ -201,6 +203,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
                     <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
                     <li><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
+                    <li><?=$link($many_people_CCed_release, "Fixed and many people CCed on ${main_release}")?></li>
                 </ul>
             </div>
         </div>
