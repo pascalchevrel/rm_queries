@@ -237,7 +237,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
             <div class="col-4">
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">ESR ESR <?=ESR_NEXT? $main_esr : ""?></li>
+                    <li class="list-group-item card-header list-group-item-primary">ESR <?=ESR_NEXT? $main_esr : ""?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($relnotes_esr, 'Release Note Requests')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
