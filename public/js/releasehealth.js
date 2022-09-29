@@ -27,7 +27,7 @@ class ReleaseHealth {
    * Load the configuration file
    */
   async loadConfig() {
-    this.config = await this.getJSON('js/bzconfig.json');
+    this.config = await this.getJSON('js/bzconfig.json.php');
     this.renderUI();
   }
 
@@ -59,7 +59,7 @@ class ReleaseHealth {
     for (const query of this.config.bugQueries) {
       // Use an inner `async` so the loop continues
       (async () => {
-        const { bug_count } = await this.getJSON(`${this.config.BUGZILLA_REST_URL}${query.url}&count_only=1`);
+        const { bug_count } = await this.getJSON(`${query.url}&count_only=1`);
 
         if (bug_count !== undefined) {
           query.count = bug_count;

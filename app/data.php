@@ -31,8 +31,11 @@ if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFO
 	}
 }
 
-
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
+
+if ($bugzilla_rest) {
+	$stub_search_bz = 'https://bugzilla.mozilla.org/rest/bug?';
+}
 
 // Regressions
 $regressions_stub =

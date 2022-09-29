@@ -152,7 +152,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul class="list-group">
                     <li class="list-group-item card-header list-group-item-info">NIGHTLY</li>
                     <li class="list-group-item list-group-item-action"><?=$link($regressions_nightly,'Open regressions')?></li>
-                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_nightly,'Release Note Requests')?></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_nightly,'Release Note Requests')?><span class="bugcount" id="RelnotesNightly"></span></li>
                     <li class="list-group-item list-group-item-action"><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($tracking_question_nightly, 'tracking? for Nightly')?></li>
@@ -176,7 +176,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul class="list-group">
                     <li class="list-group-item card-header list-group-item-primary list-group-item-warning">BETA</li>
                     <li class="list-group-item list-group-item-action"><?=$link($regressions_beta, 'Open regressions')?></li>
-                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_beta, 'Release Note Requests')?></li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_beta,'Release Note Requests')?><span class="bugcount" id="RelnotesBeta"></span></li>
+
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
                     <li class="list-group-item list-group-item-action"><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
@@ -198,7 +199,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul class="list-group">
                     <li class="list-group-item card-header list-group-item-primary  list-group-item-success">RELEASE</li>
                     <li class="list-group-item list-group-item-action"><?=$link($regressions_release, 'Open regressions')?></li>
-                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_release, 'Release Note Requests')?></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_release,'Release Note Requests')?><span class="bugcount" id="RelnotesRelease"></span></li>
+
                     <li class="list-group-item list-group-item-action"><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
                     <li class="list-group-item list-group-item-action"><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
