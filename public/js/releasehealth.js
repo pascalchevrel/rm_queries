@@ -11,38 +11,7 @@ class ReleaseHealth {
    */
   constructor() {
     this.params = new URLSearchParams(location.search);
-    this.channel = this.getChannel();
-    this.project = this.getProject();
     this.loadConfig();
-
-    // Add a class name to the body element that corresponds to the channel/project, allows specific CSS
-    var cssClass = (this.project !== '')  ? this.project : this.channel;
-    document.body.classList.add(cssClass);
-
-    // If there is a `display=bigscreen` parameter in the URL, we hide some clutter (office TV displays)
-    if (this.params.get('display') === 'bigscreen') {
-      document.body.classList.add('bigscreen');
-    }
-  }
-
-  /**
-   * Get a channel name in the URL params. Use the Beta channel by default if missing.
-   * @returns {String} Channel name, e.g. "beta".
-   */
-  getChannel() {
-    const channel = this.params.get('channel');
-
-    return channel && ['release', 'beta', 'nightly', 'esr'].includes(channel) ? channel : 'beta';
-  }
-
-  /**
-   * Get a project name in the URL params. Empty string as default value.
-   * @returns {String} Project name, e.g. "skyline".
-   */
-  getProject() {
-    const project = this.params.get('project');
-
-    return project && ['exampleProject'].includes(project) ? project : '';
   }
 
   /**
@@ -55,16 +24,10 @@ class ReleaseHealth {
   }
 
   /**
-   * Load the configuration file as well as product details.
+   * Load the configuration file
    */
   async loadConfig() {
     this.config = await this.getJSON('js/bzconfig.json');
-    this.versions = await this.getJSON(this.config.VERSIONS_URL);
-
-    for (const channel of Object.values(this.config.channels)) {
-      channel.version = Number(this.versions[channel.pd_key].match(/^\d+/)[0]);
-    }
-
     this.renderUI();
   }
 
@@ -72,12 +35,6 @@ class ReleaseHealth {
    * Start rendering the UI.
    */
   renderUI() {
-    const { title, version } = (this.project !== '')
-      ? this.config.projects[this.project]
-      : this.config.channels[this.channel];
-
-
-    this.addVersionToQueryURLs(version);
     this.displayMeasures();
     this.getBugCounts();
 
@@ -86,25 +43,10 @@ class ReleaseHealth {
   }
 
   /**
-   * Replace version placeholders in the query URL.
-   * @param {Number} version Firefox version number, e.g. 70.
-   */
-  addVersionToQueryURLs(version) {
-    for (const query of this.config.bugQueries) {
-      query.url = query.url.replace(/{RELEASE}/g, version).replace(/{OLDERRELEASE}/g, version - 1);
-    }
-  }
-
-  /**
    * Display the measures with a placeholder.
    */
   displayMeasures() {
-    const view = (this.project !== '')
-      ? this.config.projects[this.project]
-      : this.config.channels[this.channel];
-
-    for (let { id, title, url } of this.config.bugQueries) {
-      url += encodeURI(`&title=${view.title} ${view.version}: ${title}`);
+    for (let { id } of this.config.bugQueries) {
       document.querySelector(`#${id}`).innerHTML =
         `&nbsp;<span class="data badge text-bg-secondary float-end">?</span>`;
     }
