@@ -70,6 +70,14 @@
         border: 1px solid darkgray;
     }
 
+    .list-group-item {
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+    }
+    .list-group-item a {
+        display: inline-block;
+        min-width:  80%;
+        }
     </style>
 </head>
 <body>
@@ -141,102 +149,100 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
     <div class="container mx-auto">
         <div class="row">
             <div class="col">
-                <h3 class="px-5">NIGHTLY</h3>
-                <ul>
-                    <li><?=$link($regressions_nightly,'Open regressions')?></li>
-                    <li><?=$link($relnotes_nightly,'Release Note Requests')?></li>
-                    <li><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
-                    <li>--</li>
-                    <li><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_nightly, 'tracking? for Nightly')?></li>
-                    <li><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
-                    <li><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-info">NIGHTLY</li>
+                    <li class="list-group-item list-group-item-action"><?=$link($regressions_nightly,'Open regressions')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_nightly,'Release Note Requests')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%25&list_id=14573209",'Bugs filed today by users')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_question_nightly, 'tracking? for Nightly')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
                     <?php
                      if ($nightly_top_crashes_deved !== false) {
-                        echo '<li>' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
+                        echo '<li class="list-group-item list-group-item-action">' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
                     }
                     ?>
-                    <li><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
-                    <li><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
-                    <li><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
-                    <li><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
-                    <li><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
-                    <li><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
                 </ul>
             </div>
 
             <div class="col">
-                <h3 class="px-5">BETA</h3>
-                <ul>
-                    <li><?=$link($regressions_beta, 'Open regressions')?></li>
-                    <li><?=$link($relnotes_beta, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
-                    <li><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
-                    <li><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_beta, "tracking? for ${main_beta}")?></li>
-                    <li><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
-                    <li><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
-                    <li><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
-                    <li><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
-                    <li><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
-                    <li><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
-                    <li><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
-                    <li><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
-                    <li><?=$link($enhancement_beta, "Enhancements for ${main_beta}")?></li>
-                    <li><?=$link($many_people_CCed_beta, "Fixed and many people CCed on ${main_beta}")?></li>
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary list-group-item-warning">BETA</li>
+                    <li class="list-group-item list-group-item-action"><?=$link($regressions_beta, 'Open regressions')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_beta, 'Release Note Requests')?></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_question_beta, "tracking? for ${main_beta}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($enhancement_beta, "Enhancements for ${main_beta}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($many_people_CCed_beta, "Fixed and many people CCed on ${main_beta}")?></li>
                 </ul>
             </div>
 
             <div class="col">
-                <h3 class="px-5">RELEASE</h3>
-
-                <ul>
-                    <li><?=$link($regressions_release, 'Open regressions')?></li>
-                    <li><?=$link($relnotes_release, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
-                    <li><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
-                    <li><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
-                    <li><?=$link($tracking_question_release, "tracking? for release (${main_release})")?></li>
-                    <li><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
-                    <li><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
-                    <li><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
-                    <li><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
-                    <li><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
-                    <li><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
-                    <li><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
-                    <li><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
-                    <li><?=$link($many_people_CCed_release, "Fixed and many people CCed on ${main_release}")?></li>
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary  list-group-item-success">RELEASE</li>
+                    <li class="list-group-item list-group-item-action"><?=$link($regressions_release, 'Open regressions')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_release, 'Release Note Requests')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_question_release, "tracking? for release (${main_release})")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
+                    <li class="list-group-item list-group-item-action"><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($many_people_CCed_release, "Fixed and many people CCed on ${main_release}")?></li>
                 </ul>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-2">
 
             <?php if (ESR_NEXT): ?>
-            <div class="col">
-                <h3 class="px-5">ESR <?=$old_esr?></h3>
-                <ul>
-                    <li><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
-                    <li><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
-                    <li><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
-                    <li><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
-                    <li><?=$old_esr_link($link($tracking_question_esr, "tracking? for ESR ${old_esr}"))?></li>
-                    <li><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR ${old_esr}"))?></li>
-                    <li><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${old_esr}"))?></li>
+            <div class="col-4">
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary">ESR <?=$old_esr?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($tracking_question_esr, "tracking? for ESR ${old_esr}"))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR ${old_esr}"))?></li>
+                    <li class="list-group-item list-group-item-action"><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${old_esr}"))?></li>
                 </ul>
             </div>
             <?php endif; ?>
 
-            <div class="col">
-                <h3 class="px-5">ESR <?=ESR_NEXT? $main_esr : ""?></h3>
-                <ul>
-                    <li><?=$link($regressions_esr, 'Open regressions')?></li>
-                    <li><?=$link($relnotes_esr, 'Release Note Requests')?></li>
-                    <li><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
-                    <li><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
-                    <li><?=$link($tracking_question_esr, "tracking? for ESR ${main_esr}")?></li>
-                    <li><?=$link($tracking_plus_esr, "tracking+ for ESR ${main_esr}")?></li>
-                    <li><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
+            <div class="col-4">
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary">ESR ESR <?=ESR_NEXT? $main_esr : ""?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($regressions_esr, 'Open regressions')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($relnotes_esr, 'Release Note Requests')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_question_esr, "tracking? for ESR ${main_esr}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_esr, "tracking+ for ESR ${main_esr}")?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
                 </ul>
             </div>
         </div>

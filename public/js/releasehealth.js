@@ -1,5 +1,3 @@
-/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
-/* vim: set ts=8 sts=2 et sw=2 tw=80: */
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -108,7 +106,7 @@ class ReleaseHealth {
     for (let { id, title, url } of this.config.bugQueries) {
       url += encodeURI(`&title=${view.title} ${view.version}: ${title}`);
       document.querySelector(`#${id}`).innerHTML =
-        `&nbsp;<span class="data badge text-bg-secondary">?</span>`;
+        `&nbsp;<span class="data badge text-bg-secondary float-end">?</span>`;
     }
   }
 
@@ -143,10 +141,6 @@ class ReleaseHealth {
 
     if (count === 0) {
       $placeholder.classList.add('d-none');
-    }
-
-    if (count >= 100) {
-      $placeholder.classList.add('bad');
     }
   }
 
