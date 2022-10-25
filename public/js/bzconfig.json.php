@@ -30,6 +30,22 @@ header("Content-type: application/json; charset=UTF-8");
     {
       "id": "RelnotesRelease",
       "url": "<?=$relnotes_release?>"
+    },
+    {
+      "id": "TrackingNightly",
+      "url": "<?=$tracking_question_nightly?>"
+    },
+    {
+      "id": "TrackingBeta",
+      "url": "<?=$tracking_question_beta?>"
+    },
+    {
+      "id": "TrackingRelease",
+      "url": "<?=$tracking_question_release?>"
+    },
+    {
+      "id": "TrackingESR",
+      "url": "<?=$tracking_question_esr?>"
     }
   ],
   "refreshMinutes": 30

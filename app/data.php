@@ -340,6 +340,15 @@ $link = function($url, $text, $title = true) {
 	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
 };
 
+// Dynamic link with REST XHR request, outputs as a <li> tag
+$rest_list_item_link = function($id, $url, $text, $title = true) use ($link) {
+	return '<li class="list-group-item d-flex justify-content-between align-items-center">'
+		. $link($url, $text, $title)
+		. '<span class="bugcount" id="'
+		. $id
+		.'"></span></li>'
+		. "\n";
+};
 
 $old_esr_link = function($url) use ($old_esr, $main_esr) {
 	 return str_replace($main_esr,  $old_esr, $url);
