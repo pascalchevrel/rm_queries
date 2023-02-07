@@ -335,6 +335,40 @@ $many_people_CCed_nightly = $many_people_CCed_stub . $main_nightly;
 $many_people_CCed_beta    = $many_people_CCed_stub . $main_beta;
 $many_people_CCed_release = $many_people_CCed_stub . $main_release;
 
+// Webcompat
+$webcompat_stub =
+	$stub_search_bz
+	. '&f1=cf_webcompat_priority'
+	. '&o1=anyexact'
+	. '&v1=P1%2CP2%2CP3'
+	. '&o2=nowordssubstr'
+	. '&v2=disabled%2Cwontfix%2Cfixed%2Cverified'
+	. '&o3=anywordssubstr'
+	. '&v3=fixed%2Cverified'
+	. '&bug_status=RESOLVED'
+	. '&bug_status=VERIFIED';
+	// chfield=resolution
+
+$webcompat_beta =
+	$webcompat_stub
+	. '&f2=cf_status_firefox' . (string) $main_beta
+	. '&f3=cf_status_firefox' . (string) $main_nightly;
+
+$webcompat_release =
+	$webcompat_stub
+	. '&f2=cf_status_firefox' . (string) $main_release
+	. '&f3=cf_status_firefox' . (string) $main_beta;
+
+$webcompat_dupes_2m =
+	$stub_search_bz
+	. '&chfield=%5BBug%20creation%5D&chfieldfrom=-2m&chfieldto=Now'
+	. '&f1=cf_webcompat_priority'
+	. '&o1=anyexact'
+	. '&v1=P1%2CP2%2CP3'
+	. '&resolution=DUPLICATE';
+
+
+// Client side dynamic counters
 $link = function($url, $text, $title = true) {
 	$title = $title ? '&title=' . rawurlencode($text) : '';
 	return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
