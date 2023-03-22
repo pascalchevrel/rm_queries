@@ -48,6 +48,9 @@ $regressions_stub =
 	. '&bug_status=NEW'
 	. '&bug_status=ASSIGNED'
 	. '&bug_status=REOPENED'
+	. '&v2=stalled%2Cintermittent-failure'
+	. '&o2=nowords'
+	. '&f2=keywords'
 	. '&f1=cf_status_firefox';
 
 $regressions_nightly = $regressions_stub . $main_nightly;
@@ -409,4 +412,6 @@ if ($main_beta == $main_nightly) {
 }
 
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
+
+
 
