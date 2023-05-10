@@ -1,0 +1,21 @@
+{
+    "license": "MPL-2.0",
+    "name": "pascalchevrel/rm_queries",
+    "description": "Train queries for Release Management",
+    "require": {
+        "php": "~8.1.0",
+        "ext-mbstring": "*",
+        "ext-curl": "*",
+        "twbs/bootstrap-icons": "^1.8",
+        "twbs/bootstrap": "^5.2"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "mkdir -p public/assets/bootstrap",
+            "rm -rf public/assets/bootstrap",
+            "cp -r vendor/twbs/bootstrap/dist public/assets/bootstrap",
+            "cp vendor/twbs/bootstrap-icons/font/bootstrap-icons.css public/assets/bootstrap/css/",
+            "cp -r vendor/twbs/bootstrap-icons/font/fonts/ public/assets/bootstrap/css/"
+        ]
+    }
+}
