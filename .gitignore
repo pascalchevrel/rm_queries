@@ -1,1 +1,3 @@
-cache/*
+vendor/
+public/assets/
+cache/*.json
