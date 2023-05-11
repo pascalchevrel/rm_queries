@@ -273,6 +273,8 @@ $recently_fixed_crashes =
 	. '&product=Core'
 	. '&product=DevTools'
 	. '&product=External%20Software%20Affecting%20Firefox'
+	. '&product=Fenix'
+	. '&product=Geckoview'
 	. '&product=Firefox'
 	. '&product=Firefox%20for%20Android'
 	. '&product=NSPR'
@@ -414,4 +416,38 @@ if ($main_beta == $main_nightly) {
 $release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
 
 
-
+$reported_today_by_users =
+	$stub_search_bz
+	. '&chfield=%5BBug%20creation%5D'
+	. '&chfieldfrom=-24h'
+	. '&chfieldto=Now'
+	. '&classification=Client%20Software'
+	. '&classification=Developer%20Infrastructure'
+	. '&classification=Components'
+	. '&f1=reporter'
+	. '&f2=reporter'
+	. '&f3=reporter'
+	. '&o1=notequals'
+	. '&o2=notequals'
+	. '&o3=notequals'
+	. '&product=Core'
+	. '&product=DevTools'
+	. '&product=External%20Software%20Affecting%20Firefox'
+	. '&product=Fenix'
+	. '&product=Firefox'
+	. '&product=Firefox%20Build%20System'
+	. '&product=Firefox%20for%20Android'
+	. '&product=Firefox%20for%20Echo%20Show'
+	. '&product=Firefox%20for%20FireTV'
+	. '&product=Firefox%20for%20iOS'
+	. '&product=Focus'
+	. '&product=Focus-iOS'
+	. '&product=Geckoview'
+	. '&product=NSPR'
+	. '&product=NSS'
+	. '&product=Toolkit'
+	. '&product=WebExtensions'
+	. '&resolution=---'
+	. '&v1=intermittent-bug-filer%40mozilla.bugs'
+	. '&v2=%25group.editbugs%25'
+	. '&v3=%25group.mozilla-corporation%';

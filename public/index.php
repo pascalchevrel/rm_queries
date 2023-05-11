@@ -153,7 +153,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item card-header list-group-item-info">NIGHTLY</li>
                     <li class="list-group-item list-group-item-action"><?=$link($regressions_nightly,'Open regressions')?></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_nightly,'Release Note Requests')?><span class="bugcount" id="RelnotesNightly"></span></li>
-                    <li class="list-group-item list-group-item-action"><?=$link("https://bugzilla.mozilla.org/buglist.cgi?chfield=%5BBug%20creation%5D&chfieldfrom=-24h&chfieldto=Now&classification=Client%20Software&classification=Developer%20Infrastructure&classification=Components&f1=reporter&f2=reporter&f3=reporter&o1=notequals&o2=notequals&o3=notequals&product=Core&product=DevTools&product=External%20Software%20Affecting%20Firefox&product=Firefox&product=Firefox%20Build%20System&product=Firefox%20for%20Android&product=Firefox%20for%20Echo%20Show&product=Firefox%20for%20FireTV&product=Firefox%20for%20iOS&product=Focus&product=Focus-iOS&product=NSPR&product=NSS&product=Toolkit&product=WebExtensions&resolution=---&v1=intermittent-bug-filer%40mozilla.bugs&v2=%25group.editbugs%25&v3=%25group.mozilla-corporation%",'Bugs filed today by users')?></li>
+                    <li class="list-group-item list-group-item-action"><?=$link($reported_today_by_users,'Bugs filed today by users')?></li>
                     <li class="list-group-item list-group-item-action"><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
 
                     <?=$rest_list_item_link('TrackingNightly', $tracking_question_nightly, 'tracking? for Nightly')?>
