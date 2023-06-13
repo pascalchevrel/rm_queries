@@ -6,14 +6,18 @@ $firefox_versions = getRemoteFile(
 	'firefox_versions_local.json'
 );
 
-$global_message = '';
+$fenix_versions = getRemoteFile(
+	'https://product-details.mozilla.org/1.0/mobile_versions.json',
+	'mobile_versions_local.json'
+);
 
-define('ESR', $firefox_versions["FIREFOX_ESR"]);
-define('ESR_NEXT', $firefox_versions["FIREFOX_ESR_NEXT"]);
-define('FIREFOX_NIGHTLY', $firefox_versions["FIREFOX_NIGHTLY"]);
-define('DEV_EDITION', $firefox_versions["FIREFOX_DEVEDITION"]);
-define('FIREFOX_BETA', $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
-define('FIREFOX_RELEASE', $firefox_versions["LATEST_FIREFOX_VERSION"]);
+define('ESR', 				$firefox_versions["FIREFOX_ESR"]);
+define('ESR_NEXT', 			$firefox_versions["FIREFOX_ESR_NEXT"]);
+define('FIREFOX_NIGHTLY', 	$firefox_versions["FIREFOX_NIGHTLY"]);
+define('DEV_EDITION', 		$firefox_versions["FIREFOX_DEVEDITION"]);
+define('FIREFOX_BETA', 		$firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
+define('FIREFOX_RELEASE', 	$firefox_versions["LATEST_FIREFOX_VERSION"]);
+define('FENIX_RELEASE', 	$fenix_versions["version"]);
 
 $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
@@ -21,15 +25,6 @@ $main_release = (int) FIREFOX_RELEASE;
 $main_esr 	  =	(int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
 $old_esr 	  =	(int) (ESR_NEXT != "" ? ESR : ESR_NEXT);
 $last_beta 	  = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
-
-if ((int) $firefox_versions["FIREFOX_NIGHTLY"] > (int) $firefox_versions["FIREFOX_DEVEDITION"]) {
-	// We are past merge day
-	if ((int) $firefox_versions["FIREFOX_DEVEDITION"] > (int) $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]) {
-		// But beta 3 has not been released yet
-		$global_message = '<b>Nightly merged recently, beta 3 not released yet!</b>';
-		$main_beta = (int) DEV_EDITION;
-	}
-}
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
@@ -75,7 +70,7 @@ $relnotes_stub = function($version) use($stub_search_bz) {
 $relnotes_nightly = $relnotes_stub($main_nightly);
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
-$relnotes_esr = $relnotes_stub('_esr' . $main_esr);
+$relnotes_esr 	  = $relnotes_stub('_esr' . $main_esr);
 
 // Uplifts requests
 $uplift_stub	= $stub_search_bz . '&o1=substring&f1=flagtypes.name';
@@ -232,7 +227,6 @@ $resolved_fix_optional_stub =
 
 $resolved_fix_optional_beta = $resolved_fix_optional_stub . $main_beta;
 $resolved_fix_optional_release = $resolved_fix_optional_stub . $main_release;
-
 
 // Pending needinfo > 3 days
 $ni_days = 3;
@@ -393,28 +387,26 @@ $old_esr_link = function($url) use ($old_esr, $main_esr) {
 	 return str_replace($main_esr,  $old_esr, $url);
 };
 
-$top_crashes_firefox_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
+$top_crashes_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
 
-$nightly_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=3&version=' . FIREFOX_NIGHTLY . '&_range_type=build';
-$beta_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=7';
+$nightly_top_crashes_firefox = $top_crashes_stub . '&product=Firefox&days=3&version=' . FIREFOX_NIGHTLY . '&_range_type=build';
+$beta_top_crashes_firefox = $top_crashes_stub . '&product=Firefox&days=7';
 $beta_top_crashes_firefox_last_beta = $beta_top_crashes_firefox . '&version=' . $main_beta. '.0b' . $last_beta;
+
+$nightly_top_crashes_fenix = $top_crashes_stub . '&product=Fenix&days=3&version=' . FIREFOX_NIGHTLY . '&_range_type=build';
+$beta_top_crashes_fenix = $top_crashes_stub . '&product=Fenix&days=7';
+$beta_top_crashes_fenix_last_beta = $beta_top_crashes_fenix . '&version=' . $main_beta. '.0b' . $last_beta;
 
 for ($i = 1; $i <= $last_beta; $i++) {
 	$beta_top_crashes_firefox .=  '&version=' . $main_beta. '.0b' . $i;
 }
 
-$nightly_top_crashes_deved = false;
-if ($main_beta == $main_nightly) {
-	$nightly_top_crashes_deved =
-		$top_crashes_firefox_stub
-		. '&product=Firefox&days=3&version='
-		. $main_nightly . '.0b1'
-		. '&version='
-		. $main_nightly . '.0b2';
+for ($i = 1; $i <= $last_beta; $i++) {
+	$beta_top_crashes_fenix .=  '&version=' . $main_beta. '.0b' . $i;
 }
 
-$release_top_crashes_firefox = $top_crashes_firefox_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
-
+$release_top_crashes_firefox = $top_crashes_stub . '&product=Firefox&days=14&version=' . FIREFOX_RELEASE;
+$release_top_crashes_fenix = $top_crashes_stub . '&product=Fenix&days=14&version=' . FENIX_RELEASE;
 
 $reported_today_by_users =
 	$stub_search_bz

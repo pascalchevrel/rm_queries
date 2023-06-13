@@ -149,7 +149,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
         $li_default = 'list-group-item list-group-item-action ';
     ?>
 
-    <div class="message"><?=$global_message?></div>
     <div class="container mx-auto">
         <div class="row">
             <div class="col">
@@ -164,12 +163,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
-                    <?php
-                     if ($nightly_top_crashes_deved !== false) {
-                        echo '<li class="' . $li_default .'">' . $link($nightly_top_crashes_deved, 'Devedition (b1,b2) recent crashes (3 days)', false) . '</li>';
-                    }
-                    ?>
                     <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
+                    <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_firefox, 'Fenix recent crashes (3 days)', false)?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
@@ -192,6 +187,8 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
                     <li class="<?=$li_default?>"><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
                     <li class="<?=$li_default?>"><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
+                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_fenix_last_beta, 'Fenix last beta crashes (7 days)', false)?></li>
+                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_fenix, 'Fenix recent crashes (7 days)', false)?></li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
@@ -216,7 +213,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
                     <li class="<?=$li_default?>"><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($fenix_top_crashes_firefox, 'Fenix recent crashes (14 days)', false)?></li>
+                    <li class="<?=$li_default?>"><?=$link($release_top_crashes_fenix, 'Fenix recent crashes (14 days)', false)?></li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
                     <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
