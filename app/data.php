@@ -443,3 +443,12 @@ $reported_today_by_users =
 	. '&v1=intermittent-bug-filer%40mozilla.bugs'
 	. '&v2=%25group.editbugs%25'
 	. '&v3=%25group.mozilla-corporation%';
+
+$fixed_a11y_issues_beta =
+	$stub_search_bz
+	. '&o1=anywords'
+	. '&v1=affected%2C%20fix-optional'
+	. '&f1=cf_status_firefox_beta'
+	. '&status_whiteboard=access-s1%2Caccess-s2%2Caccess-s3'
+	. '&status_whiteboard_type=anywords'
+	. '&resolution=FIXED';
