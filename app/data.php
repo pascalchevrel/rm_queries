@@ -452,3 +452,32 @@ $fixed_a11y_issues_beta =
 	. '&status_whiteboard=access-s1%2Caccess-s2%2Caccess-s3'
 	. '&status_whiteboard_type=anywords'
 	. '&resolution=FIXED';
+
+
+/*
+	This query looks for bugs with no pending beta uplift request but with mentions in comments of the word uplift.
+	Bugbot request for uplifting is ignore.
+	We look at bugs which had this uplift mention in the last 2 weeks.
+	We only look at bugs that are fixed on nightly.
+ */
+$beta_uplift_chatter =
+	$stub_search_bz
+	. '&o1=anywords'
+	. '&v1=affected%2C%20fix-optional'
+	. '&f1=cf_status_firefox_beta'
+	. '&o2=notsubstring'
+	. '&v2=approval-mozilla-beta%3F'
+	. '&f2=flagtypes.name'
+	. '&f3=OP'
+	. '&j3=AND_G'
+	. '&o4=substring'
+	. '&v4=uplift'
+	. '&f4=longdesc'
+	. '&o5=notsubstring'
+	. '&v5=%20is%20this%20bug%20important%20enough%20to%20require%20an%20uplift'
+	. '&f5=longdesc'
+	. '&o6=changedafter'
+	. '&v6=2w'
+	. '&f6=longdesc'
+	. '&f7=CP'
+	. '&resolution=FIXED';

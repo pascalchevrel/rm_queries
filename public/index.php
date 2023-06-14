@@ -219,6 +219,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($webcompat_beta, "Fixed Webcompat in ${main_nightly}")?></li>
                     <li class="<?=$li_default?>"><?=$link($webcompat_dupes_2m, "Webcompat marked as dupes")?></li>
                     <li class="<?=$li_default?>"><?=$link($fixed_a11y_issues_beta, "Uplift fixed Accessibility issues?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($beta_uplift_chatter, "Uplift chatter")?></li>
                 </ul>
             </div>
 
