@@ -76,7 +76,7 @@
 
         .list-group-item a {
             display: inline-block;
-            min-width:  80%;
+            min-width:  90%;
         }
     </style>
 </head>
@@ -159,13 +159,22 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($reported_today_by_users,'Bugs filed today by users')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
 
-                    <?=$rest_list_item_link('TrackingNightly', $tracking_question_nightly, 'tracking? for Nightly')?>
+                    <?=$rest_list_item_link('TrackingNightly', $tracking_question_nightly, 'Tracking? for Nightly')?>
 
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_nightly, 'tracking+ not fixed')?></li>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_nightly, 'tracking+ unassigned')?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_nightly, 'Tracking+ not fixed')?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_nightly, 'Tracking+ unassigned')?></li>
                     <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_firefox, 'Fenix recent crashes (3 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'needinfo? > ' . $ni_days_nightly . ' days')?></li>
+                    <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_fenix, 'Fenix recent crashes (3 days)', false)?></li>
+
+                   <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3" title="3 days">
+                        <span class="w-50 border-end mt-1 mb-1">
+                            <?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes', false)?>
+                        </span>
+                        <span class="w-50  mt-1 mb-1 ps-3">
+                            <?=$link($nightly_top_crashes_fenix, 'Fenix Last beta crashes', false)?>
+                        </span>
+                    </li>
+                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'Needinfo? > ' . $ni_days_nightly . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($recently_fixed_crashes, 'Crashes fixed in the last ' . $last_days_crashes .' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
@@ -182,15 +191,27 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
-                    <?=$rest_list_item_link('TrackingBeta',  $tracking_question_beta, "tracking? for ${main_beta}")?>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_beta, 'tracking+ not fixed')?></li>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_beta, 'tracking+ unassigned')?></li>
-                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_firefox_last_beta, 'Firefox last beta crashes (7 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_firefox, 'Firefox recent crashes (7 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_fenix_last_beta, 'Fenix last beta crashes (7 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($beta_top_crashes_fenix, 'Fenix recent crashes (7 days)', false)?></li>
+                    <?=$rest_list_item_link('TrackingBeta',  $tracking_question_beta, "Tracking? for ${main_beta}")?>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_beta, 'Tracking+ not fixed')?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_beta, 'Tracking+ unassigned')?></li>
+                    <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3" title="7 days">
+                        <span class="w-50 border-end mt-1 mb-1">
+                            <?=$link($beta_top_crashes_firefox, 'Firefox betas crashes', false)?>
+                        </span>
+                        <span class="w-50  mt-1 mb-1 ps-3">
+                            <?=$link($beta_top_crashes_firefox_last_beta, 'Firefox Last beta crashes', false)?>
+                        </span>
+                    </li>
+                    <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3">
+                        <span class="w-50 border-end mt-1 mb-1">
+                            <?=$link($beta_top_crashes_fenix, 'Fenix betas crashes', false)?>
+                        </span>
+                        <span class="w-50 mt-1 mb-1 ps-3">
+                            <?=$link($beta_top_crashes_fenix_last_beta, 'Fenix Last beta crashes', false)?>
+                        </span>
+                    </li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
-                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_beta, 'needinfo? > ' . $ni_days . ' days')?></li>
+                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_beta, 'Needinfo? > ' . $ni_days . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($enhancement_beta, "Enhancements for ${main_beta}")?></li>
@@ -210,13 +231,19 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
-                    <?=$rest_list_item_link('TrackingRelease',  $tracking_question_release, "tracking? for release (${main_release})")?>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_release, 'tracking+ not fixed')?></li>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_release, 'tracking+ unassigned')?></li>
-                    <li class="<?=$li_default?>"><?=$link($release_top_crashes_firefox, 'Firefox recent crashes (14 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($release_top_crashes_fenix, 'Fenix recent crashes (14 days)', false)?></li>
+                    <?=$rest_list_item_link('TrackingRelease',  $tracking_question_release, "Tracking? for release (${main_release})")?>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_release, 'Tracking+ not fixed')?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_release, 'Tracking+ unassigned')?></li>
+                   <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3">
+                        <span class="w-50 border-end mt-1 mb-1" title="14 days">
+                            <?=$link($release_top_crashes_firefox, 'Fenix betas crashes', false)?>
+                        </span>
+                        <span class="w-50 mt-1 mb-1 ps-3">
+                            <?=$link($release_top_crashes_fenix, 'Fenix Last beta crashes', false)?>
+                        </span>
+                    </li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
-                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_release, 'needinfo? > ' . $ni_days . ' days')?>  </li>
+                    <li class="<?=$li_default?>"><?=$link($pending_needinfo_release, 'Needinfo? > ' . $ni_days . ' days')?>  </li>
                     <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
