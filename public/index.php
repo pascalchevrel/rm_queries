@@ -163,10 +163,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_nightly, 'Tracking+ not fixed')?></li>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_nightly, 'Tracking+ unassigned')?></li>
-                    <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes (3 days)', false)?></li>
-                    <li class="<?=$li_default?>"><?=$link($nightly_top_crashes_fenix, 'Fenix recent crashes (3 days)', false)?></li>
-
-                   <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3" title="3 days">
+                    <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3" title="3 days">
                         <span class="w-50 border-end mt-1 mb-1">
                             <?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes', false)?>
                         </span>
@@ -237,10 +234,10 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_release, 'Tracking+ unassigned')?></li>
                    <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3">
                         <span class="w-50 border-end mt-1 mb-1" title="14 days">
-                            <?=$link($release_top_crashes_firefox, 'Fenix betas crashes', false)?>
+                            <?=$link($release_top_crashes_firefox, 'Firefox top crashes', false)?>
                         </span>
                         <span class="w-50 mt-1 mb-1 ps-3">
-                            <?=$link($release_top_crashes_fenix, 'Fenix Last beta crashes', false)?>
+                            <?=$link($release_top_crashes_fenix, 'Fenix top crashes', false)?>
                         </span>
                     </li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
