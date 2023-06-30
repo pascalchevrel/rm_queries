@@ -168,7 +168,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                             <?=$link($nightly_top_crashes_firefox, 'Firefox recent crashes', false)?>
                         </span>
                         <span class="w-50  mt-1 mb-1 ps-3">
-                            <?=$link($nightly_top_crashes_fenix, 'Fenix Last beta crashes', false)?>
+                            <?=$link($nightly_top_crashes_fenix, 'Fenix recent crashes', false)?>
                         </span>
                     </li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'Needinfo? > ' . $ni_days_nightly . ' days')?></li>
@@ -195,15 +195,15 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                         <span class="w-50 border-end mt-1 mb-1">
                             <?=$link($beta_top_crashes_firefox, 'Firefox betas crashes', false)?>
                         </span>
-                        <span class="w-50  mt-1 mb-1 ps-3">
-                            <?=$link($beta_top_crashes_firefox_last_beta, 'Firefox Last beta crashes', false)?>
+                        <span class="w-50 mt-1 mb-1 ps-3">
+                            <?=$link($beta_top_crashes_fenix, 'Fenix betas crashes', false)?>
                         </span>
                     </li>
                     <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3">
                         <span class="w-50 border-end mt-1 mb-1">
-                            <?=$link($beta_top_crashes_fenix, 'Fenix betas crashes', false)?>
+                            <?=$link($beta_top_crashes_firefox_last_beta, 'Firefox Last beta crashes', false)?>
                         </span>
-                        <span class="w-50 mt-1 mb-1 ps-3">
+                        <span class="w-50  mt-1 mb-1 ps-3">
                             <?=$link($beta_top_crashes_fenix_last_beta, 'Fenix Last beta crashes', false)?>
                         </span>
                     </li>
