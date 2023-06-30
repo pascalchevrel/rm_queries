@@ -308,6 +308,19 @@ $security_release = $security_stub . $main_release;
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
+// Recently fixed sec bugs on Nightly
+$recent_sec_bugs_nightly =
+	$stub_search_bz
+	. '&resolution=FIXED'
+	. '&chfield=resolution'
+	. '&chfieldfrom=3d'
+	. '&chfieldto=Now'
+	. '&f1=bug_group'
+	. '&o1=substring'
+	. '&v1=sec'
+	. '&o2=anywordssubstr'
+	. '&v2=verified%2C%20fixed'
+	. '&f2=cf_status_firefox' . $main_nightly;
 // Enhancements
 $enhancement_stub =
 	$stub_search_bz
