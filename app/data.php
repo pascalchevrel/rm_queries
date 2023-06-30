@@ -309,11 +309,13 @@ $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
 // Recently fixed sec bugs on Nightly
+
+$recent_sec = 3;
 $recent_sec_bugs_nightly =
 	$stub_search_bz
 	. '&resolution=FIXED'
 	. '&chfield=resolution'
-	. '&chfieldfrom=3d'
+	. '&chfieldfrom=' . $recent_sec .'d'
 	. '&chfieldto=Now'
 	. '&f1=bug_group'
 	. '&o1=substring'
