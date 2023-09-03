@@ -23,7 +23,7 @@
         }
     </script>
 
-    <script src="js/releasehealth.js"></script>
+    <script src="js/releasehealth.js" defer></script>
 
     <style>
 
