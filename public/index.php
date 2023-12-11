@@ -97,6 +97,7 @@
                 <th class="table-dark">ESR</th>
                 <?php endif; ?>
             </tr>
+            <tr>
                 <td class="table-primary"><?=FIREFOX_NIGHTLY?></td>
                 <td class="table-primary"><?=DEV_EDITION?></td>
                 <td class="table-primary"><?=FIREFOX_BETA?></td>
@@ -107,8 +108,6 @@
                 <?php else: ?>
                 <td class="table-primary"><?=ESR?></td>
                 <?php endif; ?>
-            <tr>
-
             </tr>
         </tbody>
     </table>
