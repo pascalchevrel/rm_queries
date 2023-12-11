@@ -174,9 +174,11 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'Needinfo? > ' . $ni_days_nightly . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($recently_fixed_crashes, 'Crashes fixed, last ' . $last_days_crashes .' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($pending_sec_approval, "Open bugs with sec-approval?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($approved_sec_approval, "Open bugs with sec-approval+")?></li>
+                    <li class="<?=$li_default?>"><?=$link($recent_sec_bugs_nightly, "Recently fixed security bugs, last " . $recent_sec . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
                     <li class="<?=$li_default?>"><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($recent_sec_bugs_nightly, "Recently fixed security bugs, last " . $recent_sec . ' days')?></li>
                 </ul>
             </div>
 

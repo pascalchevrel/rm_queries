@@ -496,3 +496,20 @@ $beta_uplift_chatter =
 	. '&f6=longdesc'
 	. '&f7=CP'
 	. '&resolution=FIXED';
+
+// Open bugs with sec-approval?
+$pending_sec_approval =
+	$stub_search_bz
+	. '&o1=substring'
+	. '&v1=sec-approval%3F'
+	. '&f1=flagtypes.name';
+
+// Recent bugs (3 months) with sec-approval+
+$approved_sec_approval =
+	$stub_search_bz
+	. '&o1=substring'
+	. '&v1=sec-approval%2B'
+	. '&f1=flagtypes.name'
+	. '&chfieldfrom=-3m'
+	. '&chfieldto=Now'
+	. '&resolution=---';
