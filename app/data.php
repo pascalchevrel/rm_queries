@@ -3,12 +3,14 @@ require_once "utils.php";
 
 $firefox_versions = getRemoteFile(
 	'https://product-details.mozilla.org/1.0/firefox_versions.json',
-	'firefox_versions_local.json'
+	'firefox_versions_local.json',
+	900
 );
 
 $fenix_versions = getRemoteFile(
 	'https://product-details.mozilla.org/1.0/mobile_versions.json',
-	'mobile_versions_local.json'
+	'mobile_versions_local.json',
+	900
 );
 
 define('ESR', 				$firefox_versions["FIREFOX_ESR"]);
