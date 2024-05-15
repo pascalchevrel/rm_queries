@@ -282,6 +282,12 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
                 </ul>
             </div>
+            <div class="col-4">
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary">MISC</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Flathub Release: <span class="<?=$flathub_status?>"><?=$flathub_release?></span></li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

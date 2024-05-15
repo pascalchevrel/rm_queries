@@ -515,3 +515,17 @@ $approved_sec_approval =
 	. '&chfieldfrom=-3m'
 	. '&chfieldto=Now'
 	. '&resolution=---';
+
+// FlatHub Status
+$flathub_firefox = getRemoteFile(
+	'https://flathub.org/api/v2/appstream/org.mozilla.firefox',
+	'flathub_firefox_release.json',
+	900
+);
+
+$flathub_release = secureText($flathub_firefox['releases'][0]['version']);
+
+$flathub_status = 'text-secondary';
+if ($flathub_release != FIREFOX_RELEASE) {
+	$flathub_status = 'text-danger';
+}
