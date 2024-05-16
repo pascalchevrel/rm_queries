@@ -529,3 +529,48 @@ $flathub_status = 'text-secondary';
 if ($flathub_release != FIREFOX_RELEASE) {
 	$flathub_status = 'text-danger';
 }
+
+
+// Snapcraft has a public json a bit more involved
+$snapcraft_release = getRemoteFile(
+	url:  'https://api.snapcraft.io/v2/snaps/info/firefox',
+	cache_file: 'snapcraft_firefox_release.json',
+	time: 900,
+	header: 'Snap-Device-Series: 16'
+)['channel-map'];
+
+$snapcraft = [];
+foreach($snapcraft_release as $channels) {
+	if ($channels['channel']['architecture'] =='amd64') {
+		if ($channels['channel']['name'] == 'stable' && $channels['channel']['track'] == 'latest') {
+			$snapcraft['release'] = $channels['version'];
+		}
+
+		if ($channels['channel']['name'] == 'beta' && $channels['channel']['track'] == 'latest') {
+			$snapcraft['beta'] = $channels['version'];
+		}
+
+		if ($channels['channel']['name'] == 'esr/stable') {
+			$snapcraft['esr'] = $channels['version'];
+		}
+	}
+}
+
+$snap_status = [
+	'release' => 'text-secondary',
+	'beta'    => 'text-secondary',
+	'esr'     => 'text-secondary',
+];
+
+
+if (explode('-', $snapcraft['release'])[0] != FIREFOX_RELEASE) {
+	$snap_status['release'] = 'text-danger';
+}
+
+if (explode('-', $snapcraft['beta'])[0] != FIREFOX_BETA) {
+	$snap_status['beta'] = 'text-danger';
+}
+
+if (explode('-', $snapcraft['esr'])[0] != ESR) {
+	$snap_status['esr'] = 'text-danger';
+}

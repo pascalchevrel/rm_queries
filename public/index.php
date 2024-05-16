@@ -286,6 +286,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 <ul class="list-group">
                     <li class="list-group-item card-header list-group-item-primary">MISC</li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">Flathub Release: <span class="<?=$flathub_status?>"><?=$flathub_release?></span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Snapcraft Release: <span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Snapcraft Beta: <span class="<?=$snap_status['beta']?>"><?=$snapcraft["release"]?></span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Snapcraft ESR: <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span></li>
                 </ul>
             </div>
         </div>

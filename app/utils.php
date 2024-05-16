@@ -1,6 +1,6 @@
 <?php
 
-function getRemoteFile($url, $cache_file, $time = 10800) {
+function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
 
 	$cache_file = __DIR__ . '/../cache/' . $cache_file;
 
@@ -8,7 +8,20 @@ function getRemoteFile($url, $cache_file, $time = 10800) {
 	$cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
 
 	if (! $cache_ok) {
-		file_put_contents($cache_file, file_get_contents($url, true));
+		$context = null;
+		if (! is_null($header)) {
+			$context = stream_context_create(
+				[
+				    "http" => [
+				        "method" => "GET",
+				        "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0\r\n" .
+				        			"Snap-Device-Series: 16\r\n"
+				   	]
+				]
+			);
+		}
+
+		file_put_contents($cache_file, file_get_contents($url, false, $context));
 	}
 
 	return json_decode(file_get_contents($cache_file), true);
