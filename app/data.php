@@ -562,7 +562,6 @@ $snap_status = [
 	'esr'     => 'text-secondary',
 ];
 
-
 if (explode('-', $snapcraft['release'])[0] != FIREFOX_RELEASE) {
 	$snap_status['release'] = 'text-danger';
 }
