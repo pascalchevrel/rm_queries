@@ -292,6 +292,11 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                         <div><span>Beta:</span>&nbsp;&nbsp;<span class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span></div>
                         <div><span>ESR:</span>&nbsp;&nbsp;<span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span></div>
                     </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Play Store
+                        <div><span>Release:</span>&nbsp;&nbsp;<span class="<?=$play_status['release']?>"><?=$play_store_release?></span></div>
+                        <div><span>Beta:</span>&nbsp;&nbsp;<span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span></div>
+                    </li>
                 </ul>
             </div>
         </div>

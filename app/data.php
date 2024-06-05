@@ -573,3 +573,19 @@ if (explode('-', $snapcraft['beta'])[0] != FIREFOX_BETA) {
 if (explode('-', $snapcraft['esr'])[0] != ESR) {
 	$snap_status['esr'] = 'text-danger';
 }
+
+$play_store_release = getAndroidVersion('org.mozilla.firefox');
+$play_store_beta = getAndroidVersion('org.mozilla.firefox_beta');
+
+$play_status = [
+	'release' => 'text-secondary',
+	'beta'    => 'text-secondary',
+];
+
+if ($play_store_release != FIREFOX_RELEASE) {
+	$play_status['release'] = 'text-danger';
+}
+
+if ($play_store_beta != FIREFOX_BETA) {
+	$play_status['beta'] = 'text-danger';
+}

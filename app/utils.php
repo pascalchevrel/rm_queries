@@ -78,3 +78,23 @@ function secureText(string $string): string
         FILTER_FLAG_STRIP_LOW
     );
 }
+
+/**
+ * Scrap the Android version from HTL
+ * @param  string $appName [description]
+ * @return [type]           [description]
+ */
+function getAndroidVersion(string $appName): string {
+    $html = file_get_contents('https://play.google.com/store/apps/details?id=' . $appName);
+
+    $matches = [];
+    if ($appName == 'org.mozilla.firefox_beta') {
+    	preg_match('/\[\[\[\"\d+\.\d+b\d+/', $html, $matches);
+	} else {
+    	preg_match('/\[\[\[\"\d+\.\d+\.\d+/', $html, $matches);
+	}
+    if (empty($matches) || count($matches) > 1) {
+        return 'N/A';
+    }
+    return substr(current($matches), 4);
+}
