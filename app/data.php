@@ -589,3 +589,16 @@ if ($play_store_release != FIREFOX_RELEASE) {
 if ($play_store_beta != FIREFOX_BETA) {
 	$play_status['beta'] = 'text-danger';
 }
+
+// Samsung Store has a public json for listings
+$samsung_release = getRemoteFile(
+	url:  'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox',
+	cache_file: 'samsung_firefox_release.json',
+	time: 900,
+)['DetailMain']['contentBinaryVersion'];
+
+$samsung_status = 'text-secondary';
+
+if ($samsung_release != FIREFOX_RELEASE) {
+	$samsung_status = 'text-danger';
+}
