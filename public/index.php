@@ -284,18 +284,24 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </div>
             <div class="col-4">
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">MISC</li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">Flathub <span class="<?=$flathub_status?>"><?=$flathub_release?></span></li>
+                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores</li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Snapcraft
-                        <div><span>Release:</span>&nbsp;&nbsp;<span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span></div>
-                        <div><span>Beta:</span>&nbsp;&nbsp;<span class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span></div>
-                        <div><span>ESR:</span>&nbsp;&nbsp;<span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span></div>
+                        Flathub <span class="<?=$flathub_status?>"><?=$flathub_release?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Play Store
-                        <div><span>Release:</span>&nbsp;&nbsp;<span class="<?=$play_status['release']?>"><?=$play_store_release?></span></div>
-                        <div><span>Beta:</span>&nbsp;&nbsp;<span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span></div>
+                        Snapcraft Release: <span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Snapcraft Beta: <span class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Snapcraft ESR: <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Play Store Release: <span class="<?=$play_status['release']?>"><?=$play_store_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Play Store Beta: <span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span>
                     </li>
                 </ul>
             </div>
