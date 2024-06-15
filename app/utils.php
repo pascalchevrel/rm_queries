@@ -91,8 +91,14 @@ function getAndroidVersion(string $appName): string {
     if ($appName == 'org.mozilla.firefox_beta') {
     	preg_match('/\[\[\[\"\d+\.\d+b\d+/', $html, $matches);
 	} else {
+	    // Try XXX.x.x first
     	preg_match('/\[\[\[\"\d+\.\d+\.\d+/', $html, $matches);
+	    if (empty($matches)) {
+	        // Try xxx.x
+	        preg_match('/\[\[\[\"\d+\.\d+/', $html, $matches);
+	    }
 	}
+
     if (empty($matches) || count($matches) > 1) {
         return 'N/A';
     }
