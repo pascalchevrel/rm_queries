@@ -603,6 +603,10 @@ if ($samsung_release != FIREFOX_RELEASE) {
     $samsung_status = 'text-danger';
 }
 
+// We can't compare that version with what we ship because we don't have it in product-details
+$apple_store_release = getAppleStoreVersion();
+
+
 // I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
 // echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
 

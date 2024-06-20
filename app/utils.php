@@ -80,9 +80,7 @@ function secureText(string $string): string
 }
 
 /**
- * Scrap the Android version from HTL
- * @param  string $appName [description]
- * @return [type]           [description]
+ * Scrap the Android version from HTML
  */
 function getAndroidVersion(string $appName): string {
     $html = file_get_contents('https://play.google.com/store/apps/details?id=' . $appName);
@@ -102,5 +100,23 @@ function getAndroidVersion(string $appName): string {
     if (empty($matches) || count($matches) > 1) {
         return 'N/A';
     }
+
     return substr(current($matches), 4);
+}
+
+/**
+ * Scrap the iOS version from HTML
+ */
+function getAppleStoreVersion(): string {
+
+    $html = file_get_contents('https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926');
+
+    $matches = [];
+    preg_match('/Version \d+\.\d+/', $html, $matches);
+
+    if (empty($matches) || count($matches) > 1) {
+        return 'N/A';
+    }
+
+    return substr(current($matches), 8);
 }
