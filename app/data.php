@@ -2,13 +2,13 @@
 require_once "utils.php";
 
 $firefox_versions = getRemoteFile(
-    'https://product-details.mozilla.org/1.0/firefox_versions.json',
+    External::PD_desktop->value,
     'firefox_versions_local.json',
     900
 );
 
 $fenix_versions = getRemoteFile(
-    'https://product-details.mozilla.org/1.0/mobile_versions.json',
+    External::PD_android->value,
     'mobile_versions_local.json',
     900
 );
@@ -518,7 +518,7 @@ $approved_sec_approval =
 
 // FlatHub Status
 $flathub_firefox = getRemoteFile(
-    'https://flathub.org/api/v2/appstream/org.mozilla.firefox',
+    External::Flatpak_release->value,
     'flathub_firefox_release.json',
     900
 );
@@ -533,7 +533,7 @@ if ($flathub_release != FIREFOX_RELEASE) {
 
 // Snapcraft has a public json a bit more involved
 $snapcraft_release = getRemoteFile(
-    url:  'https://api.snapcraft.io/v2/snaps/info/firefox',
+    url: External::Snap_release->value,
     cache_file: 'snapcraft_firefox_release.json',
     time: 900,
     header: 'Snap-Device-Series: 16'
@@ -592,7 +592,7 @@ if ($play_store_beta != FIREFOX_BETA) {
 
 // Samsung Store has a public json for listings
 $samsung_release = getRemoteFile(
-    url:  'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox',
+    url: External::Samsung_release->value,
     cache_file: 'samsung_firefox_release.json',
     time: 900,
 )['DetailMain']['contentBinaryVersion'];
@@ -610,3 +610,5 @@ $apple_store_release = getAppleStoreVersion();
 // I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
 // echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
 
+// Debug for all extern al ressources fetched placed into this global array
+// var_dump($GLOBALS['urls']);

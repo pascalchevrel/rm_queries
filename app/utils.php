@@ -1,7 +1,25 @@
 <?php
 
-function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
+$GLOBALS['urls'] = [];
 
+enum External: string
+{
+    case PD_desktop      = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
+    case PD_android      = 'https://product-details.mozilla.org/1.0/mobile_versions.json';
+    case Flatpak_release = 'https://flathub.org/api/v2/appstream/org.mozilla.firefox';
+    case Snap_release    = 'https://api.snapcraft.io/v2/snaps/info/firefox';
+    case Play_Store      = 'https://play.google.com/store/apps/details?id=';
+    case Samsung_release = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
+    case Apple_release   = 'https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926';
+}
+
+function gfc(string $url): string {
+    $GLOBALS['urls'][] = $url;
+    return file_get_contents($url);
+}
+
+function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
+    $GLOBALS['urls'][] = $url;
     $cache_file = __DIR__ . '/../cache/' . $cache_file;
 
     // Serve from cache if it is younger than $cache_time
@@ -83,7 +101,7 @@ function secureText(string $string): string
  * Scrap the Android version from HTML
  */
 function getAndroidVersion(string $appName): string {
-    $html = file_get_contents('https://play.google.com/store/apps/details?id=' . $appName);
+    $html = gfc(External::Play_Store->value . $appName);
 
     $matches = [];
     if ($appName == 'org.mozilla.firefox_beta') {
@@ -109,7 +127,7 @@ function getAndroidVersion(string $appName): string {
  */
 function getAppleStoreVersion(): string {
 
-    $html = file_get_contents('https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926');
+    $html = gfc(External::Apple_release->value);
 
     $matches = [];
     preg_match('/Version \d+\.\d+/', $html, $matches);
