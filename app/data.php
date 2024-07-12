@@ -1,13 +1,13 @@
 <?php
 require_once "utils.php";
 
-$firefox_versions = getRemoteFile(
+$firefox_versions = getRemoteJson(
     External::PD_desktop->value,
     'firefox_versions_local.json',
     900
 );
 
-$fenix_versions = getRemoteFile(
+$fenix_versions = getRemoteJson(
     External::PD_android->value,
     'mobile_versions_local.json',
     900
@@ -517,7 +517,7 @@ $approved_sec_approval =
     . '&resolution=---';
 
 // FlatHub Status
-$flathub_firefox = getRemoteFile(
+$flathub_firefox = getRemoteJson(
     External::Flatpak_release->value,
     'flathub_firefox_release.json',
     900
@@ -532,7 +532,7 @@ if ($flathub_release != FIREFOX_RELEASE) {
 
 
 // Snapcraft has a public json a bit more involved
-$snapcraft_release = getRemoteFile(
+$snapcraft_release = getRemoteJson(
     url: External::Snap_release->value,
     cache_file: 'snapcraft_firefox_release.json',
     time: 900,
@@ -591,7 +591,7 @@ if ($play_store_beta != FIREFOX_BETA) {
 }
 
 // Samsung Store has a public json for listings
-$samsung_release = getRemoteFile(
+$samsung_release = getRemoteJson(
     url: External::Samsung_release->value,
     cache_file: 'samsung_firefox_release.json',
     time: 900,
@@ -612,3 +612,24 @@ $apple_store_release = getAppleStoreVersion();
 
 // Debug for all extern al ressources fetched placed into this global array
 // var_dump($GLOBALS['urls']);
+
+
+// Get latest Application Services release on Maven
+// $Maven_AS_nightly = getRemoteFile(
+//     url: External::Maven_AS_nightly->value,
+//     cache_file: 'maven-AS-nightly-metadata.xml',
+//     time: 3600,
+// );
+
+$maven = getLatestMavenVersion();
+$maven_status = 'text-secondary';
+$maven_title = '';
+$maven_date = DateTime::createFromFormat('Ymdhiu', explode('.', $maven)[1]);
+
+echo $maven_date->format('Y m d');
+
+
+if ($maven_date->diff(new \DateTime())->days >= 2) {
+    $maven_status = 'text-danger';
+    $maven_title = 'Last Application Services build is >= 2 days';
+}

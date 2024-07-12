@@ -4,13 +4,14 @@ $GLOBALS['urls'] = [];
 
 enum External: string
 {
-    case PD_desktop      = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
-    case PD_android      = 'https://product-details.mozilla.org/1.0/mobile_versions.json';
-    case Flatpak_release = 'https://flathub.org/api/v2/appstream/org.mozilla.firefox';
-    case Snap_release    = 'https://api.snapcraft.io/v2/snaps/info/firefox';
-    case Play_Store      = 'https://play.google.com/store/apps/details?id=';
-    case Samsung_release = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
-    case Apple_release   = 'https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926';
+    case PD_desktop       = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
+    case PD_android       = 'https://product-details.mozilla.org/1.0/mobile_versions.json';
+    case Flatpak_release  = 'https://flathub.org/api/v2/appstream/org.mozilla.firefox';
+    case Snap_release     = 'https://api.snapcraft.io/v2/snaps/info/firefox';
+    case Play_Store       = 'https://play.google.com/store/apps/details?id=';
+    case Samsung_release  = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
+    case Apple_release    = 'https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926';
+    case Maven_AS_nightly = 'https://maven.mozilla.org/maven2/org/mozilla/appservices/nightly/full-megazord/maven-metadata.xml';
 }
 
 function gfc(string $url): string {
@@ -42,7 +43,11 @@ function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
         file_put_contents($cache_file, file_get_contents($url, false, $context));
     }
 
-    return json_decode(file_get_contents($cache_file), true);
+    return file_get_contents($cache_file);
+}
+
+function getRemoteJson($url, $cache_file, $time = 10800, $header = null) {
+    return json_decode(getRemoteFile($url, $cache_file, $time, $header), true);
 }
 
 function HTMLList(array $elements) : string {
@@ -137,4 +142,18 @@ function getAppleStoreVersion(): string {
     }
 
     return substr(current($matches), 8);
+}
+
+
+function getLatestMavenVersion(): string {
+    $xml = gfc(External::Maven_AS_nightly->value);
+
+    $matches = [];
+    preg_match('/<latest>(.+?)<\/latest>/', $xml, $matches);
+
+    if (empty($matches) || count($matches) > 2) {
+        return 'N/A';
+    }
+
+    return $matches[1];
 }

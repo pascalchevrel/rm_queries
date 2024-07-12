@@ -178,6 +178,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($recent_sec_bugs_nightly, "Recently fixed security bugs, last " . $recent_sec . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
                     <li class="<?=$li_default?>"><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Maven Application Services: <span class="<?=$maven_status?>" title="<?=$maven_title?>"><?=$maven?></span>
+                    </li>
                 </ul>
             </div>
 
