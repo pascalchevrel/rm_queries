@@ -626,9 +626,6 @@ $maven_status = 'text-secondary';
 $maven_title = '';
 $maven_date = DateTime::createFromFormat('Ymdhiu', explode('.', $maven)[1]);
 
-echo $maven_date->format('Y m d');
-
-
 if ($maven_date->diff(new \DateTime())->days >= 2) {
     $maven_status = 'text-danger';
     $maven_title = 'Last Application Services build is >= 2 days';
