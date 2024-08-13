@@ -582,7 +582,7 @@ $play_status = [
     'beta'    => 'text-secondary',
 ];
 
-if ($play_store_release != FIREFOX_RELEASE) {
+if ($play_store_release != FENIX_RELEASE) {
     $play_status['release'] = 'text-danger';
 }
 
@@ -599,7 +599,7 @@ $samsung_release = getRemoteJson(
 
 $samsung_status = 'text-secondary';
 
-if ($samsung_release != FIREFOX_RELEASE) {
+if ($samsung_release != FENIX_RELEASE) {
     $samsung_status = 'text-danger';
 }
 
