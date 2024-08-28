@@ -624,9 +624,13 @@ $apple_store_release = getAppleStoreVersion();
 $maven = getLatestMavenVersion();
 $maven_status = 'text-secondary';
 $maven_title = '';
-$maven_date = DateTime::createFromFormat('Ymdhiu', explode('.', $maven)[1]);
+$maven_date = DateTime::createFromFormat(
+    'Ymd',
+    substr(explode('.', $maven)[1], 0, 8)
+);
 
-if ($maven_date->diff(new \DateTime())->days >= 2) {
+
+if ($maven_date->diff(new DateTime())->days >= 2) {
     $maven_status = 'text-danger';
     $maven_title = 'Last Application Services build is >= 2 days';
 }
