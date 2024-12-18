@@ -258,7 +258,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
         <div class="row mt-2">
 
-            <?php if (ESR_NEXT): ?>
+            <?php if (ESR_NEXT or ESR115): ?>
             <div class="col-4">
                 <ul class="list-group">
                     <li class="list-group-item card-header list-group-item-primary">ESR <?=$old_esr?></li>
@@ -266,7 +266,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
-                    <?=$rest_list_item_link('TrackingESR',  $tracking_question_esr, "tracking? for ESR ${old_esr}")?>
+                    <?=$old_esr_link($rest_list_item_link('TrackingESR',  $tracking_question_esr, "tracking? for ESR ${old_esr}"))?>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR ${old_esr}"))?></li>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${old_esr}"))?></li>
                 </ul>

@@ -15,6 +15,7 @@ $fenix_versions = getRemoteJson(
 
 define('ESR',               $firefox_versions["FIREFOX_ESR"]);
 define('ESR_NEXT',          $firefox_versions["FIREFOX_ESR_NEXT"]);
+define('ESR115',            $firefox_versions['FIREFOX_ESR115']);
 define('FIREFOX_NIGHTLY',   $firefox_versions["FIREFOX_NIGHTLY"]);
 define('DEV_EDITION',       $firefox_versions["FIREFOX_DEVEDITION"]);
 define('FIREFOX_BETA',      $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
@@ -25,7 +26,7 @@ $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
 $main_release = (int) FIREFOX_RELEASE;
 $main_esr     = (int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
-$old_esr      = (int) (ESR_NEXT != "" ? ESR : ESR_NEXT);
+$old_esr      = (int) (ESR115 != '' ? ESR115 : (ESR_NEXT != '' ? ESR : ESR_NEXT));
 $last_beta    = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
@@ -608,7 +609,7 @@ $apple_store_release = getAppleStoreVersion();
 
 
 // I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
-// echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
+// echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeed    gefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
 
 // Debug for all extern al ressources fetched placed into this global array
 // var_dump($GLOBALS['urls']);
