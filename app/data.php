@@ -554,17 +554,56 @@ foreach($snapcraft_release as $channels) {
         if ($channels['channel']['name'] == 'esr/stable') {
             $snapcraft['esr'] = $channels['version'];
         }
+
+        if ($channels['channel']['name'] == 'candidate') {
+            $snapcraft['stable_candidate'] = $channels['version'];
+        }
+
+        if ($channels['channel']['name'] == 'esr/candidate') {
+            $snapcraft['esr_candidate'] = $channels['version'];
+        }
     }
 }
 
 $snap_status = [
-    'release' => 'text-secondary',
-    'beta'    => 'text-secondary',
-    'esr'     => 'text-secondary',
+    'release'          => 'text-secondary',
+    'beta'             => 'text-secondary',
+    'esr'              => 'text-secondary',
+    'esr_candidate'    => 'text-secondary',
+    'stable_candidate' => 'text-secondary',
 ];
 
 if (explode('-', $snapcraft['release'])[0] != FIREFOX_RELEASE) {
     $snap_status['release'] = 'text-danger';
+}
+
+// We want to make sure that our release candidate is proposed by snap builds
+$beta_is_rc = false;
+if ($main_beta >= 9) {
+    // Usually we have 9 betas, let's check balrog to see if we shipped our RC
+    $beta_balrog = getRemoteJson(
+    External::Balrog->value . 'firefox-beta',
+    'firefox_beta_local.json',
+    900
+    )['mapping'];
+
+    $beta_balrog = explode('.', $beta_balrog)[1];
+    if (! str_contains($beta_balrog, '0b')) {
+        $beta_is_rc = true;
+    }
+    unset($beta_balrog);
+}
+
+$snap_stable_candidate_missing = false;
+if ($beta_is_rc) {
+    // $snapcra$snapcraft['stable_candidate']
+    $clean_snap = explode('-', $snapcraft['stable_candidate'])[0];
+    $clean_snap = (int) explode('.', $snapcraft['stable_candidate'])[0];
+    if ($clean_snap < $main_beta) {
+        $snap_stable_candidate_missing = true;
+        $snap_status['stable_candidate'] = 'text-danger';
+    }
+    unset($clean_snap);
 }
 
 if (explode('-', $snapcraft['beta'])[0] != FIREFOX_BETA) {

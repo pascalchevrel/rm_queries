@@ -252,6 +252,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
                     <li class="<?=$li_default?>"><?=$link($many_people_CCed_release, "Fixed and many people CCed on ${main_release}")?></li>
                     <li class="<?=$li_default?>"><?=$link($webcompat_release, "Fixed Webcompat in ${main_beta}")?></li>
+                    <?php if ($snap_stable_candidate_missing) { ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Missing Snap Release candidate: <span class="<?=$snap_status['stable_candidate']?>"><?=$snapcraft["stable_candidate"]?></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

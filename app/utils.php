@@ -6,6 +6,7 @@ enum External: string
 {
     case PD_desktop       = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
     case PD_android       = 'https://product-details.mozilla.org/1.0/mobile_versions.json';
+    case Balrog           = 'https://aus-api.mozilla.org/api/v1/rules/';
     case Flatpak_release  = 'https://flathub.org/api/v2/appstream/org.mozilla.firefox';
     case Snap_release     = 'https://api.snapcraft.io/v2/snaps/info/firefox';
     case Play_Store       = 'https://play.google.com/store/apps/details?id=';
