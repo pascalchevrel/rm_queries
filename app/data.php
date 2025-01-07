@@ -647,12 +647,23 @@ if ($samsung_release != FENIX_RELEASE) {
 $apple_store_release = getAppleStoreVersion();
 
 
+
 // I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
-// echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeed    gefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
+// echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
+// I also found: https://storeedgefd.dsx.mp.microsoft.com/v9.0/packageManifests/9nzvdkpmr9rd
+// via this blog post: https://skiptotheendpoint.co.uk/under-the-hood-pt-2-microsoft-store-apps/
+// Also https://store.rg-adguard.net/
+// Use Winget data as it seems pretty much up to date and synced from the Store
 
 // Debug for all extern al ressources fetched placed into this global array
 // var_dump($GLOBALS['urls']);
 
+$microsoft_store_release = getWindowsStoreVersion();
+if ($microsoft_store_release == FIREFOX_RELEASE) {
+    $microsoft_store_status = 'text-secundary';
+} else {
+    $microsoft_store_status = 'text-danger';
+}
 
 // Get latest Application Services release on Maven
 // $Maven_AS_nightly = getRemoteFile(

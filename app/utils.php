@@ -1,5 +1,7 @@
 <?php
 
+use \Dom\HTMLDocument as HTML;
+
 $GLOBALS['urls'] = [];
 
 enum External: string
@@ -20,6 +22,42 @@ function gfc(string $url): string {
     return file_get_contents($url);
 }
 
+function getWindowsStoreVersion($time = 10800): string {
+
+    $cache_file = __DIR__ . '/../cache/' . 'microsoftstore.txt';
+    // Serve from cache if it is younger than $cache_time
+    $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
+
+    if (! $cache_ok) {
+        $context = stream_context_create(
+            [
+                "http" => [
+                    "method"        => "POST",
+                    "header"        => "Content-Type: application/x-www-form-urlencoded\r\n"
+                                    . "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n"
+                                    . "Snap-Device-Series: 16\r\n",
+                    'content'       => 'type=ProductId&url=9nzvdkpmr9rd',
+                ]
+            ]
+        );
+
+        $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, $context);
+        $dom = HTML::createFromString($data, LIBXML_NOERROR);
+        $version = $dom->querySelector('td > a')->textContent;
+        preg_match('/\d+\.\d+\.\d+/', $version, $matches);
+
+        if (is_null($matches[0])) {
+            $version = 'N/A';
+        } else {
+            $version = $matches[0];
+        }
+
+        file_put_contents($cache_file, $version);
+    }
+
+    return file_get_contents($cache_file);
+}
+
 function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
     $GLOBALS['urls'][] = $url;
     $cache_file = __DIR__ . '/../cache/' . $cache_file;
@@ -34,7 +72,7 @@ function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
                 [
                     "http" => [
                         "method" => "GET",
-                        "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0\r\n" .
+                        "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n" .
                                     "Snap-Device-Series: 16\r\n"
                     ]
                 ]

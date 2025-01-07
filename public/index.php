@@ -315,6 +315,10 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Apple <span class="text-secondary"><?=$apple_store_release?></span>
                     </li>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
+                    </li>
                 </ul>
             </div>
         </div>
