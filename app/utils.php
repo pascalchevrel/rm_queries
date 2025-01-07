@@ -46,7 +46,7 @@ function getWindowsStoreVersion($time = 3600): string {
             $version = 'n/a';
         }
 
-        if (isset($version)) {
+        if (isset($version) && $version != 'n/a') {
             $dom = HTML::createFromString($data, LIBXML_NOERROR);
             $version = @$dom->querySelector('td > a')->textContent;
             preg_match('/\d+\.\d+\.\d+/', $version, $matches);
