@@ -22,7 +22,7 @@ function gfc(string $url): string {
     return file_get_contents($url);
 }
 
-function getWindowsStoreVersion($time = 10800): string {
+function getWindowsStoreVersion($time = 3600): string {
 
     $cache_file = __DIR__ . '/../cache/' . 'microsoftstore.txt';
     // Serve from cache if it is younger than $cache_time
