@@ -29,13 +29,13 @@ function getWindowsStoreVersion($time = 3600): string {
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
 
     if (! $cache_ok) {
+        $version = 'n/a';
         $context = stream_context_create(
             [
                 "http" => [
                     "method"        => "POST",
                     "header"        => "Content-Type: application/x-www-form-urlencoded\r\n"
-                                    . "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n"
-                                    . "Snap-Device-Series: 16\r\n",
+                                     . "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n",
                     'content'       => 'type=ProductId&url=9nzvdkpmr9rd',
                 ]
             ]
@@ -43,17 +43,19 @@ function getWindowsStoreVersion($time = 3600): string {
 
         $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, $context);
         if ($data === false || is_null($data)) {
-            return 'N/A';
+            $version = 'n/a';
         }
 
-        $dom = HTML::createFromString($data, LIBXML_NOERROR);
-        $version = @$dom->querySelector('td > a')->textContent;
-        preg_match('/\d+\.\d+\.\d+/', $version, $matches);
+        if (isset($version)) {
+            $dom = HTML::createFromString($data, LIBXML_NOERROR);
+            $version = @$dom->querySelector('td > a')->textContent;
+            preg_match('/\d+\.\d+\.\d+/', $version, $matches);
 
-        if (is_null($matches[0])) {
-            return 'N/A';
-        } else {
-            $version = $matches[0];
+            if (is_null($matches[0])) {
+                $version = 'n/a';
+            } else {
+                $version = $matches[0];
+            }
         }
 
         file_put_contents($cache_file, $version);
