@@ -55,6 +55,9 @@ function getWindowsStoreVersion($time = 3600): string {
                 $version = 'n/a';
             } else {
                 $version = $matches[0];
+                if (str_ends_with($version, '.0.0')) {
+                    $version = str_replace('.0.0', '.0', $version);
+                }
             }
         }
 
