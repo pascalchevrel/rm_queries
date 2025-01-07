@@ -652,18 +652,11 @@ $apple_store_release = getAppleStoreVersion();
 // echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
 // I also found: https://storeedgefd.dsx.mp.microsoft.com/v9.0/packageManifests/9nzvdkpmr9rd
 // via this blog post: https://skiptotheendpoint.co.uk/under-the-hood-pt-2-microsoft-store-apps/
-// Also https://store.rg-adguard.net/
-// Use Winget data as it seems pretty much up to date and synced from the Store
-
-// Debug for all extern al ressources fetched placed into this global array
-// var_dump($GLOBALS['urls']);
-
+// From https://store.rg-adguard.net/ which has an HTML API and scraps the MS Store
 $microsoft_store_release = getWindowsStoreVersion();
-if ($microsoft_store_release == FIREFOX_RELEASE) {
-    $microsoft_store_status = 'text-secundary';
-} else {
-    $microsoft_store_status = 'text-danger';
-}
+$microsoft_store_status = ($microsoft_store_release == FIREFOX_RELEASE)
+    ? 'text-secondary'
+    : 'text-danger';
 
 // Get latest Application Services release on Maven
 // $Maven_AS_nightly = getRemoteFile(
