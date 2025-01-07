@@ -42,12 +42,16 @@ function getWindowsStoreVersion($time = 10800): string {
         );
 
         $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, $context);
+        if ($data === false || is_null($data)) {
+            return 'N/A';
+        }
+
         $dom = HTML::createFromString($data, LIBXML_NOERROR);
-        $version = $dom->querySelector('td > a')->textContent;
+        $version = @$dom->querySelector('td > a')->textContent;
         preg_match('/\d+\.\d+\.\d+/', $version, $matches);
 
         if (is_null($matches[0])) {
-            $version = 'N/A';
+            return 'N/A';
         } else {
             $version = $matches[0];
         }
