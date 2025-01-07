@@ -172,12 +172,12 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     </li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_nightly, 'Needinfo? > ' . $ni_days_nightly . ' days')?></li>
                     <li class="<?=$li_default?>"><?=$link($recently_fixed_crashes, 'Crashes fixed, last ' . $last_days_crashes .' days')?></li>
-                    <li class="<?=$li_default?>"><?=$link($security_nightly, "Security bugs for ${main_nightly}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($security_nightly, "Security bugs for {$main_nightly}?")?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_sec_approval, "Open bugs with sec-approval?")?></li>
                     <li class="<?=$li_default?>"><?=$link($approved_sec_approval, "Open bugs with sec-approval+")?></li>
                     <li class="<?=$li_default?>"><?=$link($recent_sec_bugs_nightly, "Recently fixed security bugs, last " . $recent_sec . ' days')?></li>
-                    <li class="<?=$li_default?>"><?=$link($enhancement_nightly, "Enhancements for ${main_nightly}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on ${main_nightly}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($enhancement_nightly, "Enhancements for {$main_nightly}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_nightly, "Fixed and many people CCed on {$main_nightly}")?></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Maven Application Services: <span class="<?=$maven_status?>" title="<?=$maven_title?>"><?=$maven?></span>
                     </li>
@@ -193,7 +193,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
-                    <?=$rest_list_item_link('TrackingBeta',  $tracking_question_beta, "Tracking? for ${main_beta}")?>
+                    <?=$rest_list_item_link('TrackingBeta',  $tracking_question_beta, "Tracking? for {$main_beta}")?>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_beta, 'Tracking+ not fixed')?></li>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_beta, 'Tracking+ unassigned')?></li>
                     <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3" title="7 days">
@@ -214,11 +214,11 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     </li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_beta, 'Fixed fix-optionals')?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_beta, 'Needinfo? > ' . $ni_days . ' days')?></li>
-                    <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting ${main_beta}?")?></li>
-                    <li class="<?=$li_default?>"><?=$link($security_beta, "Security bugs for ${main_beta}?")?></li>
-                    <li class="<?=$li_default?>"><?=$link($enhancement_beta, "Enhancements for ${main_beta}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_beta, "Fixed and many people CCed on ${main_beta}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($webcompat_beta, "Fixed Webcompat in ${main_nightly}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_beta, "Uplift fixed regressions affecting {$main_beta}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($security_beta, "Security bugs for {$main_beta}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($enhancement_beta, "Enhancements for {$main_beta}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_beta, "Fixed and many people CCed on {$main_beta}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($webcompat_beta, "Fixed Webcompat in {$main_nightly}")?></li>
                     <li class="<?=$li_default?>"><?=$link($webcompat_dupes_2m, "Webcompat marked as dupes")?></li>
                     <li class="<?=$li_default?>"><?=$link($fixed_a11y_issues_beta, "Uplift fixed Accessibility issues?")?></li>
                     <li class="<?=$li_default?>"><?=$link($beta_uplift_chatter, "Uplift chatter")?></li>
@@ -234,7 +234,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
-                    <?=$rest_list_item_link('TrackingRelease',  $tracking_question_release, "Tracking? for release (${main_release})")?>
+                    <?=$rest_list_item_link('TrackingRelease',  $tracking_question_release, "Tracking? for release ({$main_release})")?>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_release, 'Tracking+ not fixed')?></li>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_unassigned_release, 'Tracking+ unassigned')?></li>
                    <li class="<?=$li_default?> d-flex justify-content-evenly p-0 ps-3">
@@ -247,11 +247,11 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     </li>
                     <li class="<?=$li_default?>"><?=$link($resolved_fix_optional_release, 'Fixed fix-optionals')?></li>
                     <li class="<?=$li_default?>"><?=$link($pending_needinfo_release, 'Needinfo? > ' . $ni_days . ' days')?>  </li>
-                    <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting ${main_release}?")?></li>
-                    <li class="<?=$li_default?>"><?=$link($security_release, "Security bugs for ${main_release}?")?></li>
-                    <li class="<?=$li_default?>"><?=$link($enhancement_release, "Enhancements for ${main_release}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_release, "Fixed and many people CCed on ${main_release}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($webcompat_release, "Fixed Webcompat in ${main_beta}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($fixed_regressions_candidates_release, "Uplift fixed regressions affecting {$main_release}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($security_release, "Security bugs for {$main_release}?")?></li>
+                    <li class="<?=$li_default?>"><?=$link($enhancement_release, "Enhancements for {$main_release}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($many_people_CCed_release, "Fixed and many people CCed on {$main_release}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($webcompat_release, "Fixed Webcompat in {$main_beta}")?></li>
                     <?php if ($snap_stable_candidate_missing) { ?>
                     <li class="list-group-item d-flex justify-content-between align-items-center">Missing Snap Release candidate: <span class="<?=$snap_status['stable_candidate']?>"><?=$snapcraft["stable_candidate"]?></li>
                     <?php } ?>
@@ -269,9 +269,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
                     <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
-                    <?=$old_esr_link($rest_list_item_link('TrackingESR',  $tracking_question_esr, "tracking? for ESR ${old_esr}"))?>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR ${old_esr}"))?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${old_esr}"))?></li>
+                    <?=$old_esr_link($rest_list_item_link('TrackingESR',  $tracking_question_esr, "tracking? for ESR {$old_esr}"))?>
+                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR {$old_esr}"))?></li>
+                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$old_esr}"))?></li>
                 </ul>
             </div>
             <?php endif; ?>
@@ -283,9 +283,9 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($relnotes_esr, 'Release Note Requests')?></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
-                    <?=$rest_list_item_link('TrackingESR', $tracking_question_esr, "tracking? for ESR ${main_esr}")?>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_esr, "tracking+ for ESR ${main_esr}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR ${main_esr}")?></li>
+                    <?=$rest_list_item_link('TrackingESR', $tracking_question_esr, "tracking? for ESR {$main_esr}")?>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_esr, "tracking+ for ESR {$main_esr}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$main_esr}")?></li>
                 </ul>
             </div>
             <div class="col-4">
