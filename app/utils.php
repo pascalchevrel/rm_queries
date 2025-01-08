@@ -23,32 +23,33 @@ function gfc(string $url): string {
 }
 
 function getWindowsStoreVersion($time = 3600): string {
-
-    $cache_file = __DIR__ . '/../cache/' . 'microsoftstore.txt';
+    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
     // Serve from cache if it is younger than $cache_time
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
 
     if (! $cache_ok) {
         $version = '';
-        $context = stream_context_create(
-            [
-                "http" => [
-                    "method"        => "POST",
-                    "header"        => "Content-Type: application/x-www-form-urlencoded\r\n"
-                                     . "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n",
-                    'content'       => 'type=ProductId&url=9nzvdkpmr9rd',
-                ]
+        $query = [
+            'type' => 'ProductId',
+            'url'  => '9nzvdkpmr9rd',
+            'ring' => 'Retail',
+            'lang' => 'fr',
+        ];
+        $context = [
+            'http' => [
+                'method'  => 'POST',
+                'header'  => "Content-Type: application/x-www-form-urlencoded\r\n" .
+                             "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n",
+                'content' => http_build_query($query),
             ]
-        );
+        ];
 
-        $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, $context);
-        if ($data === false || is_null($data)) {
+        $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, stream_context_create($context));
+        if ($data === false) {
             $version = 'n/a';
-        }
-
-        if (isset($version) && $version != 'n/a') {
+        } else {
             $dom = HTML::createFromString($data, LIBXML_NOERROR);
-            $version = @$dom->querySelector('td > a')->textContent;
+            $version = $dom->querySelector('td > a')->textContent;
             preg_match('/\d+\.\d+\.\d+/', $version, $matches);
 
             if (is_null($matches[0])) {
@@ -60,7 +61,6 @@ function getWindowsStoreVersion($time = 3600): string {
                 }
             }
         }
-
         file_put_contents($cache_file, $version);
     }
 
