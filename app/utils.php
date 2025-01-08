@@ -29,7 +29,7 @@ function getWindowsStoreVersion($time = 3600): string {
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
 
     if (! $cache_ok) {
-        $version = 'n/a';
+        $version = '';
         $context = stream_context_create(
             [
                 "http" => [
@@ -80,6 +80,7 @@ function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
             $context = stream_context_create(
                 [
                     "http" => [
+
                         "method" => "GET",
                         "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n" .
                                     "Snap-Device-Series: 16\r\n"
