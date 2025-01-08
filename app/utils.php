@@ -22,7 +22,40 @@ function gfc(string $url): string {
     return file_get_contents($url);
 }
 
+
+
 function getWindowsStoreVersion($time = 3600): string {
+    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
+    // Serve from cache if it is younger than $cache_time
+    $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
+
+    if (! $cache_ok) {
+        $version = '';
+        $url = "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/797ba8fb-7b8b-404b-9473-32731ceef9a7";
+        $headers = get_headers($url);
+        $headers = array_filter($headers, fn($a) => str_starts_with($a, 'Content-Disposition'));
+        $headers = array_values($headers)[0];
+
+        if (is_null($headers)) {
+            $version = 'n/a';
+        } else {
+            preg_match('/\d+\.\d+\.\d+/', $headers, $matches);
+            if (is_null($matches[0])) {
+                $version = 'n/a';
+            } else {
+                $version = $matches[0];
+                if (str_ends_with($version, '.0.0')) {
+                    $version = str_replace('.0.0', '.0', $version);
+                }
+            }
+        }
+        file_put_contents($cache_file, $version);
+    }
+
+    return file_get_contents($cache_file);
+}
+
+function getWindowsStoreVersionOLD($time = 3600): string {
     $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
     // Serve from cache if it is younger than $cache_time
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
