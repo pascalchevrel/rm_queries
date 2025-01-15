@@ -646,14 +646,16 @@ if ($samsung_release != FENIX_RELEASE) {
 // We can't compare that version with what we ship because we don't have it in product-details
 $apple_store_release = getAppleStoreVersion();
 
-
-
+//https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2
+// https://github.com/StoreDev/StoreLib
+//https://github.com/ThomasPe/MS-Store-API/issues/9
+// https://github.com/ThomasPe/MS-Store-API?tab=readme-ov-file
 // I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
 // echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
 // I also found: https://storeedgefd.dsx.mp.microsoft.com/v9.0/packageManifests/9nzvdkpmr9rd
 // via this blog post: https://skiptotheendpoint.co.uk/under-the-hood-pt-2-microsoft-store-apps/
 // From https://store.rg-adguard.net/ which has an HTML API and scraps the MS Store
-$microsoft_store_release = getWindowsStoreVersionOLD(time: 900);
+$microsoft_store_release = getWindowsStoreVersion(time: 900);
 $microsoft_store_status = ($microsoft_store_release == FIREFOX_RELEASE)
     ? 'text-secondary'
     : 'text-danger';

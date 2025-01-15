@@ -31,6 +31,35 @@ function getWindowsStoreVersion($time = 3600): string {
 
     if (! $cache_ok) {
         $version = '';
+        $url = "https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2";
+        $data = json_decode(file_get_contents($url), true);
+        $version = $data['Products'][0]['DisplaySkuAvailabilities'][0]['Sku']['Properties']['Packages'][0]['PackageFullName'];
+
+        if (is_null($version)) {
+            $version = 'n/a';
+        } else {
+            preg_match('/\d+\.\d+\.\d+/', $version, $matches);
+            if (is_null($matches[0])) {
+                $version = 'n/a';
+            } else {
+                $version = $matches[0];
+                if (str_ends_with($version, '.0.0')) {
+                    $version = str_replace('.0.0', '.0', $version);
+                }
+            }
+        }
+        file_put_contents($cache_file, $version);
+    }
+
+    return file_get_contents($cache_file);
+}
+function getWindowsStoreVersionOLD($time = 3600): string {
+    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
+    // Serve from cache if it is younger than $cache_time
+    $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
+
+    if (! $cache_ok) {
+        $version = '';
         $url = "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/797ba8fb-7b8b-404b-9473-32731ceef9a7";
         $headers = get_headers($url);
         $headers = array_filter($headers, fn($a) => str_starts_with($a, 'Content-Disposition'));
@@ -55,7 +84,7 @@ function getWindowsStoreVersion($time = 3600): string {
     return file_get_contents($cache_file);
 }
 
-function getWindowsStoreVersionOLD($time = 3600): string {
+function getWindowsStoreVersionOLDER($time = 3600): string {
     $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
     // Serve from cache if it is younger than $cache_time
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
@@ -79,7 +108,7 @@ function getWindowsStoreVersionOLD($time = 3600): string {
         ];
 
         $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, stream_context_create($context));
-        var_dump($data);
+
         if ($data === false) {
             $version = 'n/a';
         } else {
