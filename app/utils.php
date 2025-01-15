@@ -63,21 +63,23 @@ function getWindowsStoreVersionOLD($time = 3600): string {
     if (! $cache_ok) {
         $version = '';
         $query = [
-            'type' => 'ProductId',
-            'url'  => '9nzvdkpmr9rd',
+            'type' => 'url',
+            'url'  => 'https://apps.microsoft.com/detail/9nzvdkpmr9rd',
             'ring' => 'Retail',
-            'lang' => 'fr',
+            'lang' => 'en-US',
         ];
         $context = [
             'http' => [
                 'method'  => 'POST',
                 'header'  => "Content-Type: application/x-www-form-urlencoded\r\n" .
-                             "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n",
+                             "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n" .
+                             "Accept-Language: en-US,en;q=0.5\r\n",
                 'content' => http_build_query($query),
             ]
         ];
 
         $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, stream_context_create($context));
+        var_dump($data);
         if ($data === false) {
             $version = 'n/a';
         } else {

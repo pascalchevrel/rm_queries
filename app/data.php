@@ -653,7 +653,7 @@ $apple_store_release = getAppleStoreVersion();
 // I also found: https://storeedgefd.dsx.mp.microsoft.com/v9.0/packageManifests/9nzvdkpmr9rd
 // via this blog post: https://skiptotheendpoint.co.uk/under-the-hood-pt-2-microsoft-store-apps/
 // From https://store.rg-adguard.net/ which has an HTML API and scraps the MS Store
-$microsoft_store_release = getWindowsStoreVersion(time: 900);
+$microsoft_store_release = getWindowsStoreVersionOLD(time: 900);
 $microsoft_store_status = ($microsoft_store_release == FIREFOX_RELEASE)
     ? 'text-secondary'
     : 'text-danger';
