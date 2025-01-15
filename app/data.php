@@ -544,27 +544,26 @@ $snapcraft = [];
 foreach($snapcraft_release as $channels) {
     if ($channels['channel']['architecture'] =='amd64') {
         if ($channels['channel']['name'] == 'stable' && $channels['channel']['track'] == 'latest') {
-            $snapcraft['release'] = $channels['version'];
+            $snapcraft['release'] = explode('-', $channels['version'])[0];
         }
 
         if ($channels['channel']['name'] == 'beta' && $channels['channel']['track'] == 'latest') {
-            $snapcraft['beta'] = $channels['version'];
+            $snapcraft['beta'] = explode('-', $channels['version'])[0];
         }
 
         if ($channels['channel']['name'] == 'esr/stable') {
-            $snapcraft['esr'] = $channels['version'];
+            $snapcraft['esr'] = explode('-', $channels['version'])[0];
         }
 
         if ($channels['channel']['name'] == 'candidate') {
-            $snapcraft['stable_candidate'] = $channels['version'];
+            $snapcraft['stable_candidate'] = explode('-', $channels['version'])[0];
         }
 
         if ($channels['channel']['name'] == 'esr/candidate') {
-            $snapcraft['esr_candidate'] = $channels['version'];
+            $snapcraft['esr_candidate'] = explode('-', $channels['version'])[0];
         }
     }
 }
-
 $snap_status = [
     'release'          => 'text-secondary',
     'beta'             => 'text-secondary',
@@ -573,7 +572,7 @@ $snap_status = [
     'stable_candidate' => 'text-secondary',
 ];
 
-if (explode('-', $snapcraft['release'])[0] != FIREFOX_RELEASE) {
+if ($snapcraft['release'] != FIREFOX_RELEASE) {
     $snap_status['release'] = 'text-danger';
 }
 
@@ -597,7 +596,6 @@ if ($main_beta >= 9) {
 $snap_stable_candidate_missing = false;
 if ($beta_is_rc) {
     // $snapcra$snapcraft['stable_candidate']
-    $clean_snap = explode('-', $snapcraft['stable_candidate'])[0];
     $clean_snap = (int) explode('.', $snapcraft['stable_candidate'])[0];
     if ($clean_snap < $main_beta) {
         $snap_stable_candidate_missing = true;
@@ -606,11 +604,11 @@ if ($beta_is_rc) {
     unset($clean_snap);
 }
 
-if (explode('-', $snapcraft['beta'])[0] != FIREFOX_BETA) {
+if ($snapcraft['beta'] != FIREFOX_BETA) {
     $snap_status['beta'] = 'text-danger';
 }
 
-if (explode('-', $snapcraft['esr'])[0] != ESR) {
+if ($snapcraft['esr'] != ESR) {
     $snap_status['esr'] = 'text-danger';
 }
 
@@ -646,7 +644,7 @@ if ($samsung_release != FENIX_RELEASE) {
 // We can't compare that version with what we ship because we don't have it in product-details
 $apple_store_release = getAppleStoreVersion();
 
-//https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2
+//https://displaycataslog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2
 // https://github.com/StoreDev/StoreLib
 //https://github.com/ThomasPe/MS-Store-API/issues/9
 // https://github.com/ThomasPe/MS-Store-API?tab=readme-ov-file
