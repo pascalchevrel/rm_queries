@@ -1,9 +1,15 @@
 <?php
 
-use \Dom\HTMLDocument as HTML;
-
+/**
+ * Global array for debugging purposes
+ */
 $GLOBALS['urls'] = [];
 
+const CACHE = __DIR__ . '/../cache/';
+
+/**
+ * All the external sources of data
+ */
 enum External: string
 {
     case PD_desktop       = 'https://product-details.mozilla.org/1.0/firefox_versions.json';
@@ -15,24 +21,29 @@ enum External: string
     case Samsung_release  = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
     case Apple_release    = 'https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926';
     case Maven_AS_nightly = 'https://maven.mozilla.org/maven2/org/mozilla/appservices/nightly/full-megazord/maven-metadata.xml';
+    case Microsoft_Store  = 'https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2';
 }
 
-function gfc(string $url): string {
+/**
+ * Utility alias to file_get_contents() that also put request in a
+ * debug global array
+ */
+function gfc(string $url): string|false {
     $GLOBALS['urls'][] = $url;
     return file_get_contents($url);
 }
 
-
-
+/**
+ * Extract Firefox version from a Microsoft Store API endpoint
+ */
 function getWindowsStoreVersion($time = 3600): string {
-    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
+    $cache_file = CACHE . 'microsoft_store.txt';
     // Serve from cache if it is younger than $cache_time
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
 
     if (! $cache_ok) {
         $version = '';
-        $url = "https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2";
-        $data = json_decode(file_get_contents($url), true);
+        $data = json_decode(gfc(External::Maven_AS_nightly->value), true);
         $version = $data['Products'][0]['DisplaySkuAvailabilities'][0]['Sku']['Properties']['Packages'][0]['PackageFullName'];
 
         if (is_null($version)) {
@@ -53,87 +64,10 @@ function getWindowsStoreVersion($time = 3600): string {
 
     return file_get_contents($cache_file);
 }
-function getWindowsStoreVersionOLD($time = 3600): string {
-    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
-    // Serve from cache if it is younger than $cache_time
-    $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
-
-    if (! $cache_ok) {
-        $version = '';
-        $url = "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/797ba8fb-7b8b-404b-9473-32731ceef9a7";
-        $headers = get_headers($url);
-        $headers = array_filter($headers, fn($a) => str_starts_with($a, 'Content-Disposition'));
-        $headers = array_values($headers)[0];
-
-        if (is_null($headers)) {
-            $version = 'n/a';
-        } else {
-            preg_match('/\d+\.\d+\.\d+/', $headers, $matches);
-            if (is_null($matches[0])) {
-                $version = 'n/a';
-            } else {
-                $version = $matches[0];
-                if (str_ends_with($version, '.0.0')) {
-                    $version = str_replace('.0.0', '.0', $version);
-                }
-            }
-        }
-        file_put_contents($cache_file, $version);
-    }
-
-    return file_get_contents($cache_file);
-}
-
-function getWindowsStoreVersionOLDER($time = 3600): string {
-    $cache_file = __DIR__ . '/../cache/' . 'microsoft_store.txt';
-    // Serve from cache if it is younger than $cache_time
-    $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
-
-    if (! $cache_ok) {
-        $version = '';
-        $query = [
-            'type' => 'url',
-            'url'  => 'https://apps.microsoft.com/detail/9nzvdkpmr9rd',
-            'ring' => 'Retail',
-            'lang' => 'en-US',
-        ];
-        $context = [
-            'http' => [
-                'method'  => 'POST',
-                'header'  => "Content-Type: application/x-www-form-urlencoded\r\n" .
-                             "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\r\n" .
-                             "Accept-Language: en-US,en;q=0.5\r\n",
-                'content' => http_build_query($query),
-            ]
-        ];
-
-        $data = file_get_contents('https://store.rg-adguard.net/api/GetFiles', false, stream_context_create($context));
-
-        if ($data === false) {
-            $version = 'n/a';
-        } else {
-            $dom = HTML::createFromString($data, LIBXML_NOERROR);
-            $version = $dom->querySelector('td > a')->textContent;
-            preg_match('/\d+\.\d+\.\d+/', $version, $matches);
-
-            if (is_null($matches[0])) {
-                $version = 'n/a';
-            } else {
-                $version = $matches[0];
-                if (str_ends_with($version, '.0.0')) {
-                    $version = str_replace('.0.0', '.0', $version);
-                }
-            }
-        }
-        file_put_contents($cache_file, $version);
-    }
-
-    return file_get_contents($cache_file);
-}
 
 function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
     $GLOBALS['urls'][] = $url;
-    $cache_file = __DIR__ . '/../cache/' . $cache_file;
+    $cache_file = CACHE . $cache_file;
 
     // Serve from cache if it is younger than $cache_time
     $cache_ok = file_exists($cache_file) && time() - $time < filemtime($cache_file);
