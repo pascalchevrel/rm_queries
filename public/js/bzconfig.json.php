@@ -1,6 +1,7 @@
 <?php
 $bugzilla_rest = true;
-require_once __DIR__ . '/../../app/data.php';
+require_once __DIR__ . '/../../app/init.php';
+// require_once __DIR__ . '/../../app/data.php';
 
 header("access-control-allow-origin: *");
 header("Content-type: application/json; charset=UTF-8");

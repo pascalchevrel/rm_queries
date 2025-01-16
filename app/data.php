@@ -1,33 +1,4 @@
 <?php
-require_once "utils.php";
-
-$firefox_versions = getRemoteJson(
-    External::PD_desktop->value,
-    'firefox_versions_local.json',
-    900
-);
-
-$fenix_versions = getRemoteJson(
-    External::PD_android->value,
-    'mobile_versions_local.json',
-    900
-);
-
-define('ESR',               $firefox_versions["FIREFOX_ESR"]);
-define('ESR_NEXT',          $firefox_versions["FIREFOX_ESR_NEXT"]);
-define('ESR115',            $firefox_versions['FIREFOX_ESR115']);
-define('FIREFOX_NIGHTLY',   $firefox_versions["FIREFOX_NIGHTLY"]);
-define('DEV_EDITION',       $firefox_versions["FIREFOX_DEVEDITION"]);
-define('FIREFOX_BETA',      $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
-define('FIREFOX_RELEASE',   $firefox_versions["LATEST_FIREFOX_VERSION"]);
-define('FENIX_RELEASE',     $fenix_versions["version"]);
-
-$main_nightly = (int) FIREFOX_NIGHTLY;
-$main_beta    = (int) FIREFOX_BETA;
-$main_release = (int) FIREFOX_RELEASE;
-$main_esr     = (int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
-$old_esr      = (int) (ESR115 != '' ? ESR115 : (ESR_NEXT != '' ? ESR : ESR_NEXT));
-$last_beta    = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
 
 $stub_search_bz = 'https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced';
 
@@ -564,6 +535,7 @@ foreach($snapcraft_release as $channels) {
         }
     }
 }
+
 $snap_status = [
     'release'          => 'text-secondary',
     'beta'             => 'text-secondary',
@@ -643,27 +615,10 @@ if ($samsung_release != FENIX_RELEASE) {
 
 // We can't compare that version with what we ship because we don't have it in product-details
 $apple_store_release = getAppleStoreVersion();
-
-//https://displaycataslog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2
-// https://github.com/StoreDev/StoreLib
-//https://github.com/ThomasPe/MS-Store-API/issues/9
-// https://github.com/ThomasPe/MS-Store-API?tab=readme-ov-file
-// I couldn't find any version information provided by the Microsoft Store, I found this hidden  API endpoint though:
-// echo '{productIds: "9nzvdkpmr9rd"}' | curl --json @- 'https://storeedgefd.dsx.mp.microsoft.com/v8.0/sdk/products?market=US&locale=en-US&deviceFamily=Windows.Desktop'
-// I also found: https://storeedgefd.dsx.mp.microsoft.com/v9.0/packageManifests/9nzvdkpmr9rd
-// via this blog post: https://skiptotheendpoint.co.uk/under-the-hood-pt-2-microsoft-store-apps/
-// From https://store.rg-adguard.net/ which has an HTML API and scraps the MS Store
 $microsoft_store_release = getWindowsStoreVersion(time: 900);
 $microsoft_store_status = ($microsoft_store_release == FIREFOX_RELEASE)
     ? 'text-secondary'
     : 'text-danger';
-
-// Get latest Application Services release on Maven
-// $Maven_AS_nightly = getRemoteFile(
-//     url: External::Maven_AS_nightly->value,
-//     cache_file: 'maven-AS-nightly-metadata.xml',
-//     time: 3600,
-// );
 
 $maven = getLatestMavenVersion();
 $maven_status = 'text-secondary';
