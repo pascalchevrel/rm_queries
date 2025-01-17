@@ -289,7 +289,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                         Google <span class="<?=$play_status['release']?>"><?=$play_store_release?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Samsung <span class="<?=$samsung_status?>"><?=$samsung_release?></span>
+                        Samsung <span class="<?=$samsung_firefox_status?>"><?=$samsung_firefox?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Flathub <span class="<?=$flathub_status?>"><?=$flathub_release?></span>
@@ -301,7 +301,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                         Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Apple <span class="text-secondary"><?=$apple_store_release?></span>
+                        Apple <span class="text-secondary"><?=$apple_store_firefox_release?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Google Beta <span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span>
@@ -311,6 +311,21 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Snapcraft ESR <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Google Focus <span class="<?=$play_status['focus']?>"><?=$play_store_focus_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Google klar <span class="<?=$play_status['klar']?>"><?=$play_store_klar_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Samsung Focus <span class="<?=$samsung_focus_status?>"><?=$samsung_focus?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Apple Focus <span class="text-secondary"><?=$apple_store_focus_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Apple Klar <span class="text-secondary"><?=$apple_store_klar_release?></span>
                     </li>
                 </ul>
             </div>

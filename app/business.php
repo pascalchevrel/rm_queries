@@ -70,9 +70,22 @@ function getAndroidVersion(string $appName): string {
 /**
  * Scrap the iOS version from HTML
  */
-function getAppleStoreVersion(): string {
+function getAppleStoreVersion(string $app): string {
+    if (! in_array($app, ['firefox', 'focus', 'klar'])) {
+        return 'n/a';
+    }
 
-    $html = gfc(External::Apple_release->value);
+    $product = [
+        'firefox' => 'firefox-private-safe-browser/id989804926',
+        'focus'   => 'firefox-focus-privacy-browser/id1055677337',
+        'klar'    => 'https://apps.apple.com/de/app/klar-by-firefox/id1073435754',
+    ];
+
+    $url = $app == 'klar'
+        ? $product[$app]
+        : External::AppleStore->value . $product[$app];
+
+    $html = gfc($url);
 
     $matches = [];
     preg_match('/Version \d+\.\d+/', $html, $matches);

@@ -586,14 +586,26 @@ if ($snapcraft['esr'] != ESR) {
 
 $play_store_release = getAndroidVersion('org.mozilla.firefox');
 $play_store_beta = getAndroidVersion('org.mozilla.firefox_beta');
+$play_store_focus_release = getAndroidVersion('org.mozilla.focus');
+$play_store_klar_release = getAndroidVersion('org.mozilla.klar');
 
 $play_status = [
     'release' => 'text-secondary',
     'beta'    => 'text-secondary',
+    'focus'   => 'text-secondary',
+    'klar'    => 'text-secondary',
 ];
 
 if ($play_store_release != FENIX_RELEASE) {
     $play_status['release'] = 'text-danger';
+}
+
+if ($play_store_klar_release != FENIX_RELEASE) {
+    $play_status['klar'] = 'text-danger';
+}
+
+if ($play_store_focus_release != FENIX_RELEASE) {
+    $play_status['focus'] = 'text-danger';
 }
 
 if ($play_store_beta != FIREFOX_BETA) {
@@ -601,22 +613,37 @@ if ($play_store_beta != FIREFOX_BETA) {
 }
 
 // Samsung Store has a public json for listings
-$samsung_release = getRemoteJson(
-    url: External::Samsung_release->value,
+$samsung_firefox = getRemoteJson(
+    url: External::Samsung_firefox->value,
     cache_file: 'samsung_firefox_release.json',
     time: 900,
 )['DetailMain']['contentBinaryVersion'];
 
-$samsung_status = 'text-secondary';
+$samsung_firefox_status = 'text-secondary';
 
-if ($samsung_release != FENIX_RELEASE) {
-    $samsung_status = 'text-danger';
+if ($samsung_firefox != FENIX_RELEASE) {
+    $samsung_firefox_status = 'text-danger';
+}
+
+$samsung_focus = getRemoteJson(
+    url: External::Samsung_focus->value,
+    cache_file: 'samsung_focus_release.json',
+    time: 900,
+)['DetailMain']['contentBinaryVersion'];
+
+$samsung_focus_status = 'text-secondary';
+
+if ($samsung_focus != FENIX_RELEASE) {
+    $samsung_focus_status = 'text-danger';
 }
 
 // We can't compare that version with what we ship because we don't have it in product-details
-$apple_store_release = getAppleStoreVersion();
+$apple_store_firefox_release = getAppleStoreVersion('firefox');
+$apple_store_focus_release   = getAppleStoreVersion('focus');
+$apple_store_klar_release    = getAppleStoreVersion('klar');
+
 $microsoft_store_release = getWindowsStoreVersion(time: 900);
-$microsoft_store_status = ($microsoft_store_release == FIREFOX_RELEASE)
+$microsoft_store_status  = ($microsoft_store_release == FIREFOX_RELEASE)
     ? 'text-secondary'
     : 'text-danger';
 

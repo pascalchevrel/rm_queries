@@ -10,8 +10,9 @@ enum External: string
     case Flatpak_release  = 'https://flathub.org/api/v2/appstream/org.mozilla.firefox';
     case Snap_release     = 'https://api.snapcraft.io/v2/snaps/info/firefox';
     case Play_Store       = 'https://play.google.com/store/apps/details?id=';
-    case Samsung_release  = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
-    case Apple_release    = 'https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926';
+    case Samsung_firefox  = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
+    case Samsung_focus    = 'https://galaxystore.samsung.com/api/detail/org.mozilla.focus';
+    case AppleStore       = 'https://apps.apple.com/us/app/';
     case Maven_AS_nightly = 'https://maven.mozilla.org/maven2/org/mozilla/appservices/nightly/full-megazord/maven-metadata.xml';
     case Microsoft_Store  = 'https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2';
 }
