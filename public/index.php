@@ -45,14 +45,14 @@
             text-align: center;
         }
 
-        #betas, #nightlies {
+        #betas {
             display: none;
             width: 50%;
             margin: 1em auto;
             text-align: center;
         }
 
-        #betas ul, #nightlies ul {
+        #betas ul {
             display: flex;
             padding: 0;
             list-style: none;
@@ -60,7 +60,7 @@
             flex-wrap: wrap;
         }
 
-        #betas ul li, #nightlies ul li{
+        #betas ul li {
             background-color: white;
             padding: 0 4px;
             margin: 4px;
@@ -84,7 +84,7 @@
     <table id="version_numbers" class="table table-bordered table-sm w-auto mx-auto">
         <tbody>
             <tr>
-                <th class="table-dark" onclick="show('nightlies');">Nightly <small>&#x2B07;</small></th>
+                <th class="table-dark">Nightly</th>
                 <th class="table-dark">Dev Edition</th>
                 <th class="table-dark" onclick="show('betas');">Beta <small>&#x2B07;</small></th>
                 <th class="table-dark">Release</th>
@@ -111,10 +111,6 @@
     </table>
     </div>
 
-    <div id="nightlies" class="border bg-light toggle">
-        <h5>Patches landed for each nightly</h5>
-        <?=getBugsPerNightly($firefox_versions)?>
-    </div>
     <div id="betas" class="border bg-light toggle">
         <h5>Patches uplifted for each beta</h5>
         <ul>
@@ -302,6 +298,12 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                         Snapcraft <span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Apple <span class="text-secondary"><?=$apple_store_release?></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
                         Google Beta <span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -309,12 +311,6 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Snapcraft ESR <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Apple <span class="text-secondary"><?=$apple_store_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
                     </li>
                 </ul>
             </div>
