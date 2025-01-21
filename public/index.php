@@ -284,7 +284,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
             </div>
             <div class="col-4">
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores</li>
+                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores <sup class="fw-normal fst-italic text-secondary">(Google & Microsoft need full rollout to show the latest version)</sup  ></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Google <span class="<?=$play_status['release']?>"><?=$play_store_release?></span>
                     </li>
