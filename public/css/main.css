@@ -1,0 +1,77 @@
+.container, table#version_numbers {
+    min-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#version_numbers {
+text-align: center;
+}
+
+.message {
+    text-align: center;
+}
+
+#betas {
+    display: none;
+    width: 50%;
+    margin: 1em auto;
+    text-align: center;
+}
+
+#betas ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#betas ul li {
+    background-color: white;
+    padding: 0 4px;
+    margin: 4px;
+    border: 1px solid darkgray;
+}
+
+.list-group-item {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.list-group-item a {
+    display: inline-block;
+    min-width:  90%;
+}
+
+#store .card-header {
+    font-size: x-large
+}
+
+
+#store .mobile {
+    background-color: rgb(253, 241, 237);
+}
+
+#store .laptop {
+    background-color: rgb(248, 249, 255);
+}
+
+#store .legend {
+    left: 2em;
+    top: 2em;
+}
+
+#store sup {
+    display:block;
+    line-height: 2.5em;
+    font-style: normal !important;
+    font-size: small !important;
+
+}

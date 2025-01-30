@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../app/init.php'; ?>
+<?php require_once dirname(__DIR__, 1) . '/app/init.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +6,7 @@
     <title>Release Links and Queries</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <script>
         function show(id) {
@@ -23,60 +24,6 @@
 
     <script src="js/releasehealth.js" defer></script>
 
-    <style>
-
-        .container, table#version_numbers {
-            min-width: 100%;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        #version_numbers {
-        text-align: center;
-        }
-
-        .message {
-            text-align: center;
-        }
-
-        #betas {
-            display: none;
-            width: 50%;
-            margin: 1em auto;
-            text-align: center;
-        }
-
-        #betas ul {
-            display: flex;
-            padding: 0;
-            list-style: none;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-
-        #betas ul li {
-            background-color: white;
-            padding: 0 4px;
-            margin: 4px;
-            border: 1px solid darkgray;
-        }
-
-        .list-group-item {
-            padding-top: 0.3rem;
-            padding-bottom: 0.3rem;
-        }
-
-        .list-group-item a {
-            display: inline-block;
-            min-width:  90%;
-        }
-    </style>
 </head>
 <body>
     <div class="table-responsive">
@@ -283,51 +230,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                 </ul>
             </div>
             <div class="col-4">
-                <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores <sup class="fw-normal fst-italic text-secondary">(Google & Microsoft need full rollout to show the latest version)</sup  ></li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Google <span class="<?=$play_status['release']?>"><?=$play_store_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Samsung <span class="<?=$samsung_firefox_status?>"><?=$samsung_firefox?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Flathub <span class="<?=$flathub_status?>"><?=$flathub_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Snapcraft <span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Apple <span class="text-secondary"><?=$apple_store_firefox_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Google Beta <span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Snapcraft Beta <span class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Snapcraft ESR <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Google Focus <span class="<?=$play_status['focus']?>"><?=$play_store_focus_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Google klar <span class="<?=$play_status['klar']?>"><?=$play_store_klar_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Samsung Focus <span class="<?=$samsung_focus_status?>"><?=$samsung_focus?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Apple Focus <span class="text-secondary"><?=$apple_store_focus_release?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Apple Klar <span class="text-secondary"><?=$apple_store_klar_release?></span>
-                    </li>
-                </ul>
+            <?php include APP . 'stores_template.php'; ?>
             </div>
         </div>
     </div>

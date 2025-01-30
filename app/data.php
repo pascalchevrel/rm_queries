@@ -584,6 +584,10 @@ if ($snapcraft['esr'] != ESR) {
     $snap_status['esr'] = 'text-danger';
 }
 
+// clean up the snap ESR value for display
+$snapcraft['esr'] = str_replace('esr', '', $snapcraft['esr']);
+
+
 $play_store_release = getAndroidVersion('org.mozilla.firefox');
 $play_store_beta = getAndroidVersion('org.mozilla.firefox_beta');
 $play_store_focus_release = getAndroidVersion('org.mozilla.focus');
