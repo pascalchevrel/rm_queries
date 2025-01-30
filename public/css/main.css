@@ -70,7 +70,8 @@ text-align: center;
 
 #store sup {
     display:block;
-    line-height: 2.5em;
+    margin-top: 1em;
+    line-height: 1.5em;
     font-style: normal !important;
     font-size: small !important;
 

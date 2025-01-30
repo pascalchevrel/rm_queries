@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Firefox Version number on Stores</title>
+    <title>Firefox version number on Stores</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -16,11 +16,17 @@
         <ul class="list-group ">
             <li class="list-group-item d-flex justify-content-between align-items-center mobile">Mobile store</li>
             <li class="list-group-item d-flex justify-content-between align-items-center laptop">Laptop store</li>
+            <li class="list-group-item d-flex justify-content-between align-items-center text-danger">Store not updated yet</li>
         </ul>
     </div>
   <div class="text-center m-auto">
     <?php
         $message = "Google & Microsoft need 100% rollout to serve the latest version number to new users";
+
+        $message = <<<TEXT
+        Google & Microsoft need 100% rollout to serve the latest version number to new users<br>
+        Keep in mind that stores can take up to 48h to review and accept our submissions.
+        TEXT;
         include APP . 'stores_template.php';
     ?>
   </div>
