@@ -20,7 +20,7 @@
     </div>
   <div class="text-center m-auto">
     <?php
-        $mesage = "Google & Microsoft need 100% rollout to serve the latest version number to new users";
+        $message = "Google & Microsoft need 100% rollout to serve the latest version number to new users";
         include APP . 'stores_template.php';
     ?>
   </div>
