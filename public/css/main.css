@@ -11,7 +11,7 @@ a:hover {
 }
 
 #version_numbers {
-text-align: center;
+    text-align: center;
 }
 
 .message {
@@ -54,7 +54,6 @@ text-align: center;
     font-size: x-large
 }
 
-
 #store .mobile {
     background-color: rgb(253, 241, 237);
 }
@@ -69,10 +68,24 @@ text-align: center;
 }
 
 #store sup {
-    display:block;
+    display: block;
     margin-top: 1em;
     line-height: 1.5em;
     font-style: normal !important;
     font-size: small !important;
+}
 
+@media only screen and (max-width: 460px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .legend {
+        margin-top: 1em;
+        position: inherit !important;
+    }
+
+    div .m-auto {
+        margin-top: 1em !important;
+    }
 }
