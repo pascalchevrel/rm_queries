@@ -34,7 +34,7 @@ $relnotes_stub = function($version) use($stub_search_bz) {
     . '&o1=equals'
     . '&v1=%3F'
     . '&f2=cf_status_firefox' . $version
-    . '&o2=anywords'
+    . '&o2=anywordssubstr'
     . '&v2=affected%2Cfixed%2Cverified%2Cfix-optional'
     . '&f3=cf_status_firefox' . $version
     . '&o3=notsubstring'
@@ -82,12 +82,12 @@ $malfunction_stub =
     $stub_search_bz
     . '&o5=anywordssubstr'
     . '&j2=OR'
-    . '&o1=anywords'
+    . '&o1=anywordssubstr'
     . '&o4=substring'
     . '&v1=affected%20optional'
     . '&v4=sec'
     . '&v6=%2B%20%3F%20blocking'
-    . '&o3=anywords'
+    . '&o3=anywordssubstr'
     . '&v3=crash%20regression%20leak%20topcrash%20assertion%20dataloss%20topcrash-linux%20topcrash-mac%20topcrash-win'
     . '&resolution=FIXED'
     . '&o6=anywordssubstr'
@@ -264,7 +264,7 @@ $fixed_regressions_candidates_stub =
 // Security bugs
 $security_stub =
     $stub_search_bz
-    . '&o3=anywords'
+    . '&o3=anywordssubstr'
     . '&v3=sec-critical%20sec-high%20sec-moderate%20sec-low'
     . '&f3=keywords'
     . '&v1=affected'
@@ -435,11 +435,11 @@ $reported_today_by_users =
 
 $fixed_a11y_issues_beta =
     $stub_search_bz
-    . '&o1=anywords'
+    . '&o1=anywordssubstr'
     . '&v1=affected%2C%20fix-optional'
     . '&f1=cf_status_firefox_beta'
     . '&status_whiteboard=access-s1%2Caccess-s2%2Caccess-s3'
-    . '&status_whiteboard_type=anywords'
+    . '&status_whiteboard_type=anywordssubstr'
     . '&resolution=FIXED';
 
 
@@ -451,7 +451,7 @@ $fixed_a11y_issues_beta =
  */
 $beta_uplift_chatter =
     $stub_search_bz
-    . '&o1=anywords'
+    . '&o1=anywordssubstr'
     . '&v1=affected%2C%20fix-optional'
     . '&f1=cf_status_firefox_beta'
     . '&o2=notsubstring'
