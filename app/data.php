@@ -279,6 +279,25 @@ $security_nightly = $security_stub . $main_nightly;
 $security_beta    = $security_stub . $main_beta;
 $security_release = $security_stub . $main_release;
 
+// Sec bugs in Nightly that could be uplifted to beta
+$security_nightly_uplift =
+    $stub_search_bz
+    . '&bug_status=FIXED'
+    . '&bug_status=RESOLVED'
+    . '&bug_status=VERIFIED'
+    . '&bug_status=CLOSED'
+    . '&f1=cf_status_firefox'
+    . $main_nightly
+    . '&o1=anywordssubstr'
+    . '&v1=fixed%20verified'
+    . '&f2=keywords'
+    . '&o2=anywordssubstr'
+    . '&v2=sec-critical%20sec-high%20sec-moderate%20sec-low'
+    . '&f3=cf_status_firefox'
+    . $main_beta
+    . '&o3=nowords'
+    . '&v3=fixed%2Cverified%2Cdisabled%2C%20unaffected%2C%20wontfix';
+
 $fixed_regressions_candidates_beta = $fixed_regressions_candidates_stub . $main_beta;
 $fixed_regressions_candidates_release = $fixed_regressions_candidates_stub . $main_release;
 
