@@ -54,11 +54,23 @@ a:hover {
     font-size: x-large
 }
 
-#store .mobile {
+#store .table {
+    text-align: start;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.3rem 0.3rem;
+}
+
+#store .mobile,
+#store .mobile > th,
+#store .mobile > td {
     background-color: rgb(253, 241, 237);
 }
 
-#store .laptop {
+#store .laptop,
+#store .laptop > th,
+#store .laptop > td {
     background-color: rgb(248, 249, 255);
 }
 

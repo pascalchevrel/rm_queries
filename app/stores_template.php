@@ -1,54 +1,69 @@
 <?php
     if (! isset($class)) {
-        $class = "list-group-item d-flex justify-content-between align-items-center ";
+        $class = "";
     }
 
     if (! isset($message)) {
         $message = "(Google & Microsoft need full rollout to show the latest version)";
     }
 ?>
-                <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores <sup class="fw-normal fst-italic text-secondary"><?=$message?></sup></li>
-                    <li class="<?=$class?> mobile">
-                        Google <span class="<?=$play_status['release']?>"><?=$play_store_release?></span>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td colspan="3">Firefox in Stores <sup class="fw-normal fst-italic text-secondary"><?=$message?></sup></td>
+                    </tr>
+                    <tr>
+                        <td>Store</td>
+                        <td>Release</td>
+                        <td>Beta</td>
+                        <td>Other</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="mobile">
+                        <th scope="row">Google</th>
+                        <td class="<?=$play_status['release']?>"><?=$play_store_release?></td>
+                        <td class="<?=$play_status['beta']?>"><?=$play_store_beta?></td>
+                        <td>
+                            Focus <span class="<?=$play_status['focus']?>"><?=$play_store_focus_release?></span>;
+                            Klar <span class="<?=$play_status['klar']?>"><?=$play_store_klar_release?></span>
+                        </td>
+                    </tr>
+                    <tr class="mobile">
+                        <th scope="row">Samsung</th>
+                        <td class="<?=$samsung_firefox_status?>"><?=$samsung_firefox?></td>
+                        <td>N/A</td>
+                        <td>Focus <span class="<?=$samsung_focus_status?>"><?=$samsung_focus?></span></td>
+                    </tr>
+                    <tr class="mobile">
+                        <th scope="row">Apple iOS</th>
+                        <td class="text-secondary"><?=$apple_store_firefox_release?></td>
+                        <td>N/A</td>
+                        <td>
+                            Focus <span class="text-secondary"><?=$apple_store_focus_release?></span>;
+                            Klar <span class="text-secondary"><?=$apple_store_klar_release?></span>
+                        </td>
+                    </tr>
+                    <tr class="laptop">
+                        <th scope="row">Flathub</th>
+                        <td class="<?=$flathub_status?>"><?=$flathub_release?></td>
+                        <td colspan="2">N/A</td>
+                    </tr>
+                    <tr class="laptop">
+                        <th scope="row">Snapcraft</th>
+                        <td class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></td>
+                        <td class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></td>
+                        <td>ESR <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span></td>
                     </li>
-                    <li class="<?=$class?> mobile">
-                        Samsung <span class="<?=$samsung_firefox_status?>"><?=$samsung_firefox?></span>
-                    </li>
-                    <li class="<?=$class?> laptop">
-                        Flathub <span class="<?=$flathub_status?>"><?=$flathub_release?></span>
-                    </li>
-                    <li class="<?=$class?> laptop">
-                        Snapcraft <span class="<?=$snap_status['release']?>"><?=$snapcraft["release"]?></span>
-                    </li>
-                    <li class="<?=$class?> laptop">
-                        Microsoft <span class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Apple <span class="text-secondary"><?=$apple_store_firefox_release?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Google Beta <span class="<?=$play_status['beta']?>"><?=$play_store_beta?></span>
-                    </li>
-                    <li class="<?=$class?> laptop">
-                        Snapcraft Beta <span class="<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span>
-                    </li>
-                    <li class="<?=$class?> laptop">
-                        Snapcraft ESR <span class="<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Google Focus <span class="<?=$play_status['focus']?>"><?=$play_store_focus_release?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Google klar <span class="<?=$play_status['klar']?>"><?=$play_store_klar_release?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Samsung Focus <span class="<?=$samsung_focus_status?>"><?=$samsung_focus?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Apple Focus <span class="text-secondary"><?=$apple_store_focus_release?></span>
-                    </li>
-                    <li class="<?=$class?> mobile">
-                        Apple Klar <span class="text-secondary"><?=$apple_store_klar_release?></span>
-                    </li>
-                </ul>
+                    <tr class="laptop">
+                        <th scope="row">Microsoft</th>
+                        <td class="<?=$microsoft_store_status?>"><?=$microsoft_store_release?></td>
+                        <td colspan="2">N/A</td>
+                    </tr>
+                    <tr class="laptop">
+                        <th scope="row">Apple macOS</th>
+                        <td colspan="3">
+                            <a href="https://docs.google.com/document/d/1cLVEXAN2_AycqWA7XO6YddA0AFvHlLvVKMVvTBwunrE/edit">Not currently available.</a>
+                        </td>
+                    </tbody>
+                </table>
