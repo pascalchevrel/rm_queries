@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body id="store">
-
-
 <div class="container d-flex align-items-center min-vh-100 text-center">
     <div class="legend position-absolute">
         <ul class="list-group ">
@@ -19,10 +17,10 @@
             <li class="list-group-item d-flex justify-content-between align-items-center text-danger">Store not updated yet</li>
         </ul>
     </div>
-  <div class="text-center m-auto">
+  <div class="text-center w-50 m-auto">
     <?php
+        $page_id = 'store';
         $message = "Google & Microsoft need 100% rollout to serve the latest version number to new users";
-
         $message = <<<TEXT
         Google & Microsoft need 100% rollout to serve the latest version number to new users<br>
         Keep in mind that stores can take up to 48h to review and accept our submissions.
