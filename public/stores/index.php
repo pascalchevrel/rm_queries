@@ -13,7 +13,7 @@
     <div class="legend position-absolute">
         <ul class="list-group ">
             <li class="list-group-item d-flex justify-content-between align-items-center mobile">Mobile store</li>
-            <li class="list-group-item d-flex justify-content-between align-items-center laptop">Laptop store</li>
+            <li class="list-group-item d-flex justify-content-between align-items-center laptop">Computer store</li>
             <li class="list-group-item d-flex justify-content-between align-items-center text-danger">Store not updated yet</li>
         </ul>
     </div>
