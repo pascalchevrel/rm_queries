@@ -20,11 +20,6 @@
   <div class="text-center w-50 m-auto">
     <?php
         $page_id = 'store';
-        $message = "Google & Microsoft need 100% rollout to serve the latest version number to new users";
-        $message = <<<TEXT
-        Google & Microsoft need 100% rollout to serve the latest version number to new users<br>
-        Keep in mind that stores can take up to 48h to review and accept our submissions.
-        TEXT;
         include APP . 'stores_template.php';
     ?>
   </div>

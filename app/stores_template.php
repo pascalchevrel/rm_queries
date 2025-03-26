@@ -1,8 +1,12 @@
 <?php
-    $class = "list-group-item d-flex justify-content-between align-items-center ";
-    if (isset($page_id) && $page_id != 'store') {
-        $class = "";
-        $message = "(Google & Microsoft need full rollout to show the latest version)";
+    $class = 'list-group-item d-flex justify-content-between align-items-center ';
+    $message = '(Google & Microsoft need full rollout to show the latest version)';
+    if (isset($page_id) && $page_id == 'store') {
+        $class = '';
+        $message = <<<TEXT
+        Google & Microsoft need 100% rollout to serve the latest version number to new users<br>
+        Keep in mind that stores can take up to 48h to review and accept our submissions.
+        TEXT;
     }
 ?>
 
