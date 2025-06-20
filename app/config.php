@@ -31,19 +31,23 @@ $fenix_versions = getRemoteJson(
 
 define('ESR',               $firefox_versions["FIREFOX_ESR"]);
 define('ESR_NEXT',          $firefox_versions["FIREFOX_ESR_NEXT"]);
-define('ESR115',            $firefox_versions['FIREFOX_ESR115']);
+define('ESR_115',            $firefox_versions['FIREFOX_ESR115']);
 define('FIREFOX_NIGHTLY',   $firefox_versions["FIREFOX_NIGHTLY"]);
 define('DEV_EDITION',       $firefox_versions["FIREFOX_DEVEDITION"]);
 define('FIREFOX_BETA',      $firefox_versions["LATEST_FIREFOX_RELEASED_DEVEL_VERSION"]);
 define('FIREFOX_RELEASE',   $firefox_versions["LATEST_FIREFOX_VERSION"]);
 define('FENIX_RELEASE',     $fenix_versions["version"]);
 
+
 $main_nightly = (int) FIREFOX_NIGHTLY;
 $main_beta    = (int) FIREFOX_BETA;
 $main_release = (int) FIREFOX_RELEASE;
-$main_esr     = (int) (ESR_NEXT != "" ? ESR_NEXT : ESR);
-$old_esr      = (int) (ESR115 != '' ? ESR115 : (ESR_NEXT != '' ? ESR : ESR_NEXT));
+$esr_next     = (int) ESR_NEXT;
+$esr          = (int) ESR;
+$esr_115      = (int) ESR_115;
 $last_beta    = (int) str_replace($main_beta .'.0b', '', FIREFOX_BETA);
+
+$supported_esr = array_filter([ESR_115, ESR, ESR_NEXT]);
 
 /**
  * Global array for debugging purposes

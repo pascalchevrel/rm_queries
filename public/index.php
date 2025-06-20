@@ -35,11 +35,14 @@
                 <th class="table-dark">Dev Edition</th>
                 <th class="table-dark" onclick="show('betas');">Beta <small>&#x2B07;</small></th>
                 <th class="table-dark">Release</th>
+                <?php if (ESR_115): ?>
+                <th class="table-dark">ESR 115</th>
+                <?php endif; ?>
+                <?php if (ESR): ?>
+                <th class="table-dark">ESR</th>
+                <?php endif; ?>
                 <?php if (ESR_NEXT): ?>
-                <th class="table-dark">ESR</th>
                 <th class="table-dark">ESR Next</th>
-                <?php else: ?>
-                <th class="table-dark">ESR</th>
                 <?php endif; ?>
             </tr>
             <tr>
@@ -47,11 +50,15 @@
                 <td class="table-primary"><?=DEV_EDITION?></td>
                 <td class="table-primary"><?=FIREFOX_BETA?></td>
                 <td class="table-primary"><?=FIREFOX_RELEASE?></td>
+
+                <?php if (ESR_115): ?>
+                <td class="table-primary"><?=ESR_115?></td>
+                <?php endif; ?>
+                <?php if (ESR): ?>
+                <td class="table-primary"><?=ESR?></td>
+                <?php endif; ?>
                 <?php if (ESR_NEXT): ?>
-                <td class="table-primary"><?=ESR?></td>
                 <td class="table-primary"><?=ESR_NEXT?></td>
-                <?php else: ?>
-                <td class="table-primary"><?=ESR?></td>
                 <?php endif; ?>
             </tr>
         </tbody>
@@ -203,34 +210,51 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
 
         <div class="row mt-2">
 
-            <?php if (ESR_NEXT or ESR115): ?>
-            <div class="col-4">
+            <?php if (ESR_115): ?>
+            <div class="col">
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">ESR <?=$old_esr?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($regressions_esr, 'Open regressions'))?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($relnotes_esr, 'Release Note Requests'))?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr, 'Uplift requests'))?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'))?></li>
-                    <?=$old_esr_link($rest_list_item_link('TrackingESR',  $tracking_question_esr, "tracking? for ESR {$old_esr}"))?>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_esr, "tracking+ for ESR {$old_esr}"))?></li>
-                    <li class="<?=$li_default?>"><?=$old_esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$old_esr}"))?></li>
+                    <li class="list-group-item card-header list-group-item-primary">ESR <?= (int) ESR_115 ?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($regressions_esr, 'Open regressions'), $esr_115)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($relnotes_esr, 'Release Note Requests'), $esr_115)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests'), $esr_115)?><span class="bugcount" id="UpliftsESR115"></span></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'), $esr_115)?></li>
+                    <?=$esr_link($rest_list_item_link('TrackingESR115', $tracking_question_esr_115, "tracking? for ESR {$esr_115}"), $esr_115)?>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_esr, "tracking+ for ESR {$esr_115}"), $esr_115)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$esr_115}"), $esr_115)?></li>
                 </ul>
             </div>
             <?php endif; ?>
 
-            <div class="col-4">
+            <div class="col">
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">ESR <?=ESR_NEXT? $main_esr : ""?></li>
+                    <li class="list-group-item card-header list-group-item-primary">ESR <?=$esr?></li>
                     <li class="<?=$li_default?>"><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li class="<?=$li_default?>"><?=$link($relnotes_esr, 'Release Note Requests')?></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
-                    <?=$rest_list_item_link('TrackingESR', $tracking_question_esr, "tracking? for ESR {$main_esr}")?>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_esr, "tracking+ for ESR {$main_esr}")?></li>
-                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$main_esr}")?></li>
+                    <?=$rest_list_item_link('TrackingESR', $tracking_question_esr, "tracking? for ESR {$esr}")?>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_esr, "tracking+ for ESR {$esr}")?></li>
+                    <li class="<?=$li_default?>"><?=$link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$esr}")?></li>
                 </ul>
             </div>
-            <div class="col-4">
+
+            <?php if (ESR_NEXT): ?>
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item card-header list-group-item-primary">ESR  <?= (int) ESR_NEXT ?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($regressions_esr, 'Open regressions'), $esr_next)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($relnotes_esr, 'Release Note Requests'), $esr_next)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests'), $esr_next)?><span class="bugcount" id="UpliftsESRNext"></span></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'), $esr_next)?></li>
+                    <?=$esr_link($rest_list_item_link('TrackingESRNext',  $tracking_question_esr_next, "tracking? for ESR {$esr_next}"), $esr_next)?>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_esr, "tracking+ for ESR {$esr_next}"), $esr_next)?></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_unfixed_esr, "tracking+ not fixed for ESR {$esr_next}"), $esr_next)?></li>
+                </ul>
+            </div>
+            <?php endif; ?>
+
+
+            <div class="col">
             <?php include APP . 'stores_template.php'; ?>
             </div>
         </div>

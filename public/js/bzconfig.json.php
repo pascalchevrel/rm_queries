@@ -1,7 +1,6 @@
 <?php
 $bugzilla_rest = true;
 require_once __DIR__ . '/../../app/init.php';
-// require_once __DIR__ . '/../../app/data.php';
 
 header("access-control-allow-origin: *");
 header("Content-type: application/json; charset=UTF-8");
@@ -48,6 +47,26 @@ header("Content-type: application/json; charset=UTF-8");
       "id": "TrackingESR",
       "url": "<?=$tracking_question_esr?>"
     }
+    <?php if (ESR_115): ?>
+    ,{
+      "id": "TrackingESR115",
+      "url": "<?=$tracking_question_esr_115?>"
+    },
+    {
+      "id": "UpliftsESR115",
+      "url": "<?=$uplift_esr_115?>"
+    }
+    <?php endif; ?>
+    <?php if (ESR_NEXT): ?>
+    ,{
+      "id": "TrackingESRNext",
+      "url": "<?=$tracking_question_esr_next?>"
+    },
+    {
+      "id": "UpliftsESRNext",
+      "url": "<?=$uplift_esr_next?>"
+    }
+    <?php endif; ?>
   ],
   "refreshMinutes": 30
 }

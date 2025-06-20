@@ -25,7 +25,7 @@ $regressions_stub =
 $regressions_nightly = $regressions_stub . $main_nightly;
 $regressions_beta    = $regressions_stub . $main_beta;
 $regressions_release = $regressions_stub . $main_release;
-$regressions_esr     = $regressions_stub . '_esr' . $main_esr;
+$regressions_esr     = $regressions_stub . '_esr' . $esr;
 
 // Release notes
 $relnotes_stub = function($version) use($stub_search_bz) {
@@ -44,13 +44,15 @@ $relnotes_stub = function($version) use($stub_search_bz) {
 $relnotes_nightly = $relnotes_stub($main_nightly);
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
-$relnotes_esr     = $relnotes_stub('_esr' . $main_esr);
+$relnotes_esr     = $relnotes_stub('_esr' . $esr);
 
 // Uplifts requests
-$uplift_stub    = $stub_search_bz . '&o1=substring&f1=flagtypes.name';
-$uplift_beta    = $uplift_stub . '&v1=approval-mozilla-beta%3F';
-$uplift_release = $uplift_stub . '&v1=approval-mozilla-release%3F';
-$uplift_esr     = $uplift_stub . '&v1=approval-mozilla-esr' . $main_esr . '%3F';
+$uplift_stub     = $stub_search_bz . '&o1=substring&f1=flagtypes.name';
+$uplift_beta     = $uplift_stub . '&v1=approval-mozilla-beta%3F';
+$uplift_release  = $uplift_stub . '&v1=approval-mozilla-release%3F';
+$uplift_esr      = $uplift_stub . '&v1=approval-mozilla-esr' . $esr . '%3F';
+$uplift_esr_115  = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_115 . '%3F';
+$uplift_esr_next = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_next . '%3F';
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
@@ -74,8 +76,8 @@ $uplift_release_pending =
 // ESR uplifts accepted, not landed
 $uplift_esr_pending =
     $uplift_stub_pending
-    . '&f2=cf_status_firefox_esr' . $main_esr
-    . '&v1=approval-mozilla-esr' . $main_esr . '%2B';
+    . '&f2=cf_status_firefox_esr' . $esr
+    . '&v1=approval-mozilla-esr' . $esr . '%2B';
 
 // Ryan query: crash, leak, security, dataloss, assertion
 $malfunction_stub =
@@ -118,10 +120,12 @@ $tracking_question_stub =
     . '&v1=%3F'
     . '&f1=cf_tracking_firefox';
 
-$tracking_question_nightly = $tracking_question_stub . $main_nightly;
-$tracking_question_beta    = $tracking_question_stub . $main_beta;
-$tracking_question_release = $tracking_question_stub . $main_release;
-$tracking_question_esr     = $tracking_question_stub . '_esr' . $main_esr;
+$tracking_question_nightly  = $tracking_question_stub . $main_nightly;
+$tracking_question_beta     = $tracking_question_stub . $main_beta;
+$tracking_question_release  = $tracking_question_stub . $main_release;
+$tracking_question_esr      = $tracking_question_stub . '_esr' . $esr;
+$tracking_question_esr_115  = $tracking_question_stub . '_esr' . $esr_115;
+$tracking_question_esr_next = $tracking_question_stub . '_esr' . $esr_next;
 
 // Tracking+, blocking, still open
 $tracking_plus_unfixed_stub =
@@ -151,16 +155,16 @@ $tracking_plus_unfixed_release =
 
 $tracking_plus_esr =
     $stub_search_bz
-    . '&f1=cf_tracking_firefox_esr' . $main_esr
+    . '&f1=cf_tracking_firefox_esr' . $esr
     . '&o1=substring'
     . '&v1=' . $main_beta . '%2B';
 
 $tracking_plus_unfixed_esr =
     $stub_search_bz
-    . '&f1=cf_tracking_firefox_esr' . $main_esr
+    . '&f1=cf_tracking_firefox_esr' . $esr
     . '&o1=substring'
     . '&v1=' . $main_beta . '%2B'
-    . '&f2=cf_status_firefox_esr' . $main_esr
+    . '&f2=cf_status_firefox_esr' . $esr
     . '&o2=nowordssubstr'
     . '&v2=fixed%2Cwontfix%2Cdisabled%2Cverified';
 
@@ -391,8 +395,8 @@ $rest_list_item_link = function($id, $url, $text, $title = true) use ($link) {
         . "\n";
 };
 
-$old_esr_link = function($url) use ($old_esr, $main_esr) {
-     return str_replace($main_esr,  $old_esr, $url);
+$esr_link = function($url, $esr_version) use ($esr) {
+     return str_replace($esr,  $esr_version, $url);
 };
 
 $top_crashes_stub = 'https://crash-stats.mozilla.com/topcrashers/?process_type=any';
