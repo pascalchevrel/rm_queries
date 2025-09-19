@@ -682,8 +682,10 @@ $maven_date = DateTime::createFromFormat(
     substr(explode('.', $maven)[1], 0, 8)
 );
 
-
 if ($maven_date->diff(new DateTime())->days >= 2) {
     $maven_status = 'text-danger';
     $maven_title = 'Last Application Services build is >= 2 days';
 }
+
+// Huawei Store, fake data for now
+$huawei_store_firefox_release = getHuaweiStoreVersion();

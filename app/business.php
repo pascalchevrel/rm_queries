@@ -61,10 +61,25 @@ function getAndroidVersion(string $appName): string {
     }
 
     if (empty($matches) || count($matches) > 1) {
-        return 'N/A';
+        return 'n/a';
     }
 
     return substr(current($matches), 4);
+}
+
+/**
+ * I don't have a solution yet for Huawei
+ * 1/ They don't have a public API without authentication with our developer account
+ * 2/ Their app listing is all JS generated and have anti-scraping measures
+ * 3/ I haven't found other sources cataloguing the Huawei Store
+ * 4/ There is no stable apk download link to try and get the first chunk of data to obtain a manifest.json
+ *
+ * There is a hack suggested by ChatGPT which requires obtaining a token from one of their APIs to
+ * simulate that an xhr request to their api for the product listing is coming from their
+ * own store, but I get a 403 90% of the time, not reliable at all.
+ */
+function getHuaweiStoreVersion(): string {
+    return 'n/a';
 }
 
 /**
@@ -83,7 +98,7 @@ function getAppleStoreVersion(string $app): string {
 
     $url = $app == 'klar'
         ? $product[$app]
-        : External::AppleStore->value . $product[$app];
+        : External::Apple_Store->value . $product[$app];
 
     $html = gfc($url);
 
@@ -91,7 +106,7 @@ function getAppleStoreVersion(string $app): string {
     preg_match('/Version \d+\.\d+/', $html, $matches);
 
     if (empty($matches) || count($matches) > 1) {
-        return 'N/A';
+        return 'n/a';
     }
 
     return substr(current($matches), 8);
@@ -104,7 +119,7 @@ function getLatestMavenVersion(): string {
     preg_match('/<latest>(.+?)<\/latest>/', $xml, $matches);
 
     if (empty($matches) || count($matches) > 2) {
-        return 'N/A';
+        return 'n/a';
     }
 
     return $matches[1];

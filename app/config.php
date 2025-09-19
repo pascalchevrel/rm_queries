@@ -12,7 +12,8 @@ enum External: string
     case Play_Store       = 'https://play.google.com/store/apps/details?id=';
     case Samsung_firefox  = 'https://galaxystore.samsung.com/api/detail/org.mozilla.firefox';
     case Samsung_focus    = 'https://galaxystore.samsung.com/api/detail/org.mozilla.focus';
-    case AppleStore       = 'https://apps.apple.com/us/app/';
+    case Apple_Store       = 'https://apps.apple.com/us/app/';
+    case Huawei_Store     = 'https://appgallery.huawei.com/app/C115133357?locale=en_US';
     case Maven_AS_nightly = 'https://maven.mozilla.org/maven2/org/mozilla/appservices/nightly/full-megazord/maven-metadata.xml';
     case Microsoft_Store  = 'https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2';
 }

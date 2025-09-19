@@ -55,6 +55,9 @@
                     <li class="<?=$class?> mobile">
                         Apple Klar <span class="text-secondary"><?=$apple_store_klar_release?></span>
                     </li>
+                    <li class="<?=$class?> mobile">
+                        Huawei Firefox <span class="text-secondary"><?=$huawei_store_firefox_release?></span>
+                    </li>
                 </ul>
 <?php else: ?>
                 <table class="table">
@@ -95,6 +98,12 @@
                             <span class="text-black-50 px-2">·</span>
                             Klar&nbsp;<span class="text-secondary"><?=$apple_store_klar_release?></span>
                         </td>
+                    </tr>
+                    <tr class="mobile">
+                        <th scope="row">Huawei</th>
+                            <td colspan="3">
+                                <a href="https://appgallery.huawei.com/app/C115133357">Check on AppGallery</a>
+                            </td>
                     </tr>
                     <tr class="laptop">
                         <th scope="row">Flathub</th>

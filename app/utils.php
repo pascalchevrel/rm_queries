@@ -6,7 +6,17 @@
  */
 function gfc(string $url): string|false {
     $GLOBALS['urls'][] = $url;
-    return file_get_contents($url);
+    $context = stream_context_create(
+        [
+            "http" => [
+
+                "method" => "GET",
+                "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n" .
+                            "Snap-Device-Series: 16\r\n"
+            ]
+        ]
+    );
+    return file_get_contents($url, false, $context);
 }
 
 function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
