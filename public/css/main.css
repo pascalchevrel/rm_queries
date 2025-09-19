@@ -87,6 +87,17 @@ a:hover {
     font-size: small !important;
 }
 
+#store small {
+    font-size: 8px !important;
+    font-weight: 600;
+    padding: 1px 2px;
+    margin-left: 0.5em;
+    vertical-align: super;
+    font-family: monospace;
+}
+
+
+
 @media only screen and (max-width: 460px) {
     .container {
         flex-direction: column;

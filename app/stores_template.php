@@ -102,7 +102,8 @@
                     <tr class="mobile">
                         <th scope="row">Huawei</th>
                             <td colspan="3">
-                                <a href="https://appgallery.huawei.com/app/C115133357">Check on AppGallery</a>
+                                <a href="https://appgallery.huawei.com/app/C115133357">&rarr; AppGallery</a>
+                                <small class="btn btn-outline-warning btn-sm text-dark" title="Not available in some regions such as the US">geo restrictions</small>
                             </td>
                     </tr>
                     <tr class="laptop">
