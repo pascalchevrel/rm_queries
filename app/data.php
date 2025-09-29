@@ -46,6 +46,16 @@ $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 $relnotes_esr     = $relnotes_stub('_esr' . $esr);
 
+// Orphaned release notes, those are bugs marked as open but with a release note request
+$orphaned_relnotes = $stub_search_bz
+    . '&bug_status=UNCONFIRMED'
+    . '&bug_status=NEW'
+    . '&bug_status=ASSIGNED'
+    . '&bug_status=REOPENED'
+    . '&f1=cf_tracking_firefox_relnote'
+    . '&o1=equals'
+    . '&v1=%3F';
+
 // Uplifts requests
 $uplift_stub     = $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta     = $uplift_stub . '&v1=approval-mozilla-beta%3F';

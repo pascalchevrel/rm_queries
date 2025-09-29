@@ -103,6 +103,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item card-header list-group-item-info">NIGHTLY</li>
                     <li class="<?=$li_default?>"><?=$link($regressions_nightly,'Open regressions')?></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_nightly,'Release Note Requests')?><span class="bugcount" id="RelnotesNightly"></span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($orphaned_relnotes,'Orphaned Release Notes')?><span class="bugcount" id="OrphanedRelnotes"></span></li>
                     <li class="<?=$li_default?>"><?=$link($reported_today_by_users,'Bugs filed today by users')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_nightly, 'Software defect (crash, leak, assertion…)')?></li>
 

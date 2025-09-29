@@ -36,6 +36,10 @@ header("Content-type: application/json; charset=UTF-8");
       "url": "<?=$tracking_question_nightly?>"
     },
     {
+      "id": "OrphanedRelnotes",
+      "url": "<?=$orphaned_relnotes?>"
+    },
+    {
       "id": "TrackingBeta",
       "url": "<?=$tracking_question_beta?>"
     },
