@@ -521,6 +521,9 @@ $approved_sec_approval =
     . '&chfieldto=Now'
     . '&resolution=---';
 
+// Default bootstrap Status for links
+$default_link_status = 'info';
+
 // FlatHub Status
 $flathub_firefox = getRemoteJson(
     External::Flatpak_release->value,
@@ -530,9 +533,9 @@ $flathub_firefox = getRemoteJson(
 
 $flathub_release = secureText($flathub_firefox['releases'][0]['version']);
 
-$flathub_status = 'text-secondary';
+$flathub_status = $default_link_status;
 if ($flathub_release != FIREFOX_RELEASE) {
-    $flathub_status = 'text-danger';
+    $flathub_status = 'danger';
 }
 
 
@@ -570,15 +573,15 @@ foreach($snapcraft_release as $channels) {
 }
 
 $snap_status = [
-    'release'          => 'text-secondary',
-    'beta'             => 'text-secondary',
-    'esr'              => 'text-secondary',
-    'esr_candidate'    => 'text-secondary',
-    'stable_candidate' => 'text-secondary',
+    'release'          => $default_link_status,
+    'beta'             => $default_link_status,
+    'esr'              => $default_link_status,
+    'esr_candidate'    => $default_link_status,
+    'stable_candidate' => $default_link_status,
 ];
 
 if ($snapcraft['release'] != FIREFOX_RELEASE) {
-    $snap_status['release'] = 'text-danger';
+    $snap_status['release'] = 'danger';
 }
 
 // We want to make sure that our release candidate is proposed by snap builds
@@ -604,17 +607,17 @@ if ($beta_is_rc) {
     $clean_snap = (int) explode('.', $snapcraft['stable_candidate'])[0];
     if ($clean_snap < $main_beta) {
         $snap_stable_candidate_missing = true;
-        $snap_status['stable_candidate'] = 'text-danger';
+        $snap_status['stable_candidate'] = 'danger';
     }
     unset($clean_snap);
 }
 
 if ($snapcraft['beta'] != FIREFOX_BETA) {
-    $snap_status['beta'] = 'text-danger';
+    $snap_status['beta'] = 'danger';
 }
 
 if ($snapcraft['esr'] != ESR) {
-    $snap_status['esr'] = 'text-danger';
+    $snap_status['esr'] = 'danger';
 }
 
 // clean up the snap ESR value for display
@@ -627,26 +630,26 @@ $play_store_focus_release = getAndroidVersion('org.mozilla.focus');
 $play_store_klar_release = getAndroidVersion('org.mozilla.klar');
 
 $play_status = [
-    'release' => 'text-secondary',
-    'beta'    => 'text-secondary',
-    'focus'   => 'text-secondary',
-    'klar'    => 'text-secondary',
+    'release' => $default_link_status,
+    'beta'    => $default_link_status,
+    'focus'   => $default_link_status,
+    'klar'    => $default_link_status,
 ];
 
 if ($play_store_release != FENIX_RELEASE) {
-    $play_status['release'] = 'text-danger';
+    $play_status['release'] = 'danger';
 }
 
 if ($play_store_klar_release != FENIX_RELEASE) {
-    $play_status['klar'] = 'text-danger';
+    $play_status['klar'] = 'danger';
 }
 
 if ($play_store_focus_release != FENIX_RELEASE) {
-    $play_status['focus'] = 'text-danger';
+    $play_status['focus'] = 'danger';
 }
 
 if ($play_store_beta != FIREFOX_BETA) {
-    $play_status['beta'] = 'text-danger';
+    $play_status['beta'] = 'danger';
 }
 
 // Samsung Store has a public json for listings
@@ -656,10 +659,10 @@ $samsung_firefox = getRemoteJson(
     time: 900,
 )['DetailMain']['contentBinaryVersion'];
 
-$samsung_firefox_status = 'text-secondary';
+$samsung_firefox_status = $default_link_status;
 
 if ($samsung_firefox != FENIX_RELEASE) {
-    $samsung_firefox_status = 'text-danger';
+    $samsung_firefox_status = 'danger';
 }
 
 $samsung_focus = getRemoteJson(
@@ -668,10 +671,10 @@ $samsung_focus = getRemoteJson(
     time: 900,
 )['DetailMain']['contentBinaryVersion'];
 
-$samsung_focus_status = 'text-secondary';
+$samsung_focus_status = $default_link_status;
 
 if ($samsung_focus != FENIX_RELEASE) {
-    $samsung_focus_status = 'text-danger';
+    $samsung_focus_status = 'danger';
 }
 
 // We can't compare that version with what we ship because we don't have it in product-details
@@ -681,11 +684,11 @@ $apple_store_klar_release    = getAppleStoreVersion('klar');
 
 $microsoft_store_release = getWindowsStoreVersion(time: 900);
 $microsoft_store_status  = ($microsoft_store_release == FIREFOX_RELEASE)
-    ? 'text-secondary'
-    : 'text-danger';
+    ? $default_link_status
+    : 'danger';
 
 $maven = getLatestMavenVersion();
-$maven_status = 'text-secondary';
+$maven_status = $default_link_status;
 $maven_title = '';
 $maven_date = DateTime::createFromFormat(
     'Ymd',
@@ -693,7 +696,7 @@ $maven_date = DateTime::createFromFormat(
 );
 
 if ($maven_date->diff(new DateTime())->days >= 2) {
-    $maven_status = 'text-danger';
+    $maven_status = 'danger';
     $maven_title = 'Last Application Services build is >= 2 days';
 }
 

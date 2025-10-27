@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Firefox version number on Stores</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
