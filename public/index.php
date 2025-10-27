@@ -6,7 +6,7 @@
     <title>Release Links and Queries</title>
     <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css?version=1">
 
     <script>
         function show(id) {
