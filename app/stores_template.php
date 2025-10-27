@@ -12,7 +12,7 @@
 
 <?php if(! isset($page_id) || $page_id != 'store'): ?>
                 <ul class="list-group">
-                    <li class="list-group-item card-header list-group-item-primary">Firefox in Stores <sup class="fw-normal fst-italic text-secondary"><?=$message?></sup></li>
+                    <li class="list-group-item card-header list-group-item-primary">Firefox in <a href="/stores" class="d-inline">Stores</a> <sup class="fw-normal fst-italic text-secondary"><?=$message?></sup></li>
                     <li class="<?=$class?> mobile">
                         Google <span class="text-<?=$play_status['release']?>"><?=$play_store_release?></span>
                     </li>
@@ -76,7 +76,7 @@
                     <tr class="mobile">
                         <th scope="row">Google</th>
                         <td class="<?=$play_status['release']?>"><a href="<?=StoreRelease::Google->url()?>" class="link-<?=$play_status['release']?>"><?=$play_store_release?></a></td>
-                        <td class="text-<?=$play_status['beta']?>"><?=$play_store_beta?></td>
+                        <td class="text-<?=$play_status['beta']?>"><span class="text-<?=$play_status['beta']?>"><?=$play_store_beta?></span></td>
                         <td>
                             Focus&nbsp;<span class="text-<?=$play_status['focus']?>"><?=$play_store_focus_release?></span>
                             <span class="text-black-50 px-2">·</span>
@@ -114,7 +114,7 @@
                     <tr class="laptop">
                         <th scope="row">Snapcraft</th>
                         <td class="text-<?=$snap_status['release']?>"><a href="<?=StoreRelease::Snapcraft->url()?>" class="link-<?=$snap_status['release']?>"><?=$snapcraft["release"]?></a></td>
-                        <td class="text-<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></td>
+                        <td class="text-<?=$snap_status['beta']?>"><span class="text-<?=$snap_status['beta']?>"><?=$snapcraft["beta"]?></span></td>
                         <td>ESR <span class="text-<?=$snap_status['esr']?>"><?=$snapcraft["esr"]?></span></td>
                     </li>
                     <tr class="laptop">

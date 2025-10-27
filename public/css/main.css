@@ -62,6 +62,11 @@ a:hover {
     padding: 0.4rem 0.8rem;
 }
 
+span.text-info {
+    filter: grayscale(90%);
+}
+
+
 #store .mobile,
 #store .mobile > th,
 #store .mobile > td {
