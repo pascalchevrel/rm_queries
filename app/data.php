@@ -67,7 +67,7 @@ $uplift_esr_next = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_next . '%3F'
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
     . '&o2=nowordssubstr'
-    . '&v2=fixed%2C%20verified%2C%20wontfix';
+    . '&v2=fixed%2C%20verified%2C%20wontfix%2C%20unaffected%2C%20disabled';
 
 // Beta uplifts accepted, not landed
 $uplift_beta_pending =
