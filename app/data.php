@@ -390,8 +390,17 @@ $webcompat_dupes_2m =
 
 
 // Client side dynamic counters
-$link = function($url, $text, $title = true) {
-    $title = $title ? '&title=' . rawurlencode($text) : '';
+$link = function($url, $text, $bz_title = true, $alt_text = '',) {
+    $title = '';
+    if ($bz_title) {
+        $title = '&title=';
+        if (! empty($alt_text)) {
+            $title .= rawurlencode($alt_text);
+        } else {
+            $title .= rawurlencode($text);
+        }
+    }
+
     return '<a href="' . $url . $title . '" target="_blank" rel="noopener">' . $text . '</a>';
 };
 

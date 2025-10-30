@@ -140,7 +140,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($regressions_beta, 'Open regressions')?></li>
                      <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_beta,'Release Note Requests')?><span class="bugcount" id="RelnotesBeta"></span></li>
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests')?><span class="bugcount" id="UpliftsBeta"></span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($uplift_beta, 'Uplift requests', alt_text:'Uplift requests for Beta')?><span class="bugcount" id="UpliftsBeta"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_beta_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_beta, 'Software defect (crash, leak, assertion…)')?></li>
                     <?=$rest_list_item_link('TrackingBeta',  $tracking_question_beta, "Tracking? for {$main_beta}")?>
@@ -181,7 +181,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="<?=$li_default?>"><?=$link($regressions_release, 'Open regressions')?></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center"><?=$link($relnotes_release,'Release Note Requests')?><span class="bugcount" id="RelnotesRelease"></span></li>
 
-                    <li class="<?=$li_default?>"><?=$link($uplift_release, 'Uplift requests')?><span class="bugcount" id="UpliftsRelease"></span></li>
+                    <li class="<?=$li_default?>"><?=$link($uplift_release, 'Uplift requests', alt_text:'Uplift requests for Release')?><span class="bugcount" id="UpliftsRelease"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_release_pending, 'Uplifts not landed, bug active')?></li>
                     <li class="<?=$li_default?>"><?=$link($malfunction_release, 'Software defect (crash, leak, assertion…)')?></li>
                     <?=$rest_list_item_link('TrackingRelease',  $tracking_question_release, "Tracking? for release ({$main_release})")?>
@@ -217,7 +217,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item card-header list-group-item-primary">ESR <?= (int) ESR_115 ?></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($regressions_esr, 'Open regressions'), $esr_115)?></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($relnotes_esr, 'Release Note Requests'), $esr_115)?></li>
-                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests'), $esr_115)?><span class="bugcount" id="UpliftsESR115"></span></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests', alt_text:'Uplift requests for ESR ' . $esr_115), $esr_115)?><span class="bugcount" id="UpliftsESR115"></span></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'), $esr_115)?></li>
                     <?=$esr_link($rest_list_item_link('TrackingESR115', $tracking_question_esr_115, "tracking? for ESR {$esr_115}"), $esr_115)?>
                     <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_esr, "tracking+ for ESR {$esr_115}"), $esr_115)?></li>
@@ -231,7 +231,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item card-header list-group-item-primary">ESR <?=$esr?></li>
                     <li class="<?=$li_default?>"><?=$link($regressions_esr, 'Open regressions')?></li>
                     <li class="<?=$li_default?>"><?=$link($relnotes_esr, 'Release Note Requests')?></li>
-                    <li class="<?=$li_default?>"><?=$link($uplift_esr, 'Uplift requests')?><span class="bugcount" id="UpliftsESR"></span></li>
+                    <li class="<?=$li_default?>"><?=$link($uplift_esr, 'Uplift requests', alt_text:'Uplift requests for ESR ' . $esr)?><span class="bugcount" id="UpliftsESR"></span></li>
                     <li class="<?=$li_default?>"><?=$link($uplift_esr_pending, 'Uplifts not landed, bug active')?></li>
                     <?=$rest_list_item_link('TrackingESR', $tracking_question_esr, "tracking? for ESR {$esr}")?>
                     <li class="<?=$li_default?>"><?=$link($tracking_plus_esr, "tracking+ for ESR {$esr}")?></li>
@@ -245,7 +245,7 @@ for ($i = 2; $i <= $last_beta + 1; $i++) {
                     <li class="list-group-item card-header list-group-item-primary">ESR  <?= (int) ESR_NEXT ?></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($regressions_esr, 'Open regressions'), $esr_next)?></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($relnotes_esr, 'Release Note Requests'), $esr_next)?></li>
-                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests'), $esr_next)?><span class="bugcount" id="UpliftsESRNext"></span></li>
+                    <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr, 'Uplift requests', alt_text:'Uplift requests for ESR ' . $esr_next), $esr_next)?><span class="bugcount" id="UpliftsESRNext"></span></li>
                     <li class="<?=$li_default?>"><?=$esr_link($link($uplift_esr_pending, 'Uplifts not landed, bug active'), $esr_next)?></li>
                     <?=$esr_link($rest_list_item_link('TrackingESRNext',  $tracking_question_esr_next, "tracking? for ESR {$esr_next}"), $esr_next)?>
                     <li class="<?=$li_default?>"><?=$esr_link($link($tracking_plus_esr, "tracking+ for ESR {$esr_next}"), $esr_next)?></li>
