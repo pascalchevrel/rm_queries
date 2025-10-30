@@ -66,22 +66,24 @@ $uplift_esr_next = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_next . '%3F'
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
-    . '&v2=affected%2Cfix-optional%2C%3F'
-    . '&o2=anyexact'
-    . '&chfieldfrom=-2w'
-    . '&chfieldto=Now';
+    . '&o2=nowordssubstr'
+    . '&v2=fixed%2C%20verified%2C%20wontfix';
 
 // Beta uplifts accepted, not landed
 $uplift_beta_pending =
     $uplift_stub_pending
     . '&f2=cf_status_firefox' . $main_beta
-    . '&v1=approval-mozilla-beta%2B';
+    . '&v1=approval-mozilla-beta%2B'
+    . '&f3=cf_status_firefox' . ($main_beta + 1)
+    . '&o3=isnotempty';
 
 // Release uplifts accepted, not landed
 $uplift_release_pending =
     $uplift_stub_pending
     . '&f2=cf_status_firefox' . $main_release
-    . '&v1=approval-mozilla-release%2B';
+    . '&v1=approval-mozilla-release%2B'
+    . '&f3=cf_status_firefox' . ($main_release + 1)
+    . '&o3=isnotempty';
 
 // ESR uplifts accepted, not landed
 $uplift_esr_pending =
