@@ -542,7 +542,7 @@ $flathub_firefox = getRemoteJson(
     900
 );
 
-$flathub_release = secureText($flathub_firefox['releases'][0]['version']);
+$flathub_release = secureText($flathub_firefox['releases'][0]['version'] ?? '');
 
 $flathub_status = $default_link_status;
 if ($flathub_release != FIREFOX_RELEASE) {
