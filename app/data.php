@@ -713,3 +713,12 @@ if ($maven_date->diff(new DateTime())->days >= 2) {
 
 // Huawei Store, fake data for now
 $huawei_store_firefox_release = getHuaweiStoreVersion();
+
+// Xiaomi Store
+$xiaomi_store_firefox_release = getXiaomiStoreVersion('org.mozilla.firefox');
+
+$xiaomi_firefox_status = $default_link_status;
+
+if ($xiaomi_store_firefox_release != FENIX_RELEASE) {
+    $xiaomi_firefox_status = 'danger';
+}

@@ -14,6 +14,7 @@ enum External: string
     case Samsung_focus    = 'https://galaxystore.samsung.com/api/detail/org.mozilla.focus';
     case Apple_Store      = 'https://apps.apple.com/us/app/';
     case Huawei_Store     = 'https://appgallery.huawei.com/app/C115133357?locale=en_US';
+    case Xiaomi_Store     = 'https://global.app.mi.com/details?lo=ES&la=en_US&id=';
     case Maven_AS_nightly = 'https://maven.mozilla.org/maven2/org/mozilla/appservices/nightly/full-megazord/maven-metadata.xml';
     case Microsoft_Store  = 'https://displaycatalog.mp.microsoft.com/v7.0/products/lookup?fieldsTemplate=InstallAgent&market=US&languages=en-US,en,neutral&alternateId=PackageFamilyName&value=Mozilla.Firefox_n80bbvh6b1yt2';
 }
@@ -25,6 +26,7 @@ enum StoreRelease: string
     case Google        = 'play.google.com/store/apps/details?id=org.mozilla.firefox';
     case Google_focus  = 'play.google.com/store/apps/details?id=org.mozilla.focus';
     case Huawei        = 'appgallery.huawei.com/app/C115133357';
+    case Xiaomi        = 'global.app.mi.com/details?lo=ES&la=en_US&id=org.mozilla.firefox';
     case Microsoft     = 'apps.microsoft.com/detail/9nzvdkpmr9rd';
     case Samsung       = 'galaxystore.samsung.com/detail/org.mozilla.firefox';
     case Samsung_focus = 'galaxystore.samsung.com/detail/org.mozilla.focus';

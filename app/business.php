@@ -68,6 +68,27 @@ function getAndroidVersion(string $appName): string {
 }
 
 /**
+ * Scrap the XIAOMI version from HTML
+ */
+function getXiaomiStoreVersion(string $appName): string {
+    $html = gfc(External::Xiaomi_Store->value . $appName);
+
+    $matches = [];
+    // Try XXX.x.x first
+    preg_match('/Version\:\d+\.\d+\.\d+/', $html, $matches);
+    if (empty($matches)) {
+        // Try xxx.x
+        preg_match('/Version\:\d+\.\d+/', $html, $matches);
+    }
+
+    if (empty($matches) || count($matches) > 1) {
+        return 'n/a';
+    }
+
+    return substr(current($matches), 8);
+}
+
+/**
  * I don't have a solution yet for Huawei
  * 1/ They don't have a public API without authentication with our developer account
  * 2/ Their app listing is all JS generated and have anti-scraping measures

@@ -58,6 +58,9 @@
                     <li class="<?=$class?> mobile">
                         Huawei Firefox <span class="text-<?=$default_link_status?>"><?=$huawei_store_firefox_release?></span>
                     </li>
+                    <li class="<?=$class?> mobile">
+                        Xiaomi Firefox <span class="text-<?=$xiaomi_firefox_status?>"><?=$xiaomi_store_firefox_release?></span>
+                    </li>
                 </ul>
 <?php else: ?>
                 <table class="table">
@@ -105,6 +108,14 @@
                                 <a href="<?=StoreRelease::Huawei->url()?>" class="link-<?=$default_link_status?>">&rarr; AppGallery</a>
                                 <small class="btn btn-outline-warning btn-sm text-dark" title="Not available in some regions such as the US">geo restrictions</small>
                             </td>
+                    </tr>
+                    <tr class="mobile">
+                        <th scope="row">Xiaomi</th>
+                            <td class="text-<?=$xiaomi_firefox_status?>">
+                                <a href="<?=StoreRelease::Xiaomi->url()?>" class="link-<?=$xiaomi_firefox_status?>"><?=$xiaomi_store_firefox_release?></a>
+                            </td>
+                            <td colspan="2" class="text-secondary"><small class="fst-italic text-secondary">N/A</small></td>
+
                     </tr>
                     <tr class="laptop">
                         <th scope="row">FlatHub</th>
