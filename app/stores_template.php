@@ -4,7 +4,7 @@
     if (isset($page_id) && $page_id == 'store') {
         $class = '';
         $message = <<<TEXT
-        Google & Microsoft need 100% rollout to serve the latest version number to new users<br>
+        Google, Microsoft & Huawei need 100% rollout to serve the latest version number to new users<br>
         Keep in mind that stores can take up to 48h to review and accept our submissions.
         TEXT;
     }
