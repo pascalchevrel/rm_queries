@@ -9,10 +9,10 @@ function gfc(string $url): string|false {
     $context = stream_context_create(
         [
             "http" => [
-
                 "method" => "GET",
                 "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n" .
-                            "Snap-Device-Series: 16\r\n"
+                            "Snap-Device-Series: 16\r\n",
+                "timeout" => 10,
             ]
         ]
     );
@@ -32,10 +32,10 @@ function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
             $context = stream_context_create(
                 [
                     "http" => [
-
                         "method" => "GET",
                         "header" => "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\r\n" .
-                                    "Snap-Device-Series: 16\r\n"
+                                    "Snap-Device-Series: 16\r\n",
+                        "timeout" => 10,
                     ]
                 ]
             );
@@ -49,6 +49,64 @@ function getRemoteFile($url, $cache_file, $time = 10800, $header = null) {
 
 function getRemoteJson($url, $cache_file, $time = 10800, $header = null) {
     return json_decode(getRemoteFile($url, $cache_file, $time, $header), true);
+}
+
+/**
+ * Fetch multiple URLs in parallel using curl_multi.
+ * Each request: ['url' => string, 'cache_file' => string, 'time' => int, 'headers' => string[]]
+ * Only fetches requests whose cache file is stale. Writes raw responses to cache files.
+ */
+function fetchParallel(array $requests): void {
+    $to_fetch = [];
+    foreach ($requests as $i => $req) {
+        $cache_ok = file_exists($req['cache_file']) && time() - $req['time'] < filemtime($req['cache_file']);
+        if (! $cache_ok) {
+            $to_fetch[$i] = $req;
+            $GLOBALS['urls'][] = $req['url'];
+        }
+    }
+
+    if (empty($to_fetch)) {
+        return;
+    }
+
+    $ua      = 'Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0';
+    $mh      = curl_multi_init();
+    $handles = [];
+
+    foreach ($to_fetch as $i => $req) {
+        $ch      = curl_init($req['url']);
+        $headers = ['User-Agent: ' . $ua];
+        if (! empty($req['headers'])) {
+            $headers = array_merge($headers, $req['headers']);
+        }
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 10,
+            CURLOPT_HTTPHEADER     => $headers,
+            CURLOPT_FOLLOWLOCATION => true,
+        ]);
+        $handles[$i] = $ch;
+        curl_multi_add_handle($mh, $ch);
+    }
+
+    do {
+        $status = curl_multi_exec($mh, $running);
+        if ($running) {
+            curl_multi_select($mh);
+        }
+    } while ($running > 0 && $status === CURLM_OK);
+
+    foreach ($handles as $i => $ch) {
+        $content = curl_multi_getcontent($ch);
+        if ($content !== false && $content !== '') {
+            file_put_contents($to_fetch[$i]['cache_file'], $content);
+        }
+        curl_multi_remove_handle($mh, $ch);
+        curl_close($ch);
+    }
+
+    curl_multi_close($mh);
 }
 
 function HTMLList(array $elements) : string {

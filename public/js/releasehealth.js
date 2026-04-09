@@ -59,7 +59,7 @@ class ReleaseHealth {
     for (const query of this.config.bugQueries) {
       // Use an inner `async` so the loop continues
       (async () => {
-        const { bug_count } = await this.getJSON(`${query.url}&count_only=1`);
+        const { bug_count } = await this.getJSON(`bugcount.php?url=${encodeURIComponent(query.url + '&count_only=1')}`);
 
         if (bug_count !== undefined) {
           query.count = bug_count;

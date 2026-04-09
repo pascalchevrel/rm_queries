@@ -535,6 +535,9 @@ $approved_sec_approval =
 // Default bootstrap Status for links
 $default_link_status = 'info';
 
+// Pre-fetch all store data in parallel before any sequential calls below
+prefetchStoreData();
+
 // FlatHub Status
 $flathub_firefox = getRemoteJson(
     External::Flatpak_release->value,
