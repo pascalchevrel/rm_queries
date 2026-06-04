@@ -41,12 +41,15 @@ $relnotes_stub = function($version) use($stub_search_bz) {
     . '&v3=disabled';
 };
 
-$relnotes_nightly = $relnotes_stub($main_nightly);
+// Excludes release notes with the relnote-cms keyword
+$relnotes_nightly = $relnotes_stub($main_nightly) . '&keywords_type=nowords&keywords=relnote-cms';
+
+// Only release notes with the relnote-cms keyword (in nucleus)
+$relnotes_nightly_done = $relnotes_stub($main_nightly) . '&keywords_type=allwords&keywords=relnote-cms';
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 $relnotes_esr     = $relnotes_stub('_esr' . $esr);
 
-// Orphaned release notes, those are bugs marked as open but with a release note request
 $orphaned_relnotes = $stub_search_bz
     . '&bug_status=UNCONFIRMED'
     . '&bug_status=NEW'
