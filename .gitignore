@@ -3,3 +3,4 @@ public/assets/
 cache/*.json
 cache/*.txt
 cache/*.xml
+cache/*.html
