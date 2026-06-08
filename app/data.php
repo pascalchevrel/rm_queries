@@ -32,7 +32,6 @@ $relnotes_stub = function($version) use($stub_search_bz) {
     return $stub_search_bz
     . '&f1=cf_tracking_firefox_relnote'
     . '&o1=equals'
-    . '&v1=%3F'
     . '&f2=cf_status_firefox' . $version
     . '&o2=anywords'
     . '&v2=affected%2Cfixed%2Cverified%2Cfix-optional'
@@ -41,11 +40,11 @@ $relnotes_stub = function($version) use($stub_search_bz) {
     . '&v3=disabled';
 };
 
-// Excludes release notes with the relnote-cms keyword
-$relnotes_nightly = $relnotes_stub($main_nightly) . '&keywords_type=nowords&keywords=relnote-cms';
+// Nightly release notes not in nucleus
+$relnotes_nightly = $relnotes_stub($main_nightly) . '&v1=%3F';
 
-// Only release notes with the relnote-cms keyword (in nucleus)
-$relnotes_nightly_done = $relnotes_stub($main_nightly) . '&keywords_type=allwords&keywords=relnote-cms';
+// Nightly release notes in nucleus
+$relnotes_nightly_done = $relnotes_stub($main_nightly) . '&v1=' . $main_nightly . '%2B';
 $relnotes_beta    = $relnotes_stub($main_beta);
 $relnotes_release = $relnotes_stub($main_release);
 $relnotes_esr     = $relnotes_stub('_esr' . $esr);
