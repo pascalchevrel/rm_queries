@@ -32,6 +32,10 @@ if (! $cache_ok) {
             'timeout' => 10,
         ],
     ]);
+
+    // Convert &amp; back to &
+    $url = html_entity_decode($url);
+
     $response = file_get_contents($url, false, $context);
     if ($response !== false) {
         file_put_contents($cache_file, $response);
