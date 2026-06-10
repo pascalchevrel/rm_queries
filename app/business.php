@@ -138,7 +138,7 @@ function getHuaweiStoreVersion(): string {
 }
 
 /**
- * Scrap the iOS version from HTML
+ * Scrape the iOS version from HTML
  */
 function getAppleStoreVersion(string $app, int $time = 3600): string {
     if (! in_array($app, ['firefox', 'focus', 'klar'])) {
@@ -171,9 +171,12 @@ function getAppleStoreVersion(string $app, int $time = 3600): string {
     }
 
     $matches = [];
-    preg_match('/Version \d+\.\d+/', $html, $matches);
+    // The inner parenthesis capture just the version number digits (e.g., "151.3" or "151.3.1")
+    preg_match('/Version (\d+\.\d+(?:\.\d+)?)/', $html, $matches);
 
-    $version = (empty($matches) || count($matches) > 1) ? 'n/a' : substr(current($matches), 8);
+    // If a match is found, $matches[1] will contain the isolated version string
+    $version = !empty($matches[1]) ? $matches[1] : 'n/a';
+
     file_put_contents($parsed_cache, $version);
     return $version;
 }
