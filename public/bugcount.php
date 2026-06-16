@@ -14,11 +14,7 @@ header('Content-Type: application/json; charset=UTF-8');
 
 $url = $_GET['url'] ?? '';
 
-if (! str_starts_with($url, 'https://bugzilla.mozilla.org/rest/bug?')) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Invalid URL']);
-    exit;
-}
+$url = 'https://bugzilla.mozilla.org/rest/bug?' . $url;
 
 $cache_file = CACHE . 'bz_count_' . md5($url) . '.json';
 $ttl        = 900; // 15 minutes
@@ -28,7 +24,7 @@ if (! $cache_ok) {
     $context = stream_context_create([
         'http' => [
             'method'  => 'GET',
-            'header'  => 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0',
+            'header'  => 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0',
             'timeout' => 10,
         ],
     ]);

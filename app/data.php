@@ -45,9 +45,9 @@ $relnotes_nightly = $relnotes_stub($main_nightly) . '&v1=%3F';
 
 // Nightly release notes in nucleus
 $relnotes_nightly_done = $relnotes_stub($main_nightly) . '&v1=' . $main_nightly . '%2B';
-$relnotes_beta    = $relnotes_stub($main_beta);
-$relnotes_release = $relnotes_stub($main_release);
-$relnotes_esr     = $relnotes_stub('_esr' . $esr);
+$relnotes_beta    = $relnotes_stub($main_beta) . '&v1=%3F';
+$relnotes_release = $relnotes_stub($main_release) . '&v1=%3F';
+$relnotes_esr     = $relnotes_stub('_esr' . $esr) . '&v1=%3F';
 
 $orphaned_relnotes = $stub_search_bz
     . '&bug_status=UNCONFIRMED'

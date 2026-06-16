@@ -1,4 +1,4 @@
-<?php require_once dirname(__DIR__, 1) . '/app/init.php'; ?>
+  <?php require_once dirname(__DIR__, 1) . '/app/init.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
