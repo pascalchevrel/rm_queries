@@ -4,6 +4,34 @@ require_once __DIR__ . '/../../app/init.php';
 
 header("access-control-allow-origin: *");
 header("Content-type: application/json; charset=UTF-8");
+
+// The '&' tells PHP to modify the original variables, not copies
+// The '...' allows you to pass as many variables as you want
+// Our query starts by an & and it's more complicated to change that in data.php
+function fix_bugzilla_urls(&...$urls) {
+    foreach ($urls as &$url) {
+        $url = str_replace('?&', '?', $url);
+    }
+}
+
+// Pass them all to the function at once
+fix_bugzilla_urls(
+  $uplift_beta,
+  $uplift_release,
+  $uplift_esr,
+  $relnotes_nightly,
+  $relnotes_beta,
+  $relnotes_release,
+  $tracking_question_nightly,
+  $orphaned_relnotes,
+  $tracking_question_beta,
+  $tracking_question_release,
+  $tracking_question_esr,
+  $tracking_question_esr_115,
+  $uplift_esr_115,
+  $tracking_question_esr_next,
+  $uplift_esr_next
+ );
 ?>
 {
   "bugQueries": [

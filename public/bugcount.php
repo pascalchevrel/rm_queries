@@ -12,10 +12,8 @@ require_once dirname(__DIR__) . '/app/init.php';
 
 header('Content-Type: application/json; charset=UTF-8');
 
-$url = $_GET['url'] ?? '';
-
-$url = 'https://bugzilla.mozilla.org/rest/bug?' . $url;
-
+$url = str_replace('?&', '?', $_GET['url']) ?? '';
+error_log("URL :" . $url);
 $cache_file = CACHE . 'bz_count_' . md5($url) . '.json';
 $ttl        = 900; // 15 minutes
 $cache_ok   = file_exists($cache_file) && time() - $ttl < filemtime($cache_file);
