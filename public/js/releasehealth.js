@@ -56,9 +56,16 @@ class ReleaseHealth {
    * Fetch the number of bugs for all the queries.
    */
   getBugCounts() {
-    for (const query of this.config.bugQueries) {
+    // Stagger the requests so we don't fire all queries at once, which can
+    // saturate the server-side PHP-FPM workers (each request blocks while it
+    // proxies to Bugzilla) and cause 502s.
+    const delay = ms => new Promise(resolve => window.setTimeout(resolve, ms));
+
+    this.config.bugQueries.forEach((query, index) => {
       // Use an inner `async` so the loop continues
       (async () => {
+        await delay(index * 200);
+
         const { bug_count } = await this.getJSON(`bugcount.php?url=${encodeURIComponent(query.url + '&count_only=1')}`);
 
         if (bug_count !== undefined) {
@@ -66,7 +73,7 @@ class ReleaseHealth {
           this.displayCount(query);
         }
       })();
-    }
+    });
   }
 
   /**
