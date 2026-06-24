@@ -12,7 +12,30 @@ require_once dirname(__DIR__) . '/app/init.php';
 
 header('Content-Type: application/json; charset=UTF-8');
 
-$url = str_replace('?&', '?', $_GET['url']) ?? '';
+// The only endpoint we are willing to proxy.
+const BZ_REST_BASE = 'https://bugzilla.mozilla.org/rest/bug?';
+
+// Decode &amp; entities and normalise the leading '?&' before any validation,
+// so the checks (and the cache key) see the real URL.
+$url = html_entity_decode($_GET['url'] ?? '');
+$url = str_replace('?&', '?', $url);
+
+// Reject malformed input rather than forwarding it to Bugzilla (which would
+// answer with a 400/500 and cost us a round-trip). Guards against:
+//   - a doubled base URL: rest/bug?https://.../rest/bug?...
+//   - a stripped query (unencoded '&' splitting the param off): bare rest/bug?
+//   - any non-Bugzilla URL (this is not an open proxy)
+$query     = substr($url, strlen(BZ_REST_BASE));
+$malformed = ! str_starts_with($url, BZ_REST_BASE)   // wrong/missing base
+    || str_contains($query, BZ_REST_BASE)            // base appears twice
+    || ! str_contains($query, '=');                  // no actual filter params
+
+if ($malformed) {
+    error_log('bugcount: rejected malformed url=' . $url);
+    http_response_code(400);
+    echo json_encode(['error' => 'Malformed Bugzilla query URL']);
+    exit;
+}
 
 $cache_file = CACHE . 'bz_count_' . md5($url) . '.json';
 $ttl        = 600; // 10 minutes
@@ -29,9 +52,6 @@ if (! $cache_ok) {
             'ignore_errors' => true,
         ],
     ]);
-
-    // Convert &amp; back to &
-    $url = html_entity_decode($url);
 
     $response = @file_get_contents($url, false, $context);
 
