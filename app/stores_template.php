@@ -110,6 +110,12 @@
                             </td>
                     </tr>
                     <tr class="mobile">
+                        <th scope="row">Vivo</th>
+                            <td colspan="3">
+                                No public store
+                            </td>
+                    </tr>
+                    <tr class="mobile">
                         <th scope="row">Xiaomi</th>
                             <td class="text-<?=$xiaomi_firefox_status?>">
                                 <a href="<?=StoreRelease::Xiaomi->url()?>" class="link-<?=$xiaomi_firefox_status?>"><?=$xiaomi_store_firefox_release?></a>
