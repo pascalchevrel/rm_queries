@@ -542,7 +542,7 @@ prefetchStoreData();
 
 // FlatHub Status
 $flathub_firefox = getRemoteJson(
-    External::Flatpak_release->value,
+    getFlathubUrl(),
     'flathub_firefox_release.json',
     900
 );

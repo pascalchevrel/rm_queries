@@ -207,6 +207,15 @@ function getLatestMavenVersion(int $time = 3600): string {
 }
 
 /**
+ * Flathub's CDN caches the appstream API for 24h (s-maxage=86400), so we add a
+ * query string that changes every 15 minutes to bypass the stale CDN copy
+ * while still sending at most one uncached request per window.
+ */
+function getFlathubUrl(): string {
+    return External::Flatpak_release->value . '?t=' . intdiv(time(), 900);
+}
+
+/**
  * Pre-fetch all store data in parallel so that subsequent calls to
  * getAndroidVersion, getAppleStoreVersion, getXiaomiStoreVersion,
  * getLatestMavenVersion, getWindowsStoreVersion, and getRemoteJson-based
@@ -230,7 +239,7 @@ function prefetchStoreData(int $time = 3600): void {
         // Microsoft Store (raw JSON cache)
         ['url' => External::Microsoft_Store->value, 'cache_file' => CACHE . 'microsoft_store_raw.json', 'time' => 900],
         // JSON endpoints — same cache files used by getRemoteJson, so hits are served from cache
-        ['url' => External::Flatpak_release->value,        'cache_file' => CACHE . 'flathub_firefox_release.json',  'time' => 900],
+        ['url' => getFlathubUrl(),                         'cache_file' => CACHE . 'flathub_firefox_release.json',  'time' => 900],
         ['url' => External::Snap_release->value,           'cache_file' => CACHE . 'snapcraft_firefox_release.json', 'time' => 900, 'headers' => ['Snap-Device-Series: 16']],
         ['url' => External::Samsung_firefox->value,        'cache_file' => CACHE . 'samsung_firefox_release.json',  'time' => 900],
         ['url' => External::Samsung_focus->value,          'cache_file' => CACHE . 'samsung_focus_release.json',    'time' => 900],
