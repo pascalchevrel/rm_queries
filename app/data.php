@@ -706,12 +706,15 @@ $microsoft_store_status  = ($microsoft_store_release == FIREFOX_RELEASE)
 $maven = getLatestMavenVersion();
 $maven_status = $default_link_status;
 $maven_title = '';
-$maven_date = DateTime::createFromFormat(
-    'Ymd',
-    substr(explode('.', $maven)[1], 0, 8)
-);
+$maven_date = false;
+if (preg_match('/^\d+\.(\d{8})/', $maven, $maven_matches)) {
+    $maven_date = DateTime::createFromFormat('Ymd', $maven_matches[1]);
+}
 
-if ($maven_date->diff(new DateTime())->days >= 2) {
+if ($maven_date === false) {
+    $maven_status = 'danger';
+    $maven_title = 'Could not fetch the latest Application Services build';
+} elseif ($maven_date->diff(new DateTime())->days >= 2) {
     $maven_status = 'danger';
     $maven_title = 'Last Application Services build is >= 2 days';
 }

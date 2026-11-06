@@ -191,19 +191,29 @@ function getLatestMavenVersion(int $time = 3600): string {
     }
 
     $raw_fresh = file_exists($raw_cache) && time() - $time < filemtime($raw_cache);
-    if ($raw_fresh) {
-        $xml = file_get_contents($raw_cache);
-    } else {
-        $xml = gfc(External::Maven_AS_nightly->value);
-        file_put_contents($raw_cache, $xml);
+    $xml = $raw_fresh ? file_get_contents($raw_cache) : false;
+
+    if (! $raw_fresh || ! str_contains((string) $xml, '<latest>')) {
+        $fetched = @gfc(External::Maven_AS_nightly->value);
+        if ($fetched !== false && str_contains($fetched, '<latest>')) {
+            $xml = $fetched;
+            file_put_contents($raw_cache, $xml);
+        } elseif (file_exists($raw_cache)) {
+            // Network or upstream error: fall back to the stale copy
+            $xml = file_get_contents($raw_cache);
+        }
     }
 
     $matches = [];
-    preg_match('/<latest>(.+?)<\/latest>/', $xml, $matches);
+    preg_match('/<latest>(.+?)<\/latest>/', (string) $xml, $matches);
 
-    $version = (empty($matches) || count($matches) > 2) ? 'n/a' : $matches[1];
-    file_put_contents($parsed_cache, $version);
-    return $version;
+    if (empty($matches)) {
+        // Don't cache failures, retry on the next request
+        return 'n/a';
+    }
+
+    file_put_contents($parsed_cache, $matches[1]);
+    return $matches[1];
 }
 
 /**

@@ -99,7 +99,8 @@ function fetchParallel(array $requests): void {
 
     foreach ($handles as $i => $ch) {
         $content = curl_multi_getcontent($ch);
-        if ($content !== false && $content !== '') {
+        $code    = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($code >= 200 && $code < 300 && $content !== false && $content !== '') {
             file_put_contents($to_fetch[$i]['cache_file'], $content);
         }
         curl_multi_remove_handle($mh, $ch);
