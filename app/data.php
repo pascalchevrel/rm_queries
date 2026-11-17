@@ -62,9 +62,18 @@ $orphaned_relnotes = $stub_search_bz
 $uplift_stub     = $stub_search_bz . '&o1=substring&f1=flagtypes.name';
 $uplift_beta     = $uplift_stub . '&v1=approval-mozilla-beta%3F';
 $uplift_release  = $uplift_stub . '&v1=approval-mozilla-release%3F';
-$uplift_esr      = $uplift_stub . '&v1=approval-mozilla-esr' . $esr . '%3F';
-$uplift_esr_115  = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_115 . '%3F';
-$uplift_esr_next = $uplift_stub . '&v1=approval-mozilla-esr' . $esr_next . '%3F';
+
+// ESR uplift requests, excluding bugs tracked for the next ESR dot release (beta + 1)
+$uplift_esr_stub = function($esr_version) use ($uplift_stub, $main_beta) {
+    return $uplift_stub
+    . '&v1=approval-mozilla-esr' . $esr_version . '%3F'
+    . '&f2=cf_tracking_firefox_esr' . $esr_version
+    . '&o2=notequals'
+    . '&v2=' . ($main_beta + 1) . '%2B';
+};
+$uplift_esr      = $uplift_esr_stub($esr);
+$uplift_esr_115  = $uplift_esr_stub($esr_115);
+$uplift_esr_next = $uplift_esr_stub($esr_next);
 
 // Uplifts requests accepted, not landed last week,
 $uplift_stub_pending = $uplift_stub
