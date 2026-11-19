@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Firefox version number on Stores</title>
     <meta http-equiv="refresh" content="3600">
-    <link rel="shortcut icon" type="image/svg+xml" href="./img/experiments.svg"/>
+    <link rel="shortcut icon" type="image/svg+xml" href="/img/experiments.svg"/>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css?version=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
